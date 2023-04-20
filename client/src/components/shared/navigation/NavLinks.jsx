@@ -20,7 +20,7 @@ function NavLinks(props) {
         <NavLink to="/3">Profils stagiaires</NavLink>
       </li>
       <li>
-        <NavLink to="/4">FAQ</NavLink>
+        <NavLink to="/FAQ">FAQ</NavLink>
       </li>
     </ul>
   );
