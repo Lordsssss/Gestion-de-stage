@@ -1,8 +1,9 @@
 import React from "react";
+import "./css/StaticPages.css"
 
-function Accueil(props) {
+function Accueil() {
     return(
-        <div className="App">
+        <div className="Accueil">
             <p>Bienvenue sur le site des stages de fin d'études des
             techniques de l'informatique du  Collège Montmorency!</p>
             <p>À la fin de leurs études,
@@ -27,3 +28,5 @@ function Accueil(props) {
         </div>
     );
 }
+
+export default Accueil;

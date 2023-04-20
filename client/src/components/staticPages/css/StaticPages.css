@@ -1,0 +1,11 @@
+.Accueil{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.Accueil p{
+    text-align: center;
+    width: 40%;
+}

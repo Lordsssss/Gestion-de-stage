@@ -7,3 +7,4 @@ function EspaceEmployeur(props) {
         </div>
     );
 }
+export default EspaceEmployeur;
