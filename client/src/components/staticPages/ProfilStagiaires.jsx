@@ -7,3 +7,4 @@ function ProfilStagiaires(props) {
         </div>
     );
 }
+export default ProfilStagiaires;

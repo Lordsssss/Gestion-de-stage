@@ -7,3 +7,4 @@ function FAQ(props) {
         </div>
     );
 }
+export default FAQ;

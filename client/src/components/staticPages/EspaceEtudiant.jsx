@@ -7,3 +7,4 @@ function EspaceEtudiant(props) {
         </div>
     );
 }
+export default EspaceEtudiant;
