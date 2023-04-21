@@ -10,12 +10,28 @@ function NavLinks(props) {
           Accueil
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/1">Espace employeurs</NavLink>
+      <li className="dropdown-content">
+        <NavLink to="/1">
+        Gestion des stages
+          <ul className="dropdown-menu">
+            <li>
+              <NavLink to="/1/sublink1">Espace Étudiant</NavLink>
+            </li>
+            <li>
+              <NavLink to="/1/sublink2">Espace Employeurs</NavLink>
+            </li>
+            <li>
+            <NavLink to="/1/sublink1">Stages Disponibles</NavLink>
+          </li>
+          <li>
+            <NavLink to="/1/sublink2">Publier Stage</NavLink>
+          </li>
+          <li>
+          <NavLink to="/1/sublink2">Étudiants Candidats</NavLink>
+        </li>
+          </ul>
+        </NavLink>
       </li>
-      <li>
-      <NavLink to="/2">Espace etudiants</NavLink>
-    </li>
       <li>
         <NavLink to="/3">Profils stagiaires</NavLink>
       </li>

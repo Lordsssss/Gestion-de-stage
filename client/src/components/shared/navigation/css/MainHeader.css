@@ -7,17 +7,18 @@
     top: 0;
     left: 0;
     background: white;
-    border-color: black;
-    border: 0.1rem solid grey;
-    backdrop-filter: saturate(180%) blur(5px);
+  position: relative;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     z-index: 5;
+    margin: 0 auto;
+    
   }
   
   main {
     margin-top: 5rem;
   }
   
-  @media (min-width: 768px) {
+  @media (min-width: 1400px) {
     .main-header {
       justify-content: space-between;
     }

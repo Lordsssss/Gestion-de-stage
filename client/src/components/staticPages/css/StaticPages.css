@@ -3,14 +3,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 20vh;
+  margin: 100px;
 }
 .Accueil p {
   text-align: center;
   width: 40%;
 }
 .FAQ {
-    margin: 50px;
+  margin: 50px;
   color: #333;
   background: #fcfcfc;
   overflow-x: hidden;

@@ -39,9 +39,41 @@
   .nav-links button:focus {
     outline: none;
   }
+  .dropdown-content{
+    position: relative;
+  }
+  .dropdown-menu {
+    list-style: none;
+    display: none;
+    position: absolute;
+    padding-bottom: 5px;
+    width: 130%;
+    top: 43px;
+    left: 0;
+    background-color: white;
+    
+    border: 1px solid #ddd;
+    z-index: 1;
+  }
+  .dropdown-menu li{
+    padding: 10px;
+  }
+  .dropdown-menu a{
+    padding-bottom: 1px;
+  }
+  .dropdown-menu a:hover{
+    border-bottom: 2px solid #B3C000;
+    color: #B3C000;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-radius: 2px;
+  }
   
+  .nav-links li:hover .dropdown-menu {
+    display: block;
+  }
   
-  @media (min-width: 768px) {
+  @media (min-width: 1400px) {
     .nav-links {
       flex-direction: row;
     }

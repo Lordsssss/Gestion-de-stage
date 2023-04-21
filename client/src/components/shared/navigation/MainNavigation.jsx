@@ -35,7 +35,9 @@ function MainNavigation(props) {
           <span />
         </button>
         <div className="main-navigation__logo-img">
+        <Link to="/" target="_blank" rel="noreferrer">
           <img src="https://www.cmontmorency.qc.ca/wp-content/uploads/2018/03/Logomo_1400.png" alt="Logo" width="250px"/>
+        </Link>
         </div>
         <nav className="main-navigation__header-nav">
           <NavLinks />
