@@ -11,8 +11,7 @@ function NavLinks(props) {
         </NavLink>
       </li>
       <li className="dropdown-content">
-        <NavLink to="/1">
-        Gestion des stages
+        <div className="nav-links__dropdown">Gestion des stages</div>
           <ul className="dropdown-menu">
             <li>
               <NavLink to="/1/sublink1">Espace Étudiant</NavLink>
@@ -30,7 +29,6 @@ function NavLinks(props) {
           <NavLink to="/1/sublink2">Étudiants Candidats</NavLink>
         </li>
           </ul>
-        </NavLink>
       </li>
       <li>
         <NavLink to="/3">Profils stagiaires</NavLink>
