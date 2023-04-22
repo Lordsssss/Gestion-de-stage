@@ -3,11 +3,44 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 100px;
+  margin: 0%;
 }
 .Accueil p {
   text-align: center;
   width: 40%;
+}
+.EspaceEmployeur{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0%;
+}
+.EspaceEmployeur p{
+  text-align: center;
+  width: 40%;
+}
+.EspaceEtudiant{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0%;
+}
+.EspaceEtudiant p{
+  text-align: center;
+  width: 50%;
+}
+.ProfilStagiaires{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0%;
+}
+.ProfilStagiaires p{
+  text-align: center;
+  width: 50%;
 }
 .FAQ {
   margin: 50px;

@@ -8,7 +8,7 @@ import Backdrop from "./Backdrop";
 
 import "./css/MainNavigation.css";
 
-function MainNavigation(props) {
+function MainNavigation({role}) {
   const [tiroirOuvert, setTiroirOuvert] = useState(false);
 
   const ouvrirTiroir = () => {
@@ -24,7 +24,7 @@ function MainNavigation(props) {
       {tiroirOuvert && <Backdrop onClick={fermerTiroir} />}
       <SideDrawer show={tiroirOuvert} onClick={fermerTiroir}>
         <nav className="main-navigation__drawer-nav">
-          <NavLinks />
+          <NavLinks role={role}/>
         </nav>
       </SideDrawer>
 
@@ -40,7 +40,7 @@ function MainNavigation(props) {
         </Link>
         </div>
         <nav className="main-navigation__header-nav">
-          <NavLinks />
+          <NavLinks role={role}/>
         </nav>
       </MainHeader>
     </React.Fragment>

@@ -1,8 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./css/NavLinks.css";
+import { userHasRole, getUserRole } from "../../../utils/auth.js";
 
-function NavLinks(props) {
+
+function NavLinks({ role }) {
   return (
     <ul className="nav-links">
       <li>
@@ -12,26 +14,32 @@ function NavLinks(props) {
       </li>
       <li className="dropdown-content">
         <div className="nav-links__dropdown">Gestion des stages</div>
-          <ul className="dropdown-menu">
-            <li>
-              <NavLink to="/1/sublink1">Espace Étudiant</NavLink>
-            </li>
-            <li>
-              <NavLink to="/1/sublink2">Espace Employeurs</NavLink>
-            </li>
-            <li>
-            <NavLink to="/1/sublink1">Stages Disponibles</NavLink>
+        <ul className="dropdown-menu">
+          <li>
+            <NavLink to="/EspaceEtudiant">Espace Étudiant</NavLink>
           </li>
           <li>
-            <NavLink to="/1/sublink2">Publier Stage</NavLink>
+            <NavLink to="/EspaceEmployeur">Espace Employeurs</NavLink>
           </li>
-          <li>
-          <NavLink to="/1/sublink2">Étudiants Candidats</NavLink>
-        </li>
-          </ul>
+          {role !== "Boss" && (
+            <li>
+              <NavLink to="/1/sublink3">Stages Disponibles</NavLink>
+            </li>
+          )}
+          {role !== "Student" && role !== "Coordinator" && (
+            <li>
+              <NavLink to="/1/sublink4">Publier Stage</NavLink>
+            </li>
+          )}
+          {role !== "Student" && role !== "Boss" && (
+            <li>
+              <NavLink to="/1/sublink5">Liste d'Etudiant</NavLink>
+            </li>
+          )}
+        </ul>
       </li>
       <li>
-        <NavLink to="/3">Profils stagiaires</NavLink>
+        <NavLink to="/ProfilStagiaires">Profils stagiaires</NavLink>
       </li>
       <li>
         <NavLink to="/FAQ">FAQ</NavLink>
