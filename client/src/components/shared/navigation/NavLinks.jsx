@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./css/NavLinks.css";
-import { userHasRole, getUserRole } from "../../../utils/auth.js";
 
 
 function NavLinks({ role }) {
@@ -44,6 +43,9 @@ function NavLinks({ role }) {
       <li>
         <NavLink to="/FAQ">FAQ</NavLink>
       </li>
+      <li>
+      <NavLink to="/Login">Se connecter</NavLink>
+    </li>
     </ul>
   );
 }

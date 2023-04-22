@@ -11,6 +11,7 @@ import EspaceEmployeur from "./components/staticPages/EspaceEmployeur";
 import EspaceEtudiant from "./components/staticPages/EspaceEtudiant";
 import ProfilStagiaires from "./components/staticPages/ProfilStagiaires";
 import PrivateRoute from "./components/shared/privateRoute/PrivateRoute";
+import Login from "./components/connextion/Login";
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
           <Route path="/ProfilStagiaires">
             <ProfilStagiaires />
           </Route>
+          <Route path="/Login">
+          <Login />
+        </Route>
           <route path="">
             <Accueil />
           </route>
