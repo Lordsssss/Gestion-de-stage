@@ -20,17 +20,17 @@ function NavLinks({ role }) {
           <li>
             <NavLink to="/EspaceEmployeur">Espace Employeurs</NavLink>
           </li>
-          {role !== "Boss" && (
+          {role === "Student" && (
             <li>
               <NavLink to="/1/sublink3">Stages Disponibles</NavLink>
             </li>
           )}
-          {role !== "Student" && role !== "Coordinator" && (
+          {role === "Boss" && (
             <li>
               <NavLink to="/1/sublink4">Publier Stage</NavLink>
             </li>
           )}
-          {role !== "Student" && role !== "Boss" && (
+          {role === "Coordinator" && (
             <li>
               <NavLink to="/1/sublink5">Liste d'Etudiant</NavLink>
             </li>

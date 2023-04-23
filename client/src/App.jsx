@@ -16,7 +16,7 @@ import Login from "./components/connextion/Login";
 function App() {
   return (
     <Router>
-      <PrivateRoute role="Boss" />
+      <PrivateRoute role="Student" />
       <main>
         <Switch>
           <Route path="/FAQ" exact>

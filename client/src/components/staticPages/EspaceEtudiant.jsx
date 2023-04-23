@@ -44,11 +44,11 @@ function EspaceEtudiant(props) {
           TRÈS IMPORTANT: pour toute communication par courriel avec le
           coordonnateur vous devez inscrire dans le sujet du message:
         </li>
-        <li class="retrait petit">SUJET: Stages profil #DA nom - raison</li>
-        <li class="retrait petit">profil est soit réseaux, soit prog</li>
-        <li class="retrait petit">#DA est votre numéro d'admission</li>
-        <li class="retrait petit">nom est votre nom</li>
-        <li class="retrait petit">
+        <li className="retrait petit">SUJET: Stages profil #DA nom - raison</li>
+        <li className="retrait petit">profil est soit réseaux, soit prog</li>
+        <li className="retrait petit">#DA est votre numéro d'admission</li>
+        <li className="retrait petit">nom est votre nom</li>
+        <li className="retrait petit">
           par exemple: Stages réseaux 201014109 Joe Larue - contenu CV
         </li>
         <li>N'oubliez pas d'inscrire la raison du message (après le tiret).</li>
