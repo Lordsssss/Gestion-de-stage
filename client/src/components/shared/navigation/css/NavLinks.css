@@ -47,7 +47,7 @@
     display: none;
     position: absolute;
     padding-bottom: 5px;
-    width: 135%;
+    width: 150%;
     top: 43px;
     left: 0;
     background-color: white;
@@ -87,7 +87,7 @@
     display: block;
   }
   
-  @media (min-width: 1400px) {
+  @media (min-width: 745px) {
     .nav-links {
       flex-direction: row;
     }
