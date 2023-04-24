@@ -11,12 +11,12 @@ import EspaceEmployeur from "./components/staticPages/EspaceEmployeur";
 import EspaceEtudiant from "./components/staticPages/EspaceEtudiant";
 import ProfilStagiaires from "./components/staticPages/ProfilStagiaires";
 import PrivateRoute from "./components/shared/privateRoute/PrivateRoute";
-import Connection from "./components/forms/connForm/Connection";
+import Connection from "./components/forms/connectionForm/Connection";
 
 function App() {
   return (
     <Router>
-      <PrivateRoute role="Student" />
+      <PrivateRoute role="Boss" />
       <main>
         <Switch>
           <Route path="/FAQ" exact>
