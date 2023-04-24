@@ -1,22 +1,26 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
-function Login({ onLogin }) {
+function Login({ onLogin, setRole }) {
 
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+  const [email, setLoginEmail] = useState("");
+  const [password, setLoginPassword] = useState("");
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/user/login", {
-        loginEmail,
-        loginPassword,
+      const response = await axios.post("http://localhost:3001/api/user/login", {
+        email,
+        password,
       });
       onLogin(response.data.token);
+      setRole("Boss");
+      console.log(response)
     } catch (error) {
       setError("Invalid credentials.");
+      console.log(error)
     }
   };
 
@@ -32,7 +36,7 @@ function Login({ onLogin }) {
               name="email"
               placeholder="Email"
               required=""
-              value={loginEmail}
+              value={email}
               onChange={(e) => setLoginEmail(e.target.value)}
             />
             <input
@@ -40,7 +44,7 @@ function Login({ onLogin }) {
               name="pswd"
               placeholder="Password"
               required=""
-              value={loginPassword}
+              value={password}
               onChange={(e) => setLoginPassword(e.target.value)}
             />
             <button>Login</button>

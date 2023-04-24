@@ -20,6 +20,12 @@ function PrivateRoute({role}){
                 <MainNavigation role={role}/>
             </div>
         );
+    }else{
+        return(
+            <div>
+                <MainNavigation role={role}/>
+            </div>
+        );
     }
 }
 export default PrivateRoute;

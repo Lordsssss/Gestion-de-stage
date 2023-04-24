@@ -4,14 +4,14 @@ import Login from "./Login";
 
 import "./css/Connection.css";
 
-function Connection({ onLogin }) {
+function Connection({ onLogin,role }) {
   return (
     <div className="connection">
       <div className="LoginClass">
         <div className="Login-form">
         <input type="checkbox" id="chk" aria-hidden="true" />
             <SignUp/>
-            <Login onLogin={{ onLogin }}/>
+            <Login onLogin={onLogin} setRole={role}/>
         </div>
       </div>
     </div>

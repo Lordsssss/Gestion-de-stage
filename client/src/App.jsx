@@ -5,6 +5,7 @@ import {
   Route,
   Redirect,
   Switch,
+  useHistory,
 } from "react-router-dom";
 import Accueil from "./components/staticPages/Accueil";
 import FAQ from "./components/staticPages/FAQ";
@@ -15,19 +16,26 @@ import PrivateRoute from "./components/shared/privateRoute/PrivateRoute";
 import Connection from "./components/forms/connectionForm/Connection";
 
 function App() {
+  const history = useHistory();
   const [token, setToken] = useState(null);
-
+  const [role, setRole] = useState("guess");
+  const handleRole = (newRole) => {
+    setRole(newRole);
+  };
   const handleLogin = (newToken) => {
     setToken(newToken);
+  };
+   const handleGoHome = () => {
+    history.push("/home"); // New line
   };
 
   return (
     <Router>
-      <PrivateRoute role="Boss" />
+      <PrivateRoute role={role} />
       <main>
         <Switch>
           <Route path="/Login">
-            <Connection onLogin={handleLogin}/>
+            <Connection onLogin={handleLogin} role={handleRole} />
           </Route>
           <Route path="/FAQ" exact>
             <FAQ />
@@ -46,6 +54,10 @@ function App() {
           </route>
           <Redirect to="/" />
         </Switch>
+        {token && (
+          handleGoHome,
+          console.log("test")
+        )}
       </main>
     </Router>
   );
