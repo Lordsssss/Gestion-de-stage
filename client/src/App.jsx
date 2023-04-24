@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./css/App.css";
 import {
   BrowserRouter as Router,
@@ -14,11 +15,20 @@ import PrivateRoute from "./components/shared/privateRoute/PrivateRoute";
 import Connection from "./components/forms/connectionForm/Connection";
 
 function App() {
+  const [token, setToken] = useState(null);
+
+  const handleLogin = (newToken) => {
+    setToken(newToken);
+  };
+
   return (
     <Router>
       <PrivateRoute role="Boss" />
       <main>
         <Switch>
+          <Route path="/Login">
+            <Connection onLogin={handleLogin}/>
+          </Route>
           <Route path="/FAQ" exact>
             <FAQ />
           </Route>
@@ -30,9 +40,6 @@ function App() {
           </Route>
           <Route path="/ProfilStagiaires">
             <ProfilStagiaires />
-          </Route>
-          <Route path="/Login">
-            <Connection />
           </Route>
           <route path="">
             <Accueil />

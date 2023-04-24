@@ -6,13 +6,18 @@ require("dotenv").config();
 
 const mongoose = require("mongoose");
 const PORT = 3001;
-const URL = "mongodb://" + process.env.USER;
+const URL = "mongodb://" + process.env.HOSTCONNECTION + "/internships";
 const HttpErreur = require("./models/HttpErreur");
+const UserRoute = require("./routes/UserRoute")
 
+app.use(express.urlencoded());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
+
+app.use("/api/user",UserRoute);
 app.use((requete, reponse, next) => {
   return next(new HttpErreur("Route non trouvée", 404));
 });
