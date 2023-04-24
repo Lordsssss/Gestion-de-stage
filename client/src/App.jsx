@@ -49,9 +49,9 @@ function App() {
           <Route path="/ProfilStagiaires">
             <ProfilStagiaires />
           </Route>
-          <route path="">
+          <Route path="">
             <Accueil />
-          </route>
+          </Route>
           <Redirect to="/" />
         </Switch>
         {token && (

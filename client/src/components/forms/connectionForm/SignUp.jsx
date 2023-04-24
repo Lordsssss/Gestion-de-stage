@@ -5,6 +5,7 @@ function SignUp() {
   const [email, setSignUpEmail] = useState("");
   const [username, setSignUpUserName] = useState("");
   const [password, setSignUpPassword] = useState("");
+  const [usertype, setUserType] = useState("Etudiant");
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -16,18 +17,19 @@ function SignUp() {
         {
           email,
           username,
-          password
+          password,
+          usertype,
         },
         {
           headers: {
             "Content-Type": "application/json",
-          }
+          },
         }
       );
       //setError(null);
       alert("Registration successful!");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -62,6 +64,40 @@ function SignUp() {
           value={password}
           onChange={(e) => setSignUpPassword(e.target.value)}
         />
+        <div className="SignUp__wrapper">
+          <ul>
+            <li>
+              <label>
+              <input
+              id="one"
+              type="radio"
+              name="userType"
+              value="Etudiant"
+              checked={usertype === "Etudiant"}
+              onChange={(e) => setUserType(e.target.value)}
+            />
+              Étudiant
+              <div className="check"></div>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input
+                  id="two"
+                  type="radio"
+                  name="userType"
+                  value="Employeur"
+                  checked={usertype === "Employeur"}
+                  onChange={(e) => setUserType(e.target.value)}
+                />
+                Employeur
+                <div className="check">
+                <div className="inside"></div>
+              </div>
+              </label>
+            </li>
+          </ul>
+        </div>
         <button>Sign up</button>
       </form>
     </div>

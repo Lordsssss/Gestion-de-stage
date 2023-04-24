@@ -9,7 +9,7 @@
 }
 .Login-form{
 	width: 350px;
-	height: 500px;
+	height: 600px;
 	overflow: hidden;
 	box-shadow: 5px 20px 50px #000;
 }
@@ -19,7 +19,7 @@
 .signup{
 	position: relative;
 	width:100%;
-	height: 100%;
+	height: 600px;
 }
 label{
 	color: #000000;
@@ -79,7 +79,7 @@ button:hover{
 }
 
 #chk:checked ~ .login{
-	transform: translateY(-500px);
+	transform: translateY(-600px);
 }
 #chk:checked ~ .login label{
 	transform: scale(1);	
@@ -87,3 +87,93 @@ button:hover{
 #chk:checked ~ .signup label{
 	transform: scale(.6);
 }
+
+.SignUp__wrapper{
+	display: block;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-direction: column;
+  width: 200px;
+  margin-left: 21%;
+  padding-bottom: 30%;
+}
+.SignUp__wrapper label{
+	cursor: pointer;
+	font-size: 20px;
+	margin: 0px;
+}
+.SignUp__wrapper ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+ul li{
+	color: #AAAAAA;
+	display: block;
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 50px;
+  }
+  
+  ul li input[type=radio]{
+	position: absolute;
+	visibility: hidden;
+  }
+  
+  ul li label{
+	display: block;
+	position: relative;
+	font-weight: 300;
+	font-size: 1.35em;
+	padding: 25px 25px 25px 80px;
+	margin: 10px auto;
+	height: 30px;
+	cursor: pointer;
+  }
+  
+  ul li:hover label{
+	  color: #B3C000;
+  }
+  
+  ul li .check{
+	display: block;
+	position: absolute;
+	border: 5px solid #AAAAAA;
+	border-radius: 100%;
+	height: 30px;
+	width: 30px;
+	top: 30px;
+	left: 20px;
+	  transition: border .25s linear;
+	  -webkit-transition: border .25s linear;
+  }
+  
+  ul li:hover .check {
+	border: 5px solid #B3C000;
+  }
+  
+  ul li .check::before {
+	display: block;
+	position: absolute;
+	  content: '';
+	border-radius: 100%;
+	height: 15px;
+	width: 15px;
+	top: 5px;
+	  left: 5px;
+	margin: auto;
+  }
+  
+  input[type=radio]:checked ~ .check {
+	border: 3px solid #B3C000;
+  }
+  
+  input[type=radio]:checked ~ .check::before{
+	background: #B3C000;
+  }
+  
+  input[type=radio]:checked ~ label{
+	color: #B3C000;
+  }

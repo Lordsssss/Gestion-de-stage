@@ -9,7 +9,7 @@ function ProfilStagiaires(props) {
           Nos étudiants en Gestion de réseaux et sécurité ont suivi des cours
           leur permettant de:
         </h1>
-        <ol class="gradient-list">
+        <ol className="gradient-list">
           <ul>
             <li>
               gérer des réseaux informatiques et offrir du soutien aux personnes
@@ -67,7 +67,7 @@ function ProfilStagiaires(props) {
           Nos étudiant en Développement d'applications informatiques ont suivi
           des cours leur permettant de:
         </h1>
-        <ol class="gradient-list">
+        <ol className="gradient-list">
           <ul>
             <li>participer à l’analyse des systèmes à implanter</li>
             <li>

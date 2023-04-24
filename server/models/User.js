@@ -6,6 +6,7 @@ const userSchema = new Schema({
     email:{type: String, required: true ,unique: true},
     username:{type: String, required: true},
     password:{type: String, required: true},
+    usertype:{type: String,required: true},
 });
 
 userSchema.pre("save", async function (next) {
