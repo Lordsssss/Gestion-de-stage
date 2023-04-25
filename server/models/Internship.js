@@ -14,4 +14,4 @@ const internshipSchema = new Schema({
   ownerid: { type: mongoose.Types.ObjectId, red: "OwnerId" },
 });
 
-module.exports = mongoose.model("Internship", userSchema);
+module.exports = mongoose.model("Internship", internshipSchema);
