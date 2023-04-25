@@ -7,7 +7,7 @@ function Accueil() {
     const token = localStorage.getItem('jwtToken');
 
     // Set the default axios headers with the JWT token
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    axios.defaults.headers.common['x-access-token'] = token;
 
     const addInternship = async () => {
         try {
