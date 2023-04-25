@@ -1,0 +1,12 @@
+.CardIntership{
+    background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+    border: solid grey 2px;
+    border-radius: 10px;
+    width: 600px;
+    margin: 40px;
+    padding: 20px;
+}
+.CardIntership span{
+    display: block;
+    
+}

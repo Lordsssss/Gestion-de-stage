@@ -34,7 +34,7 @@ function NavLinks({ role }) {
           )}
           {role === "Employeur" && (
             <li>
-              <NavLink to="/1/sublink4">Publier Stage</NavLink>
+            <NavLink to={`/${role}/publierstage`}>Publier Stage</NavLink>
             </li>
           )}
           {role === "Coordinator" && (

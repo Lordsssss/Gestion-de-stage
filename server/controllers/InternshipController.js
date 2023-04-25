@@ -2,7 +2,6 @@ const Internship = require("../models/Internship");
 const HttpError = require("../models/HttpErreur");
 
 const addInternship = async (req, res) => {
-  console.log("test");
   try {
     const newInternship = new Internship({
       contactname: req.body.contactname,
@@ -49,11 +48,11 @@ const allInternship = async (requete, reponse, next) => {
 };
 
 const getInternshipsByOwnerId = async (req, res, next) => {
-  const { ownerid } = req.body;
-
+  const  ownerid  = req.query.ownerid;
   let internships;
   try {
-    internships = await Internship.find({ ownerid });
+    internships = await Internship.find({ OwnerId: ownerid });
+    console.log(internships)
   } catch (err) {
     return next(
       new HttpError("Erreur lors de la récupération de la liste des stages", 500)
@@ -63,7 +62,6 @@ const getInternshipsByOwnerId = async (req, res, next) => {
   if (!internships || internships.length === 0) {
     return next(new HttpError("Aucun stage trouvé", 404));
   }
-
   res.json({
     internships: internships.map((internship) => internship.toObject({ getters: true })),
   });

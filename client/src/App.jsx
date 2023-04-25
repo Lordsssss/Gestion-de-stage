@@ -14,6 +14,7 @@ import EspaceEtudiant from "./components/staticPages/EspaceEtudiant";
 import ProfilStagiaires from "./components/staticPages/ProfilStagiaires";
 import PrivateRoute from "./components/shared/privateRoute/PrivateRoute";
 import Connection from "./components/forms/connectionForm/Connection";
+import Boss from "./components/internship/Boss";
 
 function App() {
   const history = useHistory();
@@ -24,7 +25,7 @@ function App() {
     setRole(newRole);
   };
   const handleLogin = (newToken) => {
-    localStorage.setItem('jwtToken', newToken);
+    localStorage.setItem("jwtToken", newToken);
     setToken(newToken);
   };
 
@@ -56,6 +57,9 @@ function App() {
             ) : (
               <Connection onLogin={handleLogin} role={handleRole} />
             )}
+          </Route>
+          <Route path="/Employeur/publierstage">
+            <Boss />
           </Route>
           <Route
             path="/logout"
