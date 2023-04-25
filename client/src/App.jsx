@@ -24,6 +24,7 @@ function App() {
     setRole(newRole);
   };
   const handleLogin = (newToken) => {
+    localStorage.setItem('jwtToken', newToken);
     setToken(newToken);
   };
 
