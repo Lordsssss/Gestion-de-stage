@@ -29,13 +29,12 @@ const login = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email: email });
-    console.log(user);
     if (!user || !(await user.comparePassword(password))) {
       return res.status(401).send("Invalid credentials.");
     }
-
+    const userType = await user.usertype;
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-    res.send({ token });
+    res.send({ token,userType });
   } catch (error) {
     res.status(500).send("Internal server error.");
   }

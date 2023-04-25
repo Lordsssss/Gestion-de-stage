@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 
 function SignUp() {
@@ -7,6 +7,10 @@ function SignUp() {
   const [password, setSignUpPassword] = useState("");
   const [usertype, setUserType] = useState("Etudiant");
   const [error, setError] = useState(null);
+
+  useEffect(()=>{
+    setError("");
+  },[email,password])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +43,7 @@ function SignUp() {
         <label htmlFor="chk" aria-hidden="true">
           Sign up
         </label>
-        {error && <p>{error}</p>}
+        {error && <p className="error">{error}</p>}
         <input
           type="text"
           name="txt"

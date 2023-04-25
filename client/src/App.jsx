@@ -19,14 +19,17 @@ function App() {
   const history = useHistory();
   const [token, setToken] = useState(null);
   const [role, setRole] = useState("guess");
+
   const handleRole = (newRole) => {
     setRole(newRole);
   };
   const handleLogin = (newToken) => {
     setToken(newToken);
   };
-   const handleGoHome = () => {
-    history.push("/home"); // New line
+
+  const handleLogout = () => {
+    handleLogin(null);
+    handleRole("");
   };
 
   return (
@@ -34,9 +37,6 @@ function App() {
       <PrivateRoute role={role} />
       <main>
         <Switch>
-          <Route path="/Login">
-            <Connection onLogin={handleLogin} role={handleRole} />
-          </Route>
           <Route path="/FAQ" exact>
             <FAQ />
           </Route>
@@ -49,15 +49,25 @@ function App() {
           <Route path="/ProfilStagiaires">
             <ProfilStagiaires />
           </Route>
+          <Route path="/Login">
+            {token ? (
+              <Redirect to="/" />
+            ) : (
+              <Connection onLogin={handleLogin} role={handleRole} />
+            )}
+          </Route>
+          <Route
+            path="/logout"
+            render={() => {
+              handleLogout();
+              return <Redirect to="/" />;
+            }}
+          />
           <Route path="">
             <Accueil />
           </Route>
           <Redirect to="/" />
         </Switch>
-        {token && (
-          handleGoHome,
-          console.log("test")
-        )}
       </main>
     </Router>
   );

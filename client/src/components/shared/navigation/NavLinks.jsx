@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./css/NavLinks.css";
 
-
 function NavLinks({ role }) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setIsLoggedIn(
+      role === "Employeur" || role === "Etudiant" || role === "Coordinateur"
+    );
+  }, [role]);
+
   return (
     <ul className="nav-links">
       <li>
@@ -20,12 +27,12 @@ function NavLinks({ role }) {
           <li>
             <NavLink to="/EspaceEmployeur">Espace Employeurs</NavLink>
           </li>
-          {role === "Student" && (
+          {role === "Etudiant" && (
             <li>
               <NavLink to="/1/sublink3">Stages Disponibles</NavLink>
             </li>
           )}
-          {role === "Boss" && (
+          {role === "Employeur" && (
             <li>
               <NavLink to="/1/sublink4">Publier Stage</NavLink>
             </li>
@@ -43,9 +50,16 @@ function NavLinks({ role }) {
       <li>
         <NavLink to="/FAQ">FAQ</NavLink>
       </li>
-      <li>
-      <NavLink to="/Login">Se connecter</NavLink>
-    </li>
+      {!isLoggedIn && (
+        <li>
+          <NavLink to="/login">Se connecter</NavLink>
+        </li>
+      )}
+      {isLoggedIn && (
+        <li>
+          <NavLink to="/logout">Se déconnecter</NavLink>
+        </li>
+      )}
     </ul>
   );
 }

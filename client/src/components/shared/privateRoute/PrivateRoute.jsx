@@ -2,13 +2,13 @@ import React from "react";
 import MainNavigation from "../navigation/MainNavigation";
 
 function PrivateRoute({role}){
-    if(role === "Boss"){
+    if(role === "Employeur"){
         return(
             <div>
                 <MainNavigation role={role}/>
             </div>
         );
-    }else if(role === "Student"){
+    }else if(role === "Etudiant"){
         return(
             <div>
                 <MainNavigation role={role}/>

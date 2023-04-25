@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 
 function Login({ onLogin, setRole }) {
@@ -6,7 +6,12 @@ function Login({ onLogin, setRole }) {
   const [password, setLoginPassword] = useState("");
   const [error, setError] = useState(null);
 
+  useEffect(()=>{
+    setError("");
+  },[email,password])
+
   const handleSubmit = async (e) => {
+    setError("");
     e.preventDefault();
     try {
       const response = await axios.post(
@@ -17,7 +22,8 @@ function Login({ onLogin, setRole }) {
         }
       );
       onLogin(response.data.token);
-      setRole("Boss");
+      setRole(response.data.userType);
+      console.log(response.data.userType)
     } catch (error) {
       setError("Invalid credentials.");
       console.log(error);
@@ -30,7 +36,7 @@ function Login({ onLogin, setRole }) {
         <label htmlFor="chk" aria-hidden="true">
           Login
         </label>
-        {error && <p>{error}</p>}
+        {error && <p className="error">{error}</p>}
         <input
           type="email"
           name="email"
