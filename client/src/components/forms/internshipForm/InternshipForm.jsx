@@ -43,7 +43,6 @@ function InternshipForm({ userId,setInternshipList,internshipsList }) {
   };
   const handleButtonClick = () => {
     setShowForm(!showForm);
-    console.log(userId)
   };
 
   return (

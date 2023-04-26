@@ -11,12 +11,13 @@ function InternshipList({ caller, ownerId, setInternshipList,internshipsList }) 
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
+      console.log(ownerId)
       if (ownerId !== "") {
         try {
           const response = await axios.get(
             URL + "/api/internship/get-Internships-By-Owner-Idp",
             {
-              data: { ownerid: ownerId },
+              params: { ownerid: ownerId },
             }
           );
           setInternshipList(response.data.internships);
@@ -39,6 +40,8 @@ function InternshipList({ caller, ownerId, setInternshipList,internshipsList }) 
           key={internship._id}
           caller={caller}
           internship={internship}
+          internshipsList={internshipsList}
+          setInternshipList={setInternshipList}
         />
       ))}
     </div>

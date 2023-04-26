@@ -48,10 +48,10 @@ const allInternship = async (requete, reponse, next) => {
 };
 
 const getInternshipsByOwnerId = async (req, res, next) => {
-  const  ownerid  = req.query.ownerid;
+  const ownerid = req.query.ownerid;
   let internships;
   try {
-    internships = await Internship.find({ OwnerId: ownerid });
+    internships = await Internship.find({ ownerid: ownerid });
   } catch (err) {
     return next(
       new HttpError("Erreur lors de la récupération de la liste des stages", 500)
@@ -67,7 +67,8 @@ const getInternshipsByOwnerId = async (req, res, next) => {
 };
 
 const deleteInternship = async (req, res, next) => {
-  const internshipId = req.query.internshipId;
+  console.log("1")
+  const internshipId = req.body.internshipId;
   console.log(internshipId)
   let internship;
   try {

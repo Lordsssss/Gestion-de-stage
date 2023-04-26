@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./css/App.css";
 import {
   BrowserRouter as Router,
@@ -22,6 +22,12 @@ function App() {
   const [role, setRole] = useState("guess");
   const [userId, setUserId] = useState("");
 
+  useEffect(() => {
+    let token = localStorage.getItem("jwtToken");
+    if(token !== null ){
+      handleLogin(token);
+    }
+  })
   const handleUserId = (newUserId) => {
     setUserId(newUserId)
   }
