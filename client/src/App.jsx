@@ -15,6 +15,7 @@ import ProfilStagiaires from "./components/staticPages/ProfilStagiaires";
 import PrivateRoute from "./components/shared/privateRoute/PrivateRoute";
 import Connection from "./components/forms/connectionForm/Connection";
 import Boss from "./components/internship/Boss";
+import jwt_decode from 'jwt-decode';
 
 function App() {
   const history = useHistory();
@@ -22,12 +23,30 @@ function App() {
   const [role, setRole] = useState("guess");
   const [userId, setUserId] = useState("");
 
+
   useEffect(() => {
     let token = localStorage.getItem("jwtToken");
-    if(token !== null ){
-      handleLogin(token);
+    if (token !== null && token !== "") {
+      try {
+        const decoded = jwt_decode(token);
+        console.log(decoded);
+        const userType = decoded.usertype;
+        const userId = decoded._id;
+        handleRole(userType);
+        handleUserId(userId);
+        handleLogin(token);
+      } catch (err) {
+        console.error("Invalid token:", err);
+        handleLogin("");
+        handleRole("");
+        handleUserId("");
+      }
+    } else {
+      handleLogin("");
+      handleRole("");
+      handleUserId("");
     }
-  })
+  });
   const handleUserId = (newUserId) => {
     setUserId(newUserId)
   }
@@ -40,7 +59,7 @@ function App() {
   };
 
   const handleLogout = () => {
-    handleLogin(null);
+    localStorage.removeItem('jwtToken');
     handleRole("");
   };
   return (

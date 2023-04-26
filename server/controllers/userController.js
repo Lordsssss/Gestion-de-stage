@@ -34,7 +34,7 @@ const login = async (req, res) => {
       return res.status(401).send("Invalid credentials.");
     }
     const userType = await user.usertype;
-    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ _id: user._id,usertype:user.usertype }, process.env.JWT_SECRET);
     const userid = user._id;
     res.send({ token,userType,userid });
   } catch (error) {
