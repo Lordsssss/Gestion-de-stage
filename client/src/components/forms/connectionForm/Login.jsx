@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import axios from "axios";
 
-function Login({ onLogin, setRole }) {
+function Login({ onLogin, setRole,userId }) {
   const [email, setLoginEmail] = useState("");
   const [password, setLoginPassword] = useState("");
   const [error, setError] = useState(null);
@@ -23,7 +23,9 @@ function Login({ onLogin, setRole }) {
       );
       onLogin(response.data.token);
       setRole(response.data.userType);
+      userId(response.data.userid);
       console.log(response.data.token)
+      console.log(response.data.userid)
     } catch (error) {
       setError("Invalid credentials.");
       console.log(error);

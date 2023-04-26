@@ -35,7 +35,8 @@ const login = async (req, res) => {
     }
     const userType = await user.usertype;
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-    res.send({ token,userType });
+    const userid = user._id;
+    res.send({ token,userType,userid });
   } catch (error) {
     res.status(500).send("Internal server error.");
   }

@@ -1,4 +1,5 @@
 .Boss{
-    display: flex;
-    align-items: center;
+    position: relative;
+    padding: 15px;
+    
 }

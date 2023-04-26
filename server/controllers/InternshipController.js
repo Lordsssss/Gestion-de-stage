@@ -52,7 +52,6 @@ const getInternshipsByOwnerId = async (req, res, next) => {
   let internships;
   try {
     internships = await Internship.find({ OwnerId: ownerid });
-    console.log(internships)
   } catch (err) {
     return next(
       new HttpError("Erreur lors de la récupération de la liste des stages", 500)

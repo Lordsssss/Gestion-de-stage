@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import InternshipList from "./InternshipList";
+import InternshipForm from "../forms/internshipForm/InternshipForm";
 import './css/Boss.css'
 
-function Boss(){
+function Boss({userId}){
+    const [internshipsList, setInternshipList] = useState([]);
     return(
         <div className="Boss">
-            <InternshipList caller={"Boss"} ownerId={"64481be803e7cf96d4b00874"}/>
+        <InternshipForm userId={userId} setInternshipList={setInternshipList} internshipsList={internshipsList} />
+            <InternshipList caller={"Boss"} ownerId={userId} setInternshipList={setInternshipList} internshipsList={internshipsList}/>
         </div>
     );
 }

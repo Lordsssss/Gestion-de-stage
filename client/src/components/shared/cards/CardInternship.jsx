@@ -7,7 +7,7 @@ function CardInternship({ caller , internship }){
             <h1>{internship.internshiptype}</h1>
             <span>{internship.companyname}</span>
             <span>{internship.companyadresse}</span>
-            <p>{internship.internshipdescription}</p>
+            <p className="CardIntership-p">{internship.internshipdescription}</p>
             <span>{internship.contactemail} - {internship.contactphone}</span>
             {caller === 'Boss' ? <span>{internship.salary}</span>:null}
         </div>

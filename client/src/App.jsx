@@ -20,7 +20,11 @@ function App() {
   const history = useHistory();
   const [token, setToken] = useState(null);
   const [role, setRole] = useState("guess");
+  const [userId, setUserId] = useState("");
 
+  const handleUserId = (newUserId) => {
+    setUserId(newUserId)
+  }
   const handleRole = (newRole) => {
     setRole(newRole);
   };
@@ -33,7 +37,6 @@ function App() {
     handleLogin(null);
     handleRole("");
   };
-
   return (
     <Router>
       <PrivateRoute role={role} />
@@ -55,11 +58,11 @@ function App() {
             {token ? (
               <Redirect to="/" />
             ) : (
-              <Connection onLogin={handleLogin} role={handleRole} />
+              <Connection onLogin={handleLogin} role={handleRole} userId={handleUserId}/>
             )}
           </Route>
           <Route path="/Employeur/publierstage">
-            <Boss />
+            <Boss userId={userId}/>
           </Route>
           <Route
             path="/logout"

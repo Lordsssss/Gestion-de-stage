@@ -2,11 +2,16 @@
     background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
     border: solid grey 2px;
     border-radius: 10px;
-    width: 600px;
-    margin: 40px;
+    width: 500px;
+    margin: 10px;
+    height: 350px;
     padding: 20px;
+    float: left;
 }
 .CardIntership span{
     display: block;
-    
+}
+.CardIntership p{
+    height: 100px;
+    overflow: auto;
 }
