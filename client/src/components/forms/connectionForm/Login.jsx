@@ -1,31 +1,30 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import UserContext from "../../../UserContext";
 
-function Login({ onLogin, setRole,userId }) {
+function Login() {
+  const { handleLogin, handleRole, handleUserId } = useContext(UserContext);
   const [email, setLoginEmail] = useState("");
   const [password, setLoginPassword] = useState("");
   const [error, setError] = useState(null);
 
-  useEffect(()=>{
+  useEffect(() => {
     setError("");
-  },[email,password])
+  }, [email, password]);
 
   const handleSubmit = async (e) => {
     setError("");
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3001/api/user/login",
-        {
-          email,
-          password,
-        }
-      );
-      onLogin(response.data.token);
-      setRole(response.data.userType);
-      userId(response.data.userid);
-      console.log(response.data.token)
-      console.log(response.data.userid)
+      const response = await axios.post("http://localhost:3001/api/user/login", {
+        email,
+        password,
+      });
+      handleLogin(response.data.token);
+      handleRole(response.data.userType);
+      handleUserId(response.data.userid);
+      console.log(response.data.token);
+      console.log(response.data.userid);
     } catch (error) {
       setError("Invalid credentials.");
       console.log(error);

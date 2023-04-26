@@ -5,7 +5,6 @@ import {
   Route,
   Redirect,
   Switch,
-  useHistory,
 } from "react-router-dom";
 import Accueil from "./components/staticPages/Accueil";
 import FAQ from "./components/staticPages/FAQ";
@@ -16,20 +15,19 @@ import PrivateRoute from "./components/shared/privateRoute/PrivateRoute";
 import Connection from "./components/forms/connectionForm/Connection";
 import Boss from "./components/internship/Boss";
 import jwt_decode from 'jwt-decode';
+import UserContext from "./UserContext";
 
 function App() {
-  const history = useHistory();
   const [token, setToken] = useState(null);
   const [role, setRole] = useState("guess");
   const [userId, setUserId] = useState("");
-
+  const [internshipsList, setInternshipList] = useState([]);
 
   useEffect(() => {
     let token = localStorage.getItem("jwtToken");
     if (token !== null && token !== "") {
       try {
         const decoded = jwt_decode(token);
-        console.log(decoded);
         const userType = decoded.usertype;
         const userId = decoded._id;
         handleRole(userType);
@@ -62,7 +60,23 @@ function App() {
     localStorage.removeItem('jwtToken');
     handleRole("");
   };
+  const handleInternshipsList = (newList) => {
+    setInternshipList(newList)
+  }
   return (
+    <UserContext.Provider
+      value={{
+        token,
+        role,
+        userId,
+        internshipsList,
+        handleUserId,
+        handleRole,
+        handleLogin,
+        handleLogout,
+        handleInternshipsList,
+      }}
+    >
     <Router>
       <PrivateRoute role={role} />
       <main>
@@ -83,7 +97,7 @@ function App() {
             {token ? (
               <Redirect to="/" />
             ) : (
-              <Connection onLogin={handleLogin} role={handleRole} userId={handleUserId}/>
+              <Connection/>
             )}
           </Route>
           <Route path="/Employeur/publierstage">
@@ -103,6 +117,7 @@ function App() {
         </Switch>
       </main>
     </Router>
+    </UserContext.Provider>
   );
 }
 

@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import "./css/InternshipForm.css";
+import UserContext from "../../../UserContext";
 
-function InternshipForm({ userId,setInternshipList,internshipsList }) {
+function InternshipForm() {
+  const { userId,internshipsList,handleInternshipsList } = useContext(UserContext);
   const URL = "http://localhost:3001";
   const [companyAdresse, setCompanyAdresse] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -35,7 +37,7 @@ function InternshipForm({ userId,setInternshipList,internshipsList }) {
       .then((response) => {
         console.log(response.data);
         setShowForm(false);
-        setInternshipList([...internshipsList, response.data.internship]);
+        handleInternshipsList([...internshipsList, response.data.internship]);
       })
       .catch((error) => {
         console.log(error);

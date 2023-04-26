@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import "./css/SettingForm.css";
+import UserContext from "../../../UserContext";
 
-function SettingForm({ internshipId,internshipsList,setInternshipList }) {
+function SettingForm({ internshipId }) {
+    const { handleInternshipsList} = useContext(UserContext);
   const URL = "http://localhost:3001";
 
   const handleDelete = async (e) => {
@@ -16,7 +18,7 @@ function SettingForm({ internshipId,internshipsList,setInternshipList }) {
         .catch((error) => {
           console.log(error);
         });
-        setInternshipList(internshipsList => internshipsList.filter(item => item._id !== internshipId));
+        handleInternshipsList(internshipsList => internshipsList.filter(item => item._id !== internshipId));
     }catch(error){
         console.log(error)
     }

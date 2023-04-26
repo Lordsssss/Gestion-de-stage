@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import SettingForm from "../../forms/settingForm/SettingForm";
+import UserContext from "../../../UserContext";
 import "./css/CardInternship.css";
 
-function CardInternship({ caller, internship, internshipsList,setInternshipList }) {
+function CardInternship({internship}) {
+    const { role,internshipsList,handleInternshipsList } = useContext(UserContext);
     const [showForm, setShowForm] = useState(false);
     const handleButtonClick = () => {
         setShowForm(!showForm);
@@ -24,7 +26,7 @@ function CardInternship({ caller, internship, internshipsList,setInternshipList 
         </svg>
       </button>
       {showForm && (
-        <SettingForm internshipId={internship._id} internshipsList={internshipsList} setInternshipList={setInternshipList}/>
+        <SettingForm internshipId={internship._id} internshipsList={internshipsList} setInternshipList={handleInternshipsList}/>
       )}
       <span className="card-info">{internship.companyname}</span>
       <span className="card-info">{internship.companyadresse}</span>
@@ -32,7 +34,7 @@ function CardInternship({ caller, internship, internshipsList,setInternshipList 
       <span className="card-info">
         {internship.contactemail} - {internship.contactphone}
       </span>
-      {caller === "Boss" ? (
+      {role === "Boss" ? (
         <span className="card-info">{internship.salary}</span>
       ) : null}
     </div>
