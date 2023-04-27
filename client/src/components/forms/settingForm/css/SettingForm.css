@@ -35,3 +35,7 @@
 .bi{
     margin-right: 5px;
 }
+.navlink{
+    color: rgb(106, 106, 106);
+    text-decoration: none;
+}

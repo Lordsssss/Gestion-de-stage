@@ -7,7 +7,7 @@ const internshipSchema = new Schema({
   contactphone: { type: String, required: true },
   companyname: { type: String, required: true },
   companyadresse: { type: String, required: true },
-  internshiptype: { type: String, required: true },
+  internshiptype: { type: String, enum:["Réseaux et sécurité","Développement d'applications"], required: true },
   nbpositions: { type: Number, required: true },
   internshipdescription: { type: String, required: true },
   salary: { type: String, required: true },

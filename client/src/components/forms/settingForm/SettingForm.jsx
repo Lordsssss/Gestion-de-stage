@@ -2,14 +2,17 @@ import React, { useContext } from "react";
 import axios from "axios";
 import "./css/SettingForm.css";
 import UserContext from "../../../UserContext";
+import { NavLink } from "react-router-dom";
 
-function SettingForm({ internshipId }) {
-  const { handleInternshipsList } = useContext(UserContext);
+function SettingForm({ internshipId,internship }) {
+  const { handleInternshipsList,handleInternship } = useContext(UserContext);
   const URL = "http://localhost:3001";
 
+  const handleUpdateInternship = () => {
+    handleInternship(internship)
+  }
   const handleDelete = async (e) => {
     e.preventDefault();
-    console.log("Nice");
     try {
       axios
         .delete(URL + "/api/internship/delete-internship", {
@@ -58,7 +61,7 @@ function SettingForm({ internshipId }) {
               d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
             />
           </svg>
-          <span className="Setting-button__text">Modifier</span>
+          <NavLink onClick={handleUpdateInternship} className="navlink" to="/Employeur/updateStage"> <span className="Setting-button__text">Modifier</span></NavLink>
         </div>
       </div>
     </div>

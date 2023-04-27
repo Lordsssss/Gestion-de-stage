@@ -10,7 +10,10 @@ function CardInternship({ internship }) {
 
   const handleClickOutside = (event) => {
     if (settingsButtonRef.current && !settingsButtonRef.current.contains(event.target)) {
-      setShowForm(false);
+      const formElement = document.querySelector(".SettingForm");
+      if (formElement && !formElement.contains(event.target)) {
+        setShowForm(false);
+      }
     }
   };
 
@@ -42,7 +45,7 @@ function CardInternship({ internship }) {
         </svg>
       </button>
       {showForm && (
-        <SettingForm internshipId={internship._id} internshipsList={internshipsList} setInternshipList={handleInternshipsList}/>
+        <SettingForm internshipId={internship._id} internship={internship}/>
       )}
       <span className="card-info">{internship.companyname}</span>
       <span className="card-info">{internship.companyadresse}</span>

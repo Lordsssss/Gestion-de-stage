@@ -129,14 +129,16 @@ function InternshipForm() {
 
               <div className="formbold-mb-3">
                 <label className="inputText">
-                  Titre du Stage :
-                  <input
-                    type="text"
-                    placeholder="Dev Java"
+                  Type du Stage :
+                  <select
                     className="formbold-form-input"
                     value={internshipType}
+                    placeholder="Choisissez une option"
                     onChange={(e) => setInternshipType(e.target.value)}
-                  />
+                  >
+                    <option value="Réseaux et sécurité">Réseaux et sécurité</option>
+                    <option value="Développement d'applications">Développement d'applications</option>
+                  </select>
                 </label>
               </div>
 

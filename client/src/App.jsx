@@ -16,13 +16,14 @@ import Connection from "./components/forms/connectionForm/Connection";
 import Boss from "./components/internship/Boss";
 import jwt_decode from 'jwt-decode';
 import UserContext from "./UserContext";
+import InternshipUpdate from "./components/internship/InternshipUpdate";
 
 function App() {
   const [token, setToken] = useState(null);
   const [role, setRole] = useState("guess");
   const [userId, setUserId] = useState("");
   const [internshipsList, setInternshipList] = useState([]);
-
+  const [internship,setInternship] = useState([]);
   useEffect(() => {
     let token = localStorage.getItem("jwtToken");
     if (token !== null && token !== "") {
@@ -63,6 +64,10 @@ function App() {
   const handleInternshipsList = (newList) => {
     setInternshipList(newList)
   }
+  const handleInternship = (newInternship) => {
+    console.log(newInternship)
+    setInternship(newInternship);
+  }
   return (
     <UserContext.Provider
       value={{
@@ -70,11 +75,13 @@ function App() {
         role,
         userId,
         internshipsList,
+        internship,
         handleUserId,
         handleRole,
         handleLogin,
         handleLogout,
         handleInternshipsList,
+        handleInternship,
       }}
     >
     <Router>
@@ -102,6 +109,9 @@ function App() {
           </Route>
           <Route path="/Employeur/publierstage">
             <Boss userId={userId}/>
+          </Route>
+          <Route path="/Employeur/updateStage">
+              <InternshipUpdate Internship={internship}/>
           </Route>
           <Route
             path="/logout"
