@@ -33,6 +33,7 @@ function SignUp() {
       alert("Registration successful!");
     } catch (error) {
       console.log(error);
+      setError(error.response.data);
     }
   };
 

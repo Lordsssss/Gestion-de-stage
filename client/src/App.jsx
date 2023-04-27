@@ -17,6 +17,7 @@ import Boss from "./components/internship/Boss";
 import jwt_decode from 'jwt-decode';
 import UserContext from "./UserContext";
 import InternshipUpdate from "./components/internship/InternshipUpdate";
+import Student from "./components/internship/Student";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -108,10 +109,13 @@ function App() {
             )}
           </Route>
           <Route path="/Employeur/publierstage">
-            <Boss userId={userId}/>
+            <Boss/>
+          </Route>
+          <Route path="/Etudiant/stageDisponible">
+              <Student/>
           </Route>
           <Route path="/Employeur/updateStage">
-              <InternshipUpdate Internship={internship}/>
+              <InternshipUpdate/>
           </Route>
           <Route
             path="/logout"

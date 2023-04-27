@@ -128,14 +128,15 @@ function InternshipForm() {
               </div>
 
               <div className="formbold-mb-3">
-                <label className="inputText">
+                <label className="inputText-update">
                   Type du Stage :
                   <select
-                    className="formbold-form-input"
+                    className="formbold-form-input-update"
                     value={internshipType}
                     placeholder="Choisissez une option"
                     onChange={(e) => setInternshipType(e.target.value)}
                   >
+                    <option value="" disabled selected>Choisissez une option</option>
                     <option value="Réseaux et sécurité">Réseaux et sécurité</option>
                     <option value="Développement d'applications">Développement d'applications</option>
                   </select>
@@ -156,12 +157,12 @@ function InternshipForm() {
                   </label>
                 </div>
                 <div>
-                  <label className="inputText">
+                  <label className="inputText-update">
                     Nombre de poste :
                     <input
-                      type="text"
+                      type="number"
                       placeholder="3"
-                      className="formbold-form-input"
+                      className="formbold-form-input-update"
                       value={nbPositions}
                       onChange={(e) => setNbPositions(e.target.value)}
                     />

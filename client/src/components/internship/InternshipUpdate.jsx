@@ -1,7 +1,7 @@
 import React from "react";
 import InternshipUpdateForm from "../forms/internshipUpdate/InternshipUpdateForm";
 
-function InternshipUpdate({ Internship }){
+function InternshipUpdate(){
     return(
         <div className="InternshipUpdate">
             <InternshipUpdateForm/>

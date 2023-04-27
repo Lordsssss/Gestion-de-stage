@@ -8,5 +8,8 @@ router.get("/all-internship",verifyToken,InternshipController.allInternship);
 router.get("/get-Internships-By-Owner-Idp",verifyToken,InternshipController.getInternshipsByOwnerId)
 router.delete("/delete-internship",verifyToken,InternshipController.deleteInternship);
 router.post("/update-internship",verifyToken,InternshipController.updateInternship);
+router.post("/add-Applicant",verifyToken, InternshipController.addApplicant);
+router.get("/is-Applicant-In-List",verifyToken, InternshipController.isApplicantInList);
+
 
 module.exports = router;

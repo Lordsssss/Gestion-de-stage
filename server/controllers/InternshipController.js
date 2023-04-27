@@ -14,6 +14,7 @@ const addInternship = async (req, res) => {
       internshipdescription: req.body.internshipdescription,
       salary: req.body.salary,
       ownerid: req.body.ownerid,
+      applicantlist: [],
     });
 
     const internship = await newInternship.save();
@@ -28,9 +29,9 @@ const addInternship = async (req, res) => {
 };
 
 const allInternship = async (requete, reponse, next) => {
-  let internshipList;
+  let internships;
   try {
-    internshipList = await Internship.find();
+    internships = await Internship.find();
   } catch (err) {
     return next(
       new HttpErreur(
@@ -39,11 +40,11 @@ const allInternship = async (requete, reponse, next) => {
       )
     );
   }
-  if (!internshipList) {
+  if (!internships) {
     return next(new HttpErreur("Aucun prof trouvé", 404));
   }
   reponse.json({
-    internshipList: internshipList.map((internship) => internship.toObject({ getters: true })),
+    internships: internships.map((internship) => internship.toObject({ getters: true })),
   });
 };
 
@@ -134,8 +135,51 @@ const updateInternship = async (req, res, next) => {
   res.status(200).json({ message: 'Stage mis à jour avec succès', updatedInternship: internship.toObject({ getters: true }) });
 };
 
+const addApplicant = async (req, res, next) => {
+  const internshipId = req.body.internshipId;
+  const userId = req.body.userId;
+
+  try {
+    const internship = await Internship.findById(internshipId);
+    if (!internship) {
+      return next(new HttpError("Internship not found", 404));
+    }
+
+    if (!internship.applicantlist.includes(userId)) {
+      internship.applicantlist.push(userId);
+      await internship.save();
+      res.status(200).json({ message: "User added to the application list successfully" });
+    } else {
+      return next(new HttpError("User already in application list", 400));
+    }
+  } catch (error) {
+    console.error(error);
+    return next(new HttpError("Internal server error", 500));
+  }
+};
+
+const isApplicantInList = async (req, res, next) => {
+  const internshipId = req.query.internshipId;
+  const userId = req.query.userId;
+
+  try {
+    const internship = await Internship.findById(internshipId);
+    if (!internship) {
+      return next(new HttpError("Internship not found", 404));
+    }
+
+    const isInList = internship.applicantlist.includes(userId);
+    res.status(200).json({ isInList });
+  } catch (error) {
+    console.error(error);
+    return next(new HttpError("Internal server error", 500));
+  }
+};
+
 exports.addInternship = addInternship;
 exports.allInternship = allInternship;
 exports.getInternshipsByOwnerId = getInternshipsByOwnerId;
 exports.deleteInternship = deleteInternship;
 exports.updateInternship = updateInternship;
+exports.addApplicant = addApplicant;
+exports.isApplicantInList = isApplicantInList;

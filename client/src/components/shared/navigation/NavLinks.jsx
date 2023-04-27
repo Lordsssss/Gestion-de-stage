@@ -29,7 +29,7 @@ function NavLinks({ role }) {
           </li>
           {role === "Etudiant" && (
             <li>
-              <NavLink to="/1/sublink3">Stages Disponibles</NavLink>
+              <NavLink to={`/${role}/stageDisponible`}>Stages Disponibles</NavLink>
             </li>
           )}
           {role === "Employeur" && (
@@ -39,7 +39,7 @@ function NavLinks({ role }) {
           )}
           {role === "Coordinator" && (
             <li>
-              <NavLink to="/1/sublink5">Liste d'Etudiant</NavLink>
+              <NavLink to={`/${role}/stageDisponible`}>Liste d'Etudiant</NavLink>
             </li>
           )}
         </ul>
