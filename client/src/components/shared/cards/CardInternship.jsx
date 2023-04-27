@@ -1,23 +1,39 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import SettingForm from "../../forms/settingForm/SettingForm";
 import UserContext from "../../../UserContext";
 import "./css/CardInternship.css";
 
-function CardInternship({internship}) {
-    const { role,internshipsList,handleInternshipsList } = useContext(UserContext);
-    const [showForm, setShowForm] = useState(false);
-    const handleButtonClick = () => {
-        setShowForm(!showForm);
-      };
+function CardInternship({ internship }) {
+  const { role, internshipsList, handleInternshipsList } = useContext(UserContext);
+  const [showForm, setShowForm] = useState(false);
+  const settingsButtonRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (settingsButtonRef.current && !settingsButtonRef.current.contains(event.target)) {
+      setShowForm(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleButtonClick = () => {
+    setShowForm(!showForm);
+  };
+
   return (
     <div className="CardIntership">
               <h1 className="title">{internship.internshiptype}</h1>
-      <button className="setting-wheel" onClick={handleButtonClick}>
+              <button ref={settingsButtonRef} className="setting-wheel" onClick={handleButtonClick}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
-          fill="currentColor"
+          fillRule="currentColor"
           className="bi bi-gear"
           viewBox="0 0 16 16"
         >
@@ -34,7 +50,7 @@ function CardInternship({internship}) {
       <span className="card-info">
         {internship.contactemail} - {internship.contactphone}
       </span>
-      {role === "Boss" ? (
+      {role === "Employeur" ? (
         <span className="card-info">{internship.salary}</span>
       ) : null}
     </div>

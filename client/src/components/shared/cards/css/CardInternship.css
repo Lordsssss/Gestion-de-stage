@@ -23,18 +23,21 @@
     display: inline;
 }
 .setting-wheel{
-    display: inline;
+    cursor: pointer;
+    display: block;
     top: 0;
     right: 0;
     width: auto;
-    padding: 10px;
+    padding: 12px 10px 10px 14px;
     margin: 0;
-    justify-content: right;
+    justify-content: center;
+    align-items: center;
     float: right;
     color: gray;
     text-align: center;
     background-color: rgb(247, 247, 247);
     border: solid gray 1px;
+    border-radius: 7px;
 }
 .setting-wheel:hover{
     background-color: #a7a7a7;

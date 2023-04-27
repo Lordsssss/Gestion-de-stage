@@ -21,21 +21,21 @@ function InternshipList() {
               params: { ownerid: userId },
             }
           );
-          try{handleInternshipsList(response.data.internships);}catch(er){console.log(er)}
           handleInternshipsList(response.data.internships);
+          handleInternshipsList(response.data.internships);
+          setIsLoading(false);
         } catch (error) {
           console.log(error);
         }
       } else {
       }
-      setIsLoading(false);
     }
     fetchData();
-  }, [userId,handleInternshipsList]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId]);
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
   return (
     <div className="InternshipList">
       {internshipsList && internshipsList.map((internship) => (

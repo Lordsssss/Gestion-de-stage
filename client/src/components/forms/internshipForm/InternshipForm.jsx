@@ -4,7 +4,8 @@ import "./css/InternshipForm.css";
 import UserContext from "../../../UserContext";
 
 function InternshipForm() {
-  const { userId,internshipsList,handleInternshipsList } = useContext(UserContext);
+  const { userId, internshipsList, handleInternshipsList } =
+    useContext(UserContext);
   const URL = "http://localhost:3001";
   const [companyAdresse, setCompanyAdresse] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -53,91 +54,137 @@ function InternshipForm() {
         {showForm ? "X" : "Ajouter Stage"}
       </button>
       {showForm && (
-        <form className="form" onSubmit={handleSubmit}>
-          <label className="titre">Ajouter un Stage</label>
-          <label className="inputText">
-            Nom de l'Entreprise :
-            <input
-              type="text"
-              placeholder="Microsoft"
-              value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
-            />
-          </label>
-          <label className="inputText">
-            Adresse de l'Entreprise :
-            <input
-              type="text"
-              placeholder="1234 rue Boby, Montral"
-              value={companyAdresse}
-              onChange={(e) => setCompanyAdresse(e.target.value)}
-            />
-          </label>
-          <label className="inputText">
-            Nom du recruteur :
-            <input
-              type="text"
-              placeholder="Bob smith"
-              value={contactName}
-              onChange={(e) => setContactName(e.target.value)}
-            />
-          </label>
-          <label className="inputText">
-            Email du recruteur :
-            <input
-              type="email"
-              placeholder="johnsmith@gmail.com"
-              value={contactEmail}
-              onChange={(e) => setContactEmail(e.target.value)}
-            />
-          </label>
-          <label className="inputText">
-            Telephone du recruteur :
-            <input
-              type="text"
-              placeholder="123-123-1234"
-              value={contactPhone}
-              onChange={(e) => setContactPhone(e.target.value)}
-            />
-          </label>
-          <label className="inputText">
-            Titre du Stage :
-            <input
-              type="text"
-              placeholder="Dev Java"
-              value={internshipType}
-              onChange={(e) => setInternshipType(e.target.value)}
-            />
-          </label>
-          <label className="inputText">
-            Description du Stage :
-            <input
-              type="text"
-              placeholder="description"
-              value={internshipDescription}
-              onChange={(e) => setInternshipDescription(e.target.value)}
-            />
-          </label>
-          <label className="inputText">
-            Nombre de poste :
-            <input
-              type="text"
-              placeholder="3"
-              value={nbPositions}
-              onChange={(e) => setNbPositions(e.target.value)}
-            />
-          </label>
-          <label className="inputText">
-            Salaire :
-            <input
-              type="text"
-              placeholder="De 68 393 $ à 139 707 $ par an"
-              value={internshipSalary}
-              onChange={(e) => setInternshipSalary(e.target.value)}
-            />
-          </label>
-          <button type="submit">Ajouter</button>
-        </form>
+        <div className="formbold-main-wrapper">
+          <div className="formbold-form-wrapper">
+            <form className="form" onSubmit={handleSubmit}>
+              <div className="formbold-form-title">
+                <h2 className="">Ajouter un Stage</h2>
+              </div>
+              <div className="formbold-input-flex">
+                <div>
+                  <label className="inputText">
+                    Nom de l'Entreprise :
+                    <input
+                      type="text"
+                      placeholder="Microsoft"
+                      className="formbold-form-input"
+                      value={companyName}
+                      onChange={(e) => setCompanyName(e.target.value)}
+                    />
+                  </label>
+                </div>
+                <div>
+                  <label className="inputText">
+                    Adresse de l'Entreprise :
+                    <input
+                      type="text"
+                      placeholder="1234 rue Boby, Montreal"
+                      className="formbold-form-input"
+                      value={companyAdresse}
+                      onChange={(e) => setCompanyAdresse(e.target.value)}
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div className="formbold-input-flex">
+                <div>
+                  <label className="inputText">
+                    Nom du recruteur :
+                    <input
+                      type="text"
+                      placeholder="Bob smith"
+                      className="formbold-form-input"
+                      value={contactName}
+                      onChange={(e) => setContactName(e.target.value)}
+                    />
+                  </label>
+                </div>
+                <div>
+                  <label className="inputText">
+                    Telephone du recruteur :
+                    <input
+                      type="text"
+                      placeholder="123-123-1234"
+                      className="formbold-form-input"
+                      value={contactPhone}
+                      onChange={(e) => setContactPhone(e.target.value)}
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div className="formbold-mb-3">
+                <label className="inputText">
+                  Email du recruteur :
+                  <input
+                    type="email"
+                    placeholder="johnsmith@gmail.com"
+                    className="formbold-form-input"
+                    value={contactEmail}
+                    onChange={(e) => setContactEmail(e.target.value)}
+                  />
+                </label>
+              </div>
+
+              <div className="formbold-mb-3">
+                <label className="inputText">
+                  Titre du Stage :
+                  <input
+                    type="text"
+                    placeholder="Dev Java"
+                    className="formbold-form-input"
+                    value={internshipType}
+                    onChange={(e) => setInternshipType(e.target.value)}
+                  />
+                </label>
+              </div>
+
+              <div className="formbold-input-flex">
+                <div>
+                  <label className="inputText">
+                    Salaire :
+                    <input
+                      type="text"
+                      placeholder="De 68 393 $ à 139 707 $"
+                      className="formbold-form-input"
+                      value={internshipSalary}
+                      onChange={(e) => setInternshipSalary(e.target.value)}
+                    />
+                  </label>
+                </div>
+                <div>
+                  <label className="inputText">
+                    Nombre de poste :
+                    <input
+                      type="text"
+                      placeholder="3"
+                      className="formbold-form-input"
+                      value={nbPositions}
+                      onChange={(e) => setNbPositions(e.target.value)}
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <div>
+                  <label className="inputText">
+                    Description du Stage :
+                    <textarea
+                      type="text"
+                      placeholder="description"
+                      className="formbold-form-textarea"
+                      value={internshipDescription}
+                      onChange={(e) => setInternshipDescription(e.target.value)}
+                    />
+                  </label>
+                </div>
+              </div>
+              <button className="formbold-btn">Ajouter</button>
+            </form>
+          </div>
+        </div>
       )}
     </div>
   );
