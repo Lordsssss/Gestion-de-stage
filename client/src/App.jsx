@@ -18,6 +18,7 @@ import jwt_decode from 'jwt-decode';
 import UserContext from "./UserContext";
 import InternshipUpdate from "./components/internship/InternshipUpdate";
 import Student from "./components/internship/Student";
+import ApplicationForm from "./components/forms/applicationForm/ApplicationForm";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -116,6 +117,9 @@ function App() {
           </Route>
           <Route path="/Employeur/updateStage">
               <InternshipUpdate/>
+          </Route>
+          <Route path="/Etudiant/applicationForm">
+              <ApplicationForm/>
           </Route>
           <Route
             path="/logout"

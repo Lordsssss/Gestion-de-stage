@@ -171,7 +171,7 @@ function InternshipForm() {
               </div>
 
               <div>
-                <div>
+                <div >
                   <label className="inputText">
                     Description du Stage :
                     <textarea

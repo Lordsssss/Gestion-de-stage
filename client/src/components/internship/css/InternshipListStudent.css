@@ -15,7 +15,7 @@
     display: flex;
     flex-wrap: wrap;
     border-radius: 0.5rem;
-    background-color: #EEE;
+    background-color: #d6d6d6;
     box-sizing: border-box;
     box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
     padding: 0.50rem;
@@ -49,5 +49,4 @@
   .radio-inputs .radio input:checked + .name {
     background-color: #b3c000;
     color: white;
-    font-weight: 600;
   }
