@@ -1,34 +1,65 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+import axios from "axios";
 import UserContext from "../../../UserContext";
 
 import "./css/ApplicationForm.css";
 
 function ApplicationForm() {
+  const URL = "http://localhost:3001";
+  const { internship } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
-  const [file, setFile] = useState(null);
+  const [files, setFiles] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { getRootProps, getInputProps,isDragActive  } = useDropzone({
-    accept: "application/pdf",
-    onDrop: (acceptedFiles) => {
-      setFile(acceptedFiles[0]);
-    },
-  });
+  const onDrop = useCallback((acceptedFiles) => {
+    setFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
+  }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   const dropzoneStyle = {
-    border: '1px solid #ccc', 
-    padding: '20px', 
-    textalign: 'center',
+    border: "1px solid #ccc",
+    padding: "20px",
+    textalign: "center",
   };
 
   const dropzoneActiveStyle = {
     ...dropzoneStyle,
-    borderColor: '#b3c000',
+    borderColor: "#b3c000",
   };
-  const handleSubmit = async (e) => {};
-  const { internship } = useContext(UserContext);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData();
+    formData.append("email", internship.contactemail);
+    formData.append("subject", subject);
+    formData.append("message", message);
+
+    files.forEach((file) => {
+      formData.append("files", file);
+    });
+
+    for (var pair of formData.entries()) {
+        console.log(pair[0] + ", " + pair[1]);
+      }
+
+    try {
+      await axios.post(URL + "/api/email/send-message", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      alert("Email sent successfully");
+      setIsSubmitting(false);
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div className="form-container-application">
       <div className="formbold-main-wrapper-application">
@@ -63,11 +94,17 @@ function ApplicationForm() {
                   />
                 </label>
               </div>
-              <label className="inputText-application">CV ou/et lettre de motivation :</label>
-              <div className="file-inputfield" {...getRootProps()} style={isDragActive ? dropzoneActiveStyle : dropzoneStyle}>
+              <label className="inputText-application">
+                CV ou/et lettre de motivation :
+              </label>
+              <div
+                className="file-inputfield"
+                {...getRootProps()}
+                style={isDragActive ? dropzoneActiveStyle : dropzoneStyle}
+              >
                 <input {...getInputProps()} />
-                {file ? (
-                  <p>{file.name}</p>
+                {files.length > 0 ? (
+                  files.map((file, index) => <p key={index}>{file.name}</p>)
                 ) : (
                   <p>Cliquez ici ou glissez et déposez un fichier (optional)</p>
                 )}
