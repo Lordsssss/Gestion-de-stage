@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport({
 
 const sendEmail = async (req, res) => {
     console.log(req.body)
-  const { email, subject, message } = req.body;
+  const { email,emailuser, subject, message } = req.body;
 
   const files = req.files || [];
 
@@ -30,11 +30,12 @@ const sendEmail = async (req, res) => {
     content: file.buffer,
   }));
   const fullSubject = "STAGE MONTMORENCY:" + subject;
+  const fullMessage = "Email de l'étudiant :"+ emailuser + "\n\n" + message;
   const mailOptions = {
     from: EMAIL_USER,
     to: email,
     subject: fullSubject,
-    text: message,
+    text: fullMessage,
     attachments,
   };
 

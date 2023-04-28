@@ -70,6 +70,7 @@ function InternshipForm() {
                       className="formbold-form-input"
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
+                      required
                     />
                   </label>
                 </div>
@@ -82,6 +83,7 @@ function InternshipForm() {
                       className="formbold-form-input"
                       value={companyAdresse}
                       onChange={(e) => setCompanyAdresse(e.target.value)}
+                      required
                     />
                   </label>
                 </div>
@@ -97,6 +99,7 @@ function InternshipForm() {
                       className="formbold-form-input"
                       value={contactName}
                       onChange={(e) => setContactName(e.target.value)}
+                      required
                     />
                   </label>
                 </div>
@@ -109,6 +112,7 @@ function InternshipForm() {
                       className="formbold-form-input"
                       value={contactPhone}
                       onChange={(e) => setContactPhone(e.target.value)}
+                      required
                     />
                   </label>
                 </div>
@@ -123,6 +127,7 @@ function InternshipForm() {
                     className="formbold-form-input"
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
+                    required
                   />
                 </label>
               </div>
@@ -135,6 +140,7 @@ function InternshipForm() {
                     value={internshipType}
                     placeholder="Choisissez une option"
                     onChange={(e) => setInternshipType(e.target.value)}
+                    required
                   >
                     <option value="" disabled selected>Choisissez une option</option>
                     <option value="Réseaux et sécurité">Réseaux et sécurité</option>
@@ -153,6 +159,7 @@ function InternshipForm() {
                       className="formbold-form-input"
                       value={internshipSalary}
                       onChange={(e) => setInternshipSalary(e.target.value)}
+                      required
                     />
                   </label>
                 </div>
@@ -165,6 +172,7 @@ function InternshipForm() {
                       className="formbold-form-input-update"
                       value={nbPositions}
                       onChange={(e) => setNbPositions(e.target.value)}
+                      required
                     />
                   </label>
                 </div>
@@ -180,6 +188,7 @@ function InternshipForm() {
                       className="formbold-form-textarea"
                       value={internshipDescription}
                       onChange={(e) => setInternshipDescription(e.target.value)}
+                      required
                     />
                   </label>
                 </div>

@@ -40,25 +40,26 @@ function SignUp() {
   return (
     <div className="signup">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="chk" aria-hidden="true">
-          Sign up
+        <label className="title-label" htmlFor="chk" aria-hidden="true">
+          S'inscrire
         </label>
         {error && <p className="error">{error}</p>}
         <input
           type="text"
-          name="txt"
-          placeholder="Username"
+          name="usernameSignup"
+          placeholder="Identifiant"
           required=""
           value={username}
           onChange={(e) => setSignUpUserName(e.target.value)}
         />
         <input
           type="email"
-          name="email"
+          name="emailSignup"
           placeholder="Email"
           required=""
           value={email}
           onChange={(e) => setSignUpEmail(e.target.value)}
+          autocomplete="new-email"
         />
         <input
           type="password"
@@ -67,11 +68,12 @@ function SignUp() {
           required=""
           value={password}
           onChange={(e) => setSignUpPassword(e.target.value)}
+          autocomplete="new-password"
         />
         <div className="SignUp__wrapper">
           <ul>
             <li>
-              <label>
+              <label className="radio-label">
               <input
               id="one"
               type="radio"
@@ -85,7 +87,7 @@ function SignUp() {
               </label>
             </li>
             <li>
-              <label>
+              <label className="radio-label">
                 <input
                   id="two"
                   type="radio"
@@ -102,7 +104,7 @@ function SignUp() {
             </li>
           </ul>
         </div>
-        <button>Sign up</button>
+        <button>Valider</button>
       </form>
     </div>
   );

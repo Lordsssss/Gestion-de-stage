@@ -4,14 +4,21 @@
 }
 
 .button {
-width: auto;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: solid #a7a7a7 1px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  outline: none;
+  width: auto;
   position: absolute;
   top: 0;
   right: 0;
   z-index: 1;
-  background-color: #b3c000 ;
-  color: white;
-  border: none;
   border-radius: 5px;
   padding: 10px 20px;
   font-size: 16px;
@@ -21,8 +28,10 @@ width: auto;
   display: flex;
 }
 .button:hover {
-  background: rgb(123, 123, 123);
-  color: white;
+  background-color: #b3c000;
+  box-shadow: 0px 15px 20px #828282;
+  color: #fff;
+  transform: translateY(-7px);
 }
 
 .formbold-form-wrapper {
@@ -108,7 +117,7 @@ width: auto;
   display: block;
   margin-bottom: 10px;
 }
-.formbold-form-textarea{
+.formbold-form-textarea {
   width: 100%;
   padding: 13px 22px;
   border-radius: 5px;
@@ -121,23 +130,31 @@ width: auto;
   resize: none;
   height: 130px;
 }
-.formbold-form-textarea:focus{
+.formbold-form-textarea:focus {
   border-color: #b3c000;
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
 }
 
 .formbold-btn {
-  font-size: 16px;
-  border-radius: 5px;
-  padding: 14px 25px;
-  border: none;
+  margin-top: 10px;
+  justify-content: center;
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-weight: 500;
-  background-color: #b3c000 ;
-  color: white;
+  color: #000;
+  background-color: #fff;
+  border: solid #a7a7a7 1px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
   cursor: pointer;
-  margin-top: 25px;
+  outline: none;
 }
 .formbold-btn:hover {
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
-  background: rgb(123, 123, 123);
+  background-color: #b3c000;
+  box-shadow: 0px 15px 20px #828282;
+  color: #fff;
+  transform: translateY(-5px);
 }

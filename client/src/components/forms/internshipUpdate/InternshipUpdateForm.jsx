@@ -80,6 +80,7 @@ function InternshipUpdateForm() {
                                         className="formbold-form-input-update"
                                         value={companyName}
                                         onChange={(e) => setCompanyName(e.target.value)}
+                                        required
                                     />
                                 </label>
                             </div>
@@ -92,6 +93,7 @@ function InternshipUpdateForm() {
                                         className="formbold-form-input-update"
                                         value={companyAdresse}
                                         onChange={(e) => setCompanyAdresse(e.target.value)}
+                                        required
                                     />
                                 </label>
                             </div>
@@ -107,6 +109,7 @@ function InternshipUpdateForm() {
                                         className="formbold-form-input-update"
                                         value={contactName}
                                         onChange={(e) => setContactName(e.target.value)}
+                                        required
                                     />
                                 </label>
                             </div>
@@ -119,6 +122,7 @@ function InternshipUpdateForm() {
                                         className="formbold-form-input-update"
                                         value={contactPhone}
                                         onChange={(e) => setContactPhone(e.target.value)}
+                                        required
                                     />
                                 </label>
                             </div>
@@ -133,6 +137,7 @@ function InternshipUpdateForm() {
                                     className="formbold-form-input-update"
                                     value={contactEmail}
                                     onChange={(e) => setContactEmail(e.target.value)}
+                                    required
                                 />
                             </label>
                         </div>
@@ -145,6 +150,7 @@ function InternshipUpdateForm() {
                                     value={internshipType}
                                     placeholder="Choisissez une option"
                                     onChange={(e) => setInternshipType(e.target.value)}
+                                    required
                                 >
                                     <option value="Réseaux et sécurité">Réseaux et sécurité</option>
                                     <option value="Développement d'applications">Développement d'applications</option>
@@ -162,6 +168,7 @@ function InternshipUpdateForm() {
                                         className="formbold-form-input-update"
                                         value={internshipSalary}
                                         onChange={(e) => setInternshipSalary(e.target.value)}
+                                        required
                                     />
                                 </label>
                             </div>
@@ -174,6 +181,7 @@ function InternshipUpdateForm() {
                                         className="formbold-form-input-update"
                                         value={nbPositions}
                                         onChange={(e) => setNbPositions(e.target.value)}
+                                        required
                                     />
                                 </label>
                             </div>
@@ -189,6 +197,7 @@ function InternshipUpdateForm() {
                                         className="formbold-form-textarea-update"
                                         value={internshipDescription}
                                         onChange={(e) => setInternshipDescription(e.target.value)}
+                                        required
                                     />
                                 </label>
                             </div>

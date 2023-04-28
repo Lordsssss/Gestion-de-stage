@@ -95,44 +95,54 @@
 }
 
 .SignUp__wrapper {
-  display: block;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  flex-direction: column;
   width: 200px;
+  height: 140px;
   margin-left: 21%;
   padding-bottom: 30%;
 }
 .SignUp__wrapper label {
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   font-size: 20px;
+  font-weight: 20px;
   margin: 0px;
 }
 .SignUp__wrapper ul {
+  justify-content: center;
+  align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 .SignUp__wrapper ul li {
+  justify-content: center;
+  align-items: center;
   color: #aaaaaa;
   display: block;
-  position: relative;
-  float: left;
+
   width: 100%;
   height: 50px;
 }
 
 .SignUp__wrapper ul li input[type="radio"] {
+  justify-content: center;
+  align-items: center;
   position: absolute;
   visibility: hidden;
 }
 
 .SignUp__wrapper ul li label {
+  justify-content: center;
+  align-items: center;
   display: block;
   position: relative;
   font-weight: 300;
-  font-size: 1.35em;
+  font-size: 20px;
   padding: 25px 25px 25px 80px;
   margin: 10px auto;
   height: 30px;

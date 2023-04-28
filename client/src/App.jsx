@@ -15,6 +15,7 @@ import PrivateRoute from "./components/shared/privateRoute/PrivateRoute";
 import Connection from "./components/forms/connectionForm/Connection";
 import Boss from "./components/internship/Boss";
 import jwt_decode from 'jwt-decode';
+
 import UserContext from "./UserContext";
 import InternshipUpdate from "./components/internship/InternshipUpdate";
 import Student from "./components/internship/Student";
@@ -26,9 +27,30 @@ function App() {
   const [userId, setUserId] = useState("");
   const [internshipsList, setInternshipList] = useState([]);
   const [internship,setInternship] = useState([]);
+
+  function isTokenExpired(token) {
+    try {
+      const decoded = jwt_decode(token);
+      const currentTime = Date.now() / 1000;
+  
+      if (decoded.exp && decoded.exp < currentTime) {
+        // Token is expired
+        return true;
+      } else {
+        // Token is not expired
+        return false;
+      }
+    } catch (error) {
+      // Error occurred while decoding, token might be invalid
+      return true;
+    }
+  }
+
+
+
   useEffect(() => {
     let token = localStorage.getItem("jwtToken");
-    if (token !== null && token !== "") {
+    if (token !== null && token !== "" && !isTokenExpired(token)) {
       try {
         const decoded = jwt_decode(token);
         const userType = decoded.usertype;
