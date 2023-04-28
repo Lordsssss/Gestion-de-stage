@@ -3,6 +3,7 @@ import { useDropzone } from "react-dropzone";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../../../UserContext";
+import CustomAlert from "../../shared/customalert/CustomAlert";
 
 import "./css/ApplicationForm.css";
 
@@ -14,7 +15,7 @@ function ApplicationForm() {
   const [message, setMessage] = useState("");
   const [files, setFiles] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const [showAlert, setShowAlert] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -41,13 +42,21 @@ function ApplicationForm() {
     borderColor: "#b3c000",
   };
 
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     const formData = new FormData();
     formData.append("email", internship.contactemail);
-    formData.append("emailuser",emailUser)
+    formData.append("emailuser", emailUser);
     formData.append("subject", subject);
     formData.append("message", message);
 
@@ -60,7 +69,7 @@ function ApplicationForm() {
           "Content-Type": "multipart/form-data",
         },
       });
-      alert("Email sent successfully");
+      setShowAlert(true);
       setIsSubmitting(false);
     } catch (error) {
       console.error("Error sending email:", error);
@@ -69,6 +78,12 @@ function ApplicationForm() {
   };
   return (
     <div className="form-container-application">
+      <CustomAlert
+        show={showAlert}
+        onClose={handleCloseAlert}
+        title="Message"
+        message="L'email à bien été envoyé"
+      />
       <div className="formbold-main-wrapper-application">
         <div className="formbold-form-wrapper-application">
           <form className="form-application" onSubmit={handleSubmit}>
