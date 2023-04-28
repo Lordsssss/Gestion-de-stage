@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
 require("dotenv").config();
 
-const salt = process.env.SALT_KEY;
 const userSchema = new Schema({
   email: { type: String, required: true, unique: true },
   username: { type: String, required: true },
@@ -13,7 +12,7 @@ const userSchema = new Schema({
 
 userSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
-    this.password = await bcrypt.hash(this.password, salt);
+    this.password = await bcrypt.hash(this.password, 10);
   }
   next();
 });

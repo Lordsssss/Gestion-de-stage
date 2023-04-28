@@ -59,7 +59,7 @@
   background: #b3c000;
   font-size: 1em;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 10px;
   outline: none;
   border: none;
   border-radius: 5px;
@@ -96,100 +96,55 @@
 
 .SignUp__wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  width: 200px;
-  height: 140px;
-  margin-left: 21%;
-  padding-bottom: 30%;
+  align-items: right;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
-.SignUp__wrapper label {
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+.SignUp__wrapper label{
   font-size: 20px;
-  font-weight: 20px;
-  margin: 0px;
-}
-.SignUp__wrapper ul {
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.SignUp__wrapper ul li {
-  justify-content: center;
-  align-items: center;
-  color: #aaaaaa;
-  display: block;
-
-  width: 100%;
-  height: 50px;
-}
-
-.SignUp__wrapper ul li input[type="radio"] {
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  visibility: hidden;
-}
-
-.SignUp__wrapper ul li label {
-  justify-content: center;
-  align-items: center;
-  display: block;
+  display: flex;
+  cursor: pointer;
+  font-weight: 500;
   position: relative;
-  font-weight: 300;
-  font-size: 20px;
-  padding: 25px 25px 25px 80px;
-  margin: 10px auto;
-  height: 30px;
-  cursor: pointer;
+  overflow: hidden;
+  margin: 10px;
 }
 
-.SignUp__wrapper ul li:hover label {
-  color: #b3c000;
-}
-
-.SignUp__wrapper ul li .check {
-  display: block;
+.SignUp__wrapper label input{
   position: absolute;
-  border: 5px solid #aaaaaa;
-  border-radius: 100%;
-  height: 30px;
-  width: 30px;
-  top: 30px;
-  left: 20px;
-  transition: border 0.25s linear;
-  -webkit-transition: border 0.25s linear;
+  left: -9999px;
+}
+.SignUp__wrapper label input:checked + span{
+  background-color: #b3c000;
+  color: white;
+}
+.SignUp__wrapper label input:checked + span:before {
+  box-shadow: inset 0 0 0 0.4375em rgb(124, 124, 124);
 }
 
-.SignUp__wrapper ul li:hover .check {
-  border: 5px solid #b3c000;
+.SignUp__wrapper label span {
+  display: flex;
+  align-items: center;
+  padding: 0.375em 0.75em 0.375em 0.375em;
+  border-radius: 99em;
+  transition: 0.25s ease;
+  color: #a7a7a7;
 }
 
-.SignUp__wrapper ul li .check::before {
-  display: block;
-  position: absolute;
+.SignUp__wrapper label span:hover {
+  background-color: #d6d6e5;
+}
+
+.SignUp__wrapper label span:before {
+  display: flex;
+  flex-shrink: 0;
   content: "";
-  border-radius: 100%;
-  height: 15px;
-  width: 15px;
-  top: 5px;
-  left: 5px;
-  margin: auto;
+  background-color: #fff;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  margin-right: 0.375em;
+  transition: 0.25s ease;
+  box-shadow: inset 0 0 0 0.125em #a7a7a7;
 }
 
-.SignUp__wrapper input[type="radio"]:checked ~ .check {
-  border: 3px solid #b3c000;
-}
-
-.SignUp__wrapper input[type="radio"]:checked ~ .check::before {
-  background: #b3c000;
-}
-
-.SignUp__wrapper input[type="radio"]:checked ~ label {
-  color: #b3c000;
-}

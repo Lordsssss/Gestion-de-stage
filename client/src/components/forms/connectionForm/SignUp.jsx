@@ -1,5 +1,6 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import CustomAlert from "../../shared/customalert/CustomAlert";
 
 function SignUp() {
   const [email, setSignUpEmail] = useState("");
@@ -7,10 +8,19 @@ function SignUp() {
   const [password, setSignUpPassword] = useState("");
   const [usertype, setUserType] = useState("Etudiant");
   const [error, setError] = useState(null);
+  const [showAlert, setShowAlert] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     setError("");
-  },[email,password])
+  }, [email, password]);
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +40,7 @@ function SignUp() {
         }
       );
       //setError(null);
-      alert("Registration successful!");
+      setShowAlert(true);
     } catch (error) {
       console.log(error);
       setError(error.response.data);
@@ -39,6 +49,13 @@ function SignUp() {
 
   return (
     <div className="signup">
+      <CustomAlert
+        show={showAlert}
+        onClose={handleCloseAlert}
+        htmlFor="chk"
+        title="Message"
+        message="L'email à bien été envoyé"
+      />
       <form onSubmit={handleSubmit}>
         <label className="title-label" htmlFor="chk" aria-hidden="true">
           S'inscrire
@@ -59,7 +76,7 @@ function SignUp() {
           required=""
           value={email}
           onChange={(e) => setSignUpEmail(e.target.value)}
-          autocomplete="new-email"
+          autoComplete="new-email"
         />
         <input
           type="password"
@@ -68,13 +85,11 @@ function SignUp() {
           required=""
           value={password}
           onChange={(e) => setSignUpPassword(e.target.value)}
-          autocomplete="new-password"
+          autoComplete="new-password"
         />
         <div className="SignUp__wrapper">
-          <ul>
-            <li>
-              <label className="radio-label">
-              <input
+          <label className="radio-label">
+            <input
               id="one"
               type="radio"
               name="userType"
@@ -82,27 +97,24 @@ function SignUp() {
               checked={usertype === "Etudiant"}
               onChange={(e) => setUserType(e.target.value)}
             />
-              Étudiant
-              <div className="check"></div>
-              </label>
-            </li>
-            <li>
-              <label className="radio-label">
-                <input
-                  id="two"
-                  type="radio"
-                  name="userType"
-                  value="Employeur"
-                  checked={usertype === "Employeur"}
-                  onChange={(e) => setUserType(e.target.value)}
-                />
-                Employeur
-                <div className="check">
-                <div className="inside"></div>
-              </div>
-              </label>
-            </li>
-          </ul>
+            <span>Étudiant</span>
+            <div className="check"></div>
+          </label>
+
+          <label className="radio-label">
+            <input
+              id="two"
+              type="radio"
+              name="userType"
+              value="Employeur"
+              checked={usertype === "Employeur"}
+              onChange={(e) => setUserType(e.target.value)}
+            />
+            <span>Employeur</span>
+            <div className="check">
+              <div className="inside"></div>
+            </div>
+          </label>
         </div>
         <button>Valider</button>
       </form>

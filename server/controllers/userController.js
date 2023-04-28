@@ -17,7 +17,9 @@ const register = async (req, res) => {
       password: password,
       usertype: usertype,
     });
+
     await user.save();
+
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
     res.status(201).send({ token });
   } catch (error) {
