@@ -1,5 +1,6 @@
-import React, { useState, useContext, useCallback } from "react";
+import React, { useState, useContext, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../../../UserContext";
 
@@ -13,6 +14,16 @@ function ApplicationForm() {
   const [message, setMessage] = useState("");
   const [files, setFiles] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const history = useHistory();
+
+  useEffect(() => {
+    console.log(internship.companyname)
+    if(internship.companyname === undefined){
+      console.log("test")
+      history.go(-1);
+    }
+  })
 
   const onDrop = useCallback((acceptedFiles) => {
     setFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
@@ -31,6 +42,7 @@ function ApplicationForm() {
   };
 
   const handleSubmit = async (e) => {
+    history.goBack()
     e.preventDefault();
     setIsSubmitting(true);
 

@@ -29,11 +29,11 @@ const sendEmail = async (req, res) => {
     filename: file.originalname,
     content: file.buffer,
   }));
-
+  const fullSubject = "STAGE MONTMORENCY:" + subject;
   const mailOptions = {
     from: EMAIL_USER,
     to: email,
-    subject: subject,
+    subject: fullSubject,
     text: message,
     attachments,
   };
