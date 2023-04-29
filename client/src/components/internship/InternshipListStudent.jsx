@@ -61,7 +61,7 @@ function InternshipListStudent() {
             checked={filter === ""}
             onChange={(e) => setFilter(e.target.value)}
           />
-          <span className="name">All</span>
+          <span className="name">Tous</span>
         </label>
         <label className="radio">
           <input
