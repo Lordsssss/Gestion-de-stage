@@ -10,6 +10,7 @@ const addInternship = async (req, res) => {
       companyname: req.body.companyname,
       companyadresse: req.body.companyadresse,
       internshiptype: req.body.internshiptype,
+      internshiptitle: req.body.internshiptitle,
       nbpositions: req.body.nbpositions,
       internshipdescription: req.body.internshipdescription,
       salary: req.body.salary,
@@ -88,7 +89,7 @@ const deleteInternship = async (req, res, next) => {
 
 const updateInternship = async (req, res, next) => {
   const internshipId = req.query.internshipId;
-  console.log(internshipId)
+
   const {
     contactname,
     contactemail,
@@ -96,6 +97,7 @@ const updateInternship = async (req, res, next) => {
     companyname,
     companyadresse,
     internshiptype,
+    internshiptitle,
     nbpositions,
     internshipdescription,
     salary
@@ -120,6 +122,7 @@ const updateInternship = async (req, res, next) => {
   internship.companyname = companyname || internship.companyname;
   internship.companyadresse = companyadresse || internship.companyadresse;
   internship.internshiptype = internshiptype || internship.internshiptype;
+  internship.internshiptitle = internshiptitle || internship.internshiptitle;
   internship.nbpositions = nbpositions || internship.nbpositions;
   internship.internshipdescription = internshipdescription || internship.internshipdescription;
   internship.salary = salary || internship.salary;

@@ -1,26 +1,25 @@
 .InternshipList{
   position: relative;
-  justify-content: right;
+  display: inline-block;
+  justify-content: center;
 }
 .list{
   padding: 100px;
   position: relative;
-  justify-content: right;
+  justify-content: center;
 }
 .radio-inputs {
-  top: 0;
-  right: 0;
-  z-index: 1;
-    position: absolute;
+    z-index: 1;
+    position:relative;
     display: flex;
     flex-wrap: wrap;
     border-radius: 0.5rem;
     background-color: #d6d6d6;
-    box-sizing: border-box;
     box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
     padding: 0.50rem;
     margin: auto;
-    width: 600px;
+    max-width: 600px;
+    width: 80%;
     font-size: 14px;
   }
   
@@ -40,10 +39,10 @@
     justify-content: center;
     border-radius: 0.5rem;
     border: none;
-    padding: .5rem 0;
+    padding: .2rem 0;
     color: rgba(51, 65, 85, 1);
     transition: all .15s ease-in-out;
-    font-size: 20px;
+    font-size: 17px;
   }
   
   .radio-inputs .radio input:checked + .name {

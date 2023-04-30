@@ -2,26 +2,34 @@
     background-color: white;
     box-shadow: 0 30px 30px -25px #a7a7a7;
     border-radius: 10px;
-    max-width: 500px;
+    max-width: 1000px;
     min-width: 200px;
+    min-height: 300px;
+    height: auto;
     margin: 10px;
-    height: 350px;
-    width: 100%;
     padding: 20px;
-    float: left;
 }
 .CardIntership span{
     display: block;
 }
+
 .CardIntership p{
-    height: 100px;
-    overflow: auto;
-    color: gray;
+    color: #595959;
+}
+.card-text{
+    color: #595959;
 }
 .card-info{
-    color: gray;
+    display: flex;
 }
-.title{
+.card-salary{
+    text-align: center;
+    padding: 4px;
+    background-color: #dfdddc;
+    border-radius: 5px;
+}
+.title-text{
+    color: #2D2D2D;
     display: inline;
 }
 .setting-wheel{
@@ -35,25 +43,19 @@
     justify-content: center;
     align-items: center;
     float: right;
-    color: gray;
+    color: #595959;
     text-align: center;
     background-color: rgb(247, 247, 247);
-    border: solid gray 1px;
+    border: solid #595959 1px;
     border-radius: 7px;
 }
 .setting-wheel:hover{
     background-color: #a7a7a7;
     color: white;
 }
-.app-button-container{
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    float: right;
-}
+
 .app-button{
     margin: 30px;
-    justify-content: center;
     padding: 1.3em 3em;
     font-size: 12px;
     text-transform: uppercase;
@@ -66,7 +68,7 @@
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
-    outline: none;
+
 }
 .app-button:hover{
     background-color: #b3c000;

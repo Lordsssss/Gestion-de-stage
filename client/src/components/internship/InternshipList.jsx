@@ -3,6 +3,7 @@ import axios from "axios";
 import CardInternship from "../shared/cards/CardInternship";
 import UserContext from "../../UserContext";
 
+import './InternshipListStudent'
 function InternshipList() {
   const { userId, internshipsList, handleInternshipsList } = useContext(UserContext); 
   const token = localStorage.getItem("jwtToken");

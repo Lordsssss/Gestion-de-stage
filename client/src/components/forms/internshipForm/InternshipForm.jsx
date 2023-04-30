@@ -13,6 +13,7 @@ function InternshipForm() {
   const [contactName, setContactName] = useState("");
   const [contactPhone, setContactPhone] = useState("");
   const [internshipDescription, setInternshipDescription] = useState("");
+  const [internshipTitle, setInternshipTitle] = useState("");
   const [internshipType, setInternshipType] = useState("");
   const [nbPositions, setNbPositions] = useState("");
   const [internshipSalary, setInternshipSalary] = useState("");
@@ -27,6 +28,7 @@ function InternshipForm() {
       companyname: companyName,
       companyadresse: companyAdresse,
       internshiptype: internshipType,
+      internshiptitle: internshipTitle,
       nbpositions: nbPositions,
       internshipdescription: internshipDescription,
       salary: internshipSalary,
@@ -59,6 +61,21 @@ function InternshipForm() {
             <form className="form" onSubmit={handleSubmit}>
               <div className="formbold-form-title">
                 <h2 className="">Ajouter un Stage</h2>
+              </div>
+              <div className="formbold-mb-3">
+                <div>
+                  <label className="inputText">
+                    Titre du stage :
+                    <input
+                      type="text"
+                      placeholder="2023 Recherche en Apprentissage Automatique"
+                      className="formbold-form-input"
+                      value={internshipTitle}
+                      onChange={(e) => setInternshipTitle(e.target.value)}
+                      required
+                    />
+                  </label>
+                </div>
               </div>
               <div className="formbold-input-flex">
                 <div>
@@ -142,9 +159,15 @@ function InternshipForm() {
                     onChange={(e) => setInternshipType(e.target.value)}
                     required
                   >
-                    <option value="" disabled selected>Choisissez une option</option>
-                    <option value="Réseaux et sécurité">Réseaux et sécurité</option>
-                    <option value="Développement d'applications">Développement d'applications</option>
+                    <option value="" disabled selected>
+                      Choisissez une option
+                    </option>
+                    <option value="Réseaux et sécurité">
+                      Réseaux et sécurité
+                    </option>
+                    <option value="Développement d'applications">
+                      Développement d'applications
+                    </option>
                   </select>
                 </label>
               </div>
@@ -179,7 +202,7 @@ function InternshipForm() {
               </div>
 
               <div>
-                <div >
+                <div>
                   <label className="inputText">
                     Description du Stage :
                     <textarea
