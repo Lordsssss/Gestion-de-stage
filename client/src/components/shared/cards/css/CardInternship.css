@@ -22,11 +22,16 @@
 .card-info{
     display: flex;
 }
-.card-salary{
-    text-align: center;
+.card-info-element{
+    margin: 3px;
+    display: flex;
+    align-items: center;
     padding: 4px;
     background-color: #dfdddc;
     border-radius: 5px;
+}
+.type-text{
+    color: rgb(157, 157, 157);
 }
 .title-text{
     color: #2D2D2D;
@@ -53,9 +58,12 @@
     background-color: #a7a7a7;
     color: white;
 }
-
+.app-button-container{
+    display: flex;
+    justify-content: right;
+}
 .app-button{
-    margin: 30px;
+    margin: 10px;
     padding: 1.3em 3em;
     font-size: 12px;
     text-transform: uppercase;
@@ -68,7 +76,7 @@
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
-
+    
 }
 .app-button:hover{
     background-color: #b3c000;
