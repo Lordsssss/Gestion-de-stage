@@ -1,24 +1,32 @@
-.UserList{
+.UserList {
     border: 1px solid #ccc;
     border-collapse: collapse;
+    border-spacing: 0;
     table-layout: fixed;
-    width: 100%;
+    margin: 0;
+    justify-content: space-evenly;
 }
-.UserList-header{
+
+.UserList-header {
     border: 1px solid #ddd;
-    padding: .35em;
 }
+
 .UserList-header:nth-child(even) {
-    background: #f8f8f8;  
+    background: #cdcdcd;
 }
-.UserList-td{
+
+.UserList-td {
+    justify-content: space-evenly;
     padding: .625em;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.UserList-th{
+
+.UserList-th {
+
+    width: 100%;
     padding: .625em;
     text-align: left;
     background: #999;
@@ -27,7 +35,29 @@
     letter-spacing: .1em;
     text-transform: uppercase;
 }
-.UserList-delete{
+
+.UserList-delete {
     display: flex;
     justify-content: center;
+}
+.UserList-delete-button{
+    cursor: pointer;
+    display: block;
+    top: 0;
+    right: 0;
+    width: auto;
+    padding: 12px 10px 10px 14px;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    color: #595959;
+    text-align: center;
+    background-color: rgb(247, 247, 247);
+    border: solid #595959 1px;
+    border-radius: 7px;
+}
+.UserList-delete-button:hover{
+    fill: red;
+    border: solid red 1px;
 }
