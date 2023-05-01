@@ -34,6 +34,7 @@ function CardInternship({ internship }) {
   };
 
   return (
+    <div className="wrapper">
     <div className="CardIntership">
       <button
         ref={settingsButtonRef}
@@ -107,6 +108,7 @@ function CardInternship({ internship }) {
       <div className="description-text">
         <p>{internship.internshipdescription}</p>
       </div>
+    </div>
     </div>
   );
 }
