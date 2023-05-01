@@ -44,5 +44,28 @@ const login = async (req, res) => {
   }
 };
 
+const allUsers = async (requete, reponse, next) => {
+  console.log("test")
+  let users;
+  try {
+    users = await User.find();
+  } catch (err) {
+    return next(
+      new HttpErreur(
+        "Erreur lors de la récupération de la liste des profs",
+        500
+      )
+    );
+  }
+  if (!users) {
+    return next(new HttpErreur("Aucun prof trouvé", 404));
+  }
+  reponse.json({
+    users: users.map((user) => user.toObject({ getters: true })),
+  });
+};
+
+
 exports.register = register;
 exports.login = login;
+exports.allUsers = allUsers;

@@ -54,7 +54,7 @@ function SignUp() {
         onClose={handleCloseAlert}
         htmlFor="chk"
         title="Message"
-        message="L'email à bien été envoyé"
+        message="Le compte a bien été créer"
       />
       <form onSubmit={handleSubmit}>
         <label className="title-label" htmlFor="chk" aria-hidden="true">

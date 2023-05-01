@@ -34,13 +34,21 @@ function NavLinks({ role }) {
           )}
           {role === "Employeur" && (
             <li>
-            <NavLink to={`/${role}/publierstage`}>Publier Stage</NavLink>
+              <NavLink to={`/${role}/publierstage`}>Publier Stage</NavLink>
             </li>
           )}
-          {role === "Coordinator" && (
-            <li>
-              <NavLink to={`/${role}/stageDisponible`}>Liste d'Etudiant</NavLink>
-            </li>
+          {role === "Coordinateur" && (
+            <>
+              <li>
+                <NavLink to={`/${role}/listeStage`}>Liste de Stage</NavLink>
+              </li>
+              <li>
+                <NavLink to={`/${role}/listeStage`}>Liste d'Étudiant</NavLink>
+              </li>
+              <li>
+                <NavLink to={`/${role}/listeUtilisateurs`}>Liste d'utilisateurs</NavLink>
+              </li>
+            </>
           )}
         </ul>
       </li>

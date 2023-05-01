@@ -10,6 +10,7 @@ const EMAIL_PASS = process.env.EMAIL_PASS;
 
 const transporter = nodemailer.createTransport({
   service: "outlook",
+  port: 465,
   auth: {
     user: EMAIL_USER,
     pass: EMAIL_PASS,

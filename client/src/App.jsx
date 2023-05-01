@@ -20,6 +20,7 @@ import UserContext from "./UserContext";
 import InternshipUpdate from "./components/internship/InternshipUpdate";
 import Student from "./components/internship/Student";
 import ApplicationForm from "./components/forms/applicationForm/ApplicationForm";
+import UsersList from "./components/users/UsersList";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -142,6 +143,13 @@ function App() {
           </Route>
           <Route path="/Etudiant/applicationForm">
               <ApplicationForm/>
+          </Route>
+          <Route path="/Coordinateur/listeUtilisateurs">
+            {role !== "Coordinateur" ? (
+              <Redirect to="/"/>
+            ) : (
+              <UsersList/>
+            )}
           </Route>
           <Route
             path="/logout"
