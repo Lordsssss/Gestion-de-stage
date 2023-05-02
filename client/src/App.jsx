@@ -15,7 +15,7 @@ import PrivateRoute from "./components/shared/privateRoute/PrivateRoute";
 import Connection from "./components/forms/connectionForm/Connection";
 import Boss from "./components/internship/Boss";
 import jwt_decode from 'jwt-decode';
-
+import Footer from "./Footer";
 import UserContext from "./UserContext";
 import InternshipUpdate from "./components/internship/InternshipUpdate";
 import Student from "./components/internship/Student";
@@ -93,6 +93,7 @@ function App() {
     console.log(newInternship)
     setInternship(newInternship);
   }
+
   return (
     <UserContext.Provider
       value={{
@@ -111,7 +112,7 @@ function App() {
     >
     <Router>
       <PrivateRoute role={role} />
-      <main>
+      <main className="app">
         <Switch>
           <Route path="/FAQ" exact>
             <FAQ />
@@ -164,6 +165,7 @@ function App() {
           <Redirect to="/" />
         </Switch>
       </main>
+      <Footer/>
     </Router>
     </UserContext.Provider>
   );

@@ -21,7 +21,6 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendEmail = async (req, res) => {
-    console.log(req.body)
   const { email,emailuser, subject, message } = req.body;
 
   const files = req.files || [];

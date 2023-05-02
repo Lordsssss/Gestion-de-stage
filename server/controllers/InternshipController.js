@@ -69,7 +69,6 @@ const getInternshipsByOwnerId = async (req, res, next) => {
 };
 
 const deleteInternship = async (req, res, next) => {
-  console.log("1")
   const internshipId = req.body.internshipId;
   console.log(internshipId)
   let internship;

@@ -69,7 +69,7 @@ function ApplicationForm() {
           "Content-Type": "multipart/form-data",
         },
       });
-      setShowAlert(true);
+      handleShowAlert(true);
       setIsSubmitting(false);
     } catch (error) {
       console.error("Error sending email:", error);

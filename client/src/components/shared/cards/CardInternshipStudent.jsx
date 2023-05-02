@@ -12,8 +12,9 @@ function CardInternship({ internship }) {
   };
 
   return (
+    <div className="wrapper">
     <div className="CardIntership">
-    <span className="type-text">{internship.internshiptype} - Il y a {getDaysSince(internship.creationdate)}</span>
+    <span className="type-text">{internship.internshiptype} - {getDaysSince(internship.creationdate)}</span>
       <div className="title">
         <h1 className="title-text">{internship.internshiptitle}</h1>
       </div>
@@ -59,6 +60,7 @@ function CardInternship({ internship }) {
           <button className="app-button">Appliquer</button>
         </NavLink>
       </div>
+    </div>
     </div>
   );
 }

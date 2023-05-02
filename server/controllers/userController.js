@@ -7,7 +7,6 @@ const register = async (req, res) => {
   try {
     const { email, username, password, usertype } = req.body;
     const existingUser = await User.findOne({ email: email });
-    console.log(existingUser)
     if (existingUser != null) {
       return res.status(400).send("User already exists.");
     }
@@ -45,7 +44,6 @@ const login = async (req, res) => {
 };
 
 const allUsers = async (requete, reponse, next) => {
-  console.log("test")
   let users;
   try {
     users = await User.find();

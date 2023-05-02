@@ -12,6 +12,38 @@ function InternshipListStudent() {
   const URL = "http://localhost:3001";
   const [isLoading, setIsLoading] = useState(false);
   const [filter, setFilter] = useState(""); // Add a new state variable for the filter
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filterAndSearchInternships = (internships) => {
+    let filteredInternships = internships;
+
+    // Filter internships based on the selected filter value
+    if (filter !== "") {
+      filteredInternships = filteredInternships.filter(
+        (internship) => internship.internshiptype === filter
+      );
+    }
+
+    // Filter internships based on the search term
+    if (searchTerm !== "") {
+      const searchRegex = new RegExp(searchTerm, "i");
+      filteredInternships = filteredInternships.filter((internship) =>
+        [
+          internship.contactname,
+          internship.contactemail,
+          internship.contactphone,
+          internship.companyname,
+          internship.companyadresse,
+          internship.internshiptitle,
+          internship.internshiptype,
+          internship.internshipdescription,
+          internship.salary,
+        ].some((value) => searchRegex.test(value))
+      );
+    }
+
+    return filteredInternships;
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -32,16 +64,6 @@ function InternshipListStudent() {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
-
-  // Function to filter internships based on the selected filter value
-  const filterInternships = (internships) => {
-    if (filter === "") {
-      return internships;
-    }
-    return internships.filter(
-      (internship) => internship.internshiptype === filter
-    );
-  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -75,7 +97,6 @@ function InternshipListStudent() {
           <span className="name">Réseaux et sécurité</span>
         </label>
         <label className="radio">
-          {" "}
           <input
             type="radio"
             id="filter-developpement"
@@ -87,11 +108,26 @@ function InternshipListStudent() {
           <span className="name">Développement d'applications</span>
         </label>
       </div>
-      {internshipsList &&
-        <div className="list">{filterInternships(internshipsList).map((internship) => (
-          <CardInternshipStudent key={internship._id} internship={internship} />
-        ))}</div>
-      }
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Rechercher"
+          className="search-input"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+      {internshipsList && (
+        <div className="list">
+          {internshipsList &&
+            filterAndSearchInternships(internshipsList).map((internship) => (
+              <CardInternshipStudent
+                key={internship._id}
+                internship={internship}
+              />
+            ))}
+        </div>
+      )}
     </div>
   );
 }

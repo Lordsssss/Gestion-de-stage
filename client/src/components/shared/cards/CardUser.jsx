@@ -2,11 +2,13 @@ import React from "react";
 
 import '../../users/css/UsersList.css'
 function CardUser({ user }) {
+    const objectDate  = new Date(user.creationdate);
+    const date = objectDate.getDate() + "/" + objectDate.getMonth() + "/" + objectDate.getFullYear();
     return (
         <tr className="UserList-header">
-            <td className="UserList-td" scope="row">{user._id}</td>
+            <td className="UserList-td">{user._id}</td>
             <td className="UserList-td">{user.username}</td>
-            <td className="UserList-td">{user.creationdate}</td>
+            <td className="UserList-td">{date}</td>
             <td className="UserList-td">{user.usertype}</td>
             <td className="UserList-td">{user.email}</td>
             <td className="UserList-td UserList-delete"><button className="UserList-delete-button"><svg
