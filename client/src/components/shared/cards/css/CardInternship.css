@@ -18,9 +18,10 @@
     display: block;
 }
 
-.CardIntership p{
+.description-text{
     color: #595959;
     text-align: justify;
+    overflow-wrap: break-word;
 }
 .card-text{
     color: #595959;
