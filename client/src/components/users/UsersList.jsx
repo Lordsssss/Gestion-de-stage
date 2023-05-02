@@ -33,7 +33,7 @@ function UsersList() {
   }
   return (
     <div className="UserList">
-      <div className="UserTable">
+      <table className="UserTable">
         <thead>
           <tr className="UserList-header">
             <th className="UserList-th" scope="col">
@@ -54,13 +54,16 @@ function UsersList() {
             <th className="UserList-th" scope="col">
               Supprimer
             </th>
+            <th className="UserList-th" scope="col">
+            Changer role
+          </th>
           </tr>
         </thead>
         <tbody>
           {userList &&
             userList.map((user) => <CardUser key={user._id} user={user} />)}
         </tbody>
-      </div>
+      </table>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const Internship = require("../models/Internship");
 require("dotenv").config();
 
 const register = async (req, res) => {
@@ -63,7 +64,57 @@ const allUsers = async (requete, reponse, next) => {
   });
 };
 
+const updateUserRole = async (request, response, next) => {
+  const { userId, password, usertype } = request.body;
+
+  let user;
+  try {
+    user = await User.findById(userId);
+  } catch (err) {
+    return next(
+      new HttpErreur("Erreur lors de la récupération de l'utilisateur", 500)
+    );
+  }
+
+  if (!user) {
+    return next(new HttpErreur("Utilisateur non trouvé", 404));
+  }
+
+  const isValidPassword = await user.comparePassword(password, user.password);
+  if (!isValidPassword) {
+    return next(new HttpErreur("Mot de passe invalide", 401));
+  }
+
+  user.usertype = usertype;
+  try {
+    await user.save();
+  } catch (err) {
+    return next(
+      new HttpErreur("Erreur lors de la mise à jour de l'utilisateur", 500)
+    );
+  }
+
+  response.status(200).json({ message: "Rôle utilisateur mis à jour avec succès" });
+};
+
+const deleteUser = async (request, response, next) => {
+  try{
+    const userId  = request.body.userId;
+    console.log(userId)
+    await Internship.deleteMany({ ownerid: userId });
+
+    await User.findByIdAndDelete(userId);
+
+    response.status(204).end();
+  }catch (error) {
+    console.error(error);
+    response.status(500).json({ error: 'Internal server error' });
+  }
+}
+
 
 exports.register = register;
 exports.login = login;
 exports.allUsers = allUsers;
+exports.updateUserRole = updateUserRole;
+exports.deleteUser = deleteUser;
