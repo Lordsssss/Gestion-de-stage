@@ -15,15 +15,16 @@ function CardUser({ user }) {
     objectDate.getFullYear();
 
   const handleDelete = async (event) => {
+    window.location.reload();
     const userId = user._id;
-        await axios.delete(URL + "/api/user/delete-user", {
-            data: { userId: userId },
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-  } 
-
+    await axios
+      .delete(URL + "/api/user/delete-user", {
+        data: { userId: userId },
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleRoleChange = async (event) => {
     event.preventDefault();
@@ -82,7 +83,11 @@ function CardUser({ user }) {
         </button>
       </td>
       <td className="UserList-td">
-        <select className="select" value={selectedRole} onChange={handleRoleChange}>
+        <select
+          className="select"
+          value={selectedRole}
+          onChange={handleRoleChange}
+        >
           <option value="Employeur">Employeur</option>
           <option value="Etudiant">Etudiant</option>
           <option value="Coordinateur">Coordinateur</option>

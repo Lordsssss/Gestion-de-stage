@@ -11,6 +11,7 @@ const HttpErreur = require("./models/HttpErreur");
 const UserRoute = require("./routes/UserRoute");
 const InternshipRoute = require("./routes/InternshipRoute");
 const EmailSysController = require("./routes/EmailSysRoute");
+const StudentRoute = require("./routes/StudentRoute");
 
 app.use(express.urlencoded());
 app.use(bodyParser.json());
@@ -21,6 +22,7 @@ app.use(cors());
 app.use("/api/email", EmailSysController);
 app.use("/api/user", UserRoute);
 app.use("/api/internship", InternshipRoute);
+app.use("/api/student", StudentRoute);
 app.use((requete, reponse, next) => {
   return next(new HttpErreur("Route non trouvée", 404));
 });

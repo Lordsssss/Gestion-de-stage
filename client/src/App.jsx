@@ -21,6 +21,7 @@ import InternshipUpdate from "./components/internship/InternshipUpdate";
 import Student from "./components/internship/Student";
 import ApplicationForm from "./components/forms/applicationForm/ApplicationForm";
 import UsersList from "./components/users/UsersList";
+import StudentList from "./components/users/StudentList";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -47,30 +48,6 @@ function App() {
     }
   }
 
-
-
-  useEffect(() => {
-    let token = localStorage.getItem("jwtToken");
-    if (token !== null && token !== "" && !isTokenExpired(token)) {
-      try {
-        const decoded = jwt_decode(token);
-        const userType = decoded.usertype;
-        const userId = decoded._id;
-        handleRole(userType);
-        handleUserId(userId);
-        handleLogin(token);
-      } catch (err) {
-        console.error("Invalid token:", err);
-        handleLogin("");
-        handleRole("");
-        handleUserId("");
-      }
-    } else {
-      handleLogin("");
-      handleRole("");
-      handleUserId("");
-    }
-  });
   const handleUserId = (newUserId) => {
     setUserId(newUserId)
   }
@@ -93,6 +70,30 @@ function App() {
     console.log(newInternship)
     setInternship(newInternship);
   }
+
+  useEffect(() => {
+    let token = localStorage.getItem("jwtToken");
+    if (token !== null && token !== "" && !isTokenExpired(token)) {
+      try {
+        const decoded = jwt_decode(token);
+        const userType = decoded.usertype;
+        const userId = decoded._id;
+        handleRole(userType);
+        handleUserId(userId);
+        handleLogin(token);
+      } catch (err) {
+        console.error("Invalid token:", err);
+        handleLogin("");
+        handleRole("");
+        handleUserId("");
+      }
+    } else {
+      handleLogin("");
+      handleRole("");
+      handleUserId("");
+    }
+  },[]);
+
 
   return (
     <UserContext.Provider
@@ -134,7 +135,7 @@ function App() {
             )}
           </Route>
           <Route path="/Employeur/publierstage">
-            <Boss/>
+            <Boss isCoordinateur={false}/>
           </Route>
           <Route path="/Etudiant/stageDisponible">
               <Student/>
@@ -147,11 +148,26 @@ function App() {
           </Route>
           <Route path="/Coordinateur/listeUtilisateurs">
             {role !== "Coordinateur" ? (
+              
               <Redirect to="/"/>
             ) : (
               <UsersList/>
             )}
           </Route>
+          <Route path="/Coordinateur/listeStage">
+          {role !== "Coordinateur" ? (
+            <Redirect to="/"/>
+          ) : (
+            <Boss isCoordinateur={true}/>
+          )}
+        </Route>
+        <Route path="/Coordinateur/listeEtudiant">
+        {role !== "Coordinateur" ? (
+          <Redirect to="/"/>
+        ) : (
+          <StudentList/>
+        )}
+      </Route>
           <Route
             path="/logout"
             render={() => {

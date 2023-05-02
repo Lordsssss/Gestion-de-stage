@@ -22,50 +22,72 @@ function NavLinks({ role }) {
         <div className="nav-links__dropdown">Gestion des stages</div>
         <ul className="dropdown-menu">
           <li>
-            <NavLink className="nav-link" to="/EspaceEtudiant">Espace Étudiant</NavLink>
+            <NavLink className="nav-link" to="/EspaceEtudiant">
+              Espace Étudiant
+            </NavLink>
           </li>
           <li>
-            <NavLink className="nav-link" to="/EspaceEmployeur">Espace Employeurs</NavLink>
+            <NavLink className="nav-link" to="/EspaceEmployeur">
+              Espace Employeurs
+            </NavLink>
           </li>
           {role === "Etudiant" && (
             <li>
-              <NavLink className="nav-link" to={`/${role}/stageDisponible`}>Stages Disponibles</NavLink>
+              <NavLink className="nav-link" to={`/${role}/stageDisponible`}>
+                Stages Disponibles
+              </NavLink>
             </li>
           )}
           {role === "Employeur" && (
             <li>
-              <NavLink className="nav-link" to={`/${role}/publierstage`}>Publier Stage</NavLink>
+              <NavLink className="nav-link" to={`/${role}/publierstage`}>
+                Publier Stage
+              </NavLink>
             </li>
           )}
           {role === "Coordinateur" && (
             <>
               <li>
-                <NavLink className="nav-link" to={`/${role}/listeStage`}>Liste de Stage</NavLink>
+                <NavLink className="nav-link" to={`/${role}/listeStage`}>
+                  Liste de Stage
+                </NavLink>
               </li>
               <li>
-                <NavLink className="nav-link" to={`/${role}/listeStage`}>Liste d'Étudiant</NavLink>
+                <NavLink className="nav-link" to={`/${role}/listeEtudiant`}>
+                  Liste d'Étudiant
+                </NavLink>
               </li>
               <li>
-                <NavLink className="nav-link" to={`/${role}/listeUtilisateurs`}>Liste d'utilisateurs</NavLink>
+                <NavLink className="nav-link" to={`/${role}/listeUtilisateurs`}>
+                  Liste d'utilisateurs
+                </NavLink>
               </li>
             </>
           )}
         </ul>
       </li>
       <li>
-        <NavLink className="nav-link" to="/ProfilStagiaires">Profils stagiaires</NavLink>
+        <NavLink className="nav-link" to="/ProfilStagiaires">
+          Profils stagiaires
+        </NavLink>
       </li>
       <li>
-        <NavLink className="nav-link" to="/FAQ">FAQ</NavLink>
+        <NavLink className="nav-link" to="/FAQ">
+          FAQ
+        </NavLink>
       </li>
       {!isLoggedIn && (
         <li>
-          <NavLink className="nav-link" to="/login">Se connecter</NavLink>
+          <NavLink className="nav-link" to="/login">
+            Se connecter
+          </NavLink>
         </li>
       )}
       {isLoggedIn && (
         <li>
-          <NavLink className="nav-link" to="/logout">Se déconnecter</NavLink>
+          <NavLink className="nav-link" to="/logout">
+            Se déconnecter
+          </NavLink>
         </li>
       )}
     </ul>

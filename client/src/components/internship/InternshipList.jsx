@@ -4,7 +4,7 @@ import CardInternship from "../shared/cards/CardInternship";
 import UserContext from "../../UserContext";
 
 import './InternshipListStudent'
-function InternshipList() {
+function InternshipList({ isCoordinateur }) {
   const { userId, internshipsList, handleInternshipsList } = useContext(UserContext); 
   const token = localStorage.getItem("jwtToken");
   axios.defaults.headers.common["x-access-token"] = token;
@@ -45,26 +45,42 @@ function InternshipList() {
   };
 
   useEffect(() => {
-    async function fetchData() {
-      setIsLoading(true);
-      if (userId !== "") {
-        try {
-          const response = await axios.get(
-            URL + "/api/internship/get-Internships-By-Owner-Idp",
-            {
-              params: { ownerid: userId },
-            }
-          );
-          handleInternshipsList(response.data.internships);
-          handleInternshipsList(response.data.internships);
-          setIsLoading(false);
-        } catch (error) {
-          console.log(error);
+    if(!isCoordinateur){
+      async function fetchData() {
+        setIsLoading(true);
+        if (userId !== "") {
+          try {
+            const response = await axios.get(
+              URL + "/api/internship/get-Internships-By-Owner-Idp",
+              {
+                params: { ownerid: userId },
+              }
+            );
+            handleInternshipsList(response.data.internships);
+            handleInternshipsList(response.data.internships);
+          } catch (error) {
+            console.log(error);
+          }
         }
-      } else {
       }
+      fetchData();
+    }else{
+      async function fetchData() {
+        setIsLoading(true);
+        if (userId !== "") {
+          try {
+            const response = await axios.get(
+              URL + "/api/internship/all-internship"
+            );
+            handleInternshipsList(response.data.internships);
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      }
+      fetchData();
     }
-    fetchData();
+    setIsLoading(false);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 

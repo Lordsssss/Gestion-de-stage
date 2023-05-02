@@ -3,12 +3,12 @@ import InternshipList from "./InternshipList";
 import InternshipForm from "../forms/internshipForm/InternshipForm";
 import "./css/Boss.css";
 
-function Boss() {
+function Boss({ isCoordinateur }) {
   return (
     <div className="Boss">
       <InternshipForm />
       <div className="boss-content">
-      <InternshipList />
+      <InternshipList isCoordinateur={isCoordinateur} />
       </div>
     </div>
   );
