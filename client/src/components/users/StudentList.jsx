@@ -3,6 +3,7 @@ import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import CardStudent from "../shared/cards/CardStudent";
 
+import "./css/StudentList.css";
 function StudentList() {
   const URL = "http://localhost:3001";
   const [students, setStudents] = useState([]);
@@ -56,7 +57,22 @@ function StudentList() {
 
   return (
     <div className="Student">
-      <table className="UserTable">
+      <div className="file-div">
+        <div
+          className="file-inputfield"
+          {...getRootProps()}
+          style={isDragActive ? dropzoneActiveStyle : dropzoneStyle}
+        >
+          <input {...getInputProps()} />
+          {file ? (
+            <p>{file.name}</p>
+          ) : (
+            <p>Cliquez ici ou glissez et déposez un fichier (optional)</p>
+          )}
+        </div>
+        <button onClick={handleImport}>Importer</button>
+      </div>
+      <table className="UserTables">
         <thead>
           <tr className="UserList-header">
             <th className="UserList-th" scope="col">
@@ -74,6 +90,9 @@ function StudentList() {
             <th className="UserList-th" scope="col">
               Profil de sortie
             </th>
+            <th className="UserList-th" scope="col">
+              Supprimer
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -82,19 +101,6 @@ function StudentList() {
           ))}
         </tbody>
       </table>
-      <div
-        className="file-inputfield"
-        {...getRootProps()}
-        style={isDragActive ? dropzoneActiveStyle : dropzoneStyle}
-      >
-        <input {...getInputProps()} />
-        {file ? (
-          <p>{file.name}</p>
-        ) : (
-          <p>Cliquez ici ou glissez et déposez un fichier (optional)</p>
-        )}
-      </div>
-      <button onClick={handleImport}>Importer</button>
     </div>
   );
 }

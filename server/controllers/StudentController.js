@@ -4,7 +4,6 @@ const HttpError = require("../models/HttpErreur");
 const csvParser = require('csv-parser');
 
 const processCsv = async (req, res) => {
-
   const csvParserOptions = {
     headers: ["DAnumber", "studentName", "email", "decType"],
     skipLines: 1, // Skip the header line in the CSV file
@@ -17,9 +16,8 @@ const processCsv = async (req, res) => {
 
     const students = [];
     fs.createReadStream(req.file.path)
-  .pipe(csvParser(csvParserOptions))
-  .on('data', (row) => {
-        console.log(row)
+      .pipe(csvParser(csvParserOptions))
+      .on('data', (row) => {
         students.push({
           DAnumber: row.DAnumber,
           studentName: row.studentName,
@@ -29,7 +27,17 @@ const processCsv = async (req, res) => {
       })
       .on('end', async () => {
         fs.unlinkSync(req.file.path); // Remove the uploaded file
-        await Student.insertMany(students);
+
+        // Filter out students with existing IDs
+        const uniqueStudents = [];
+        for (const student of students) {
+          const existingStudent = await Student.findOne({ DAnumber: student.DAnumber });
+          if (!existingStudent) {
+            uniqueStudents.push(student);
+          }
+        }
+
+        await Student.insertMany(uniqueStudents);
         res.status(201).json({ message: 'Students added successfully' });
       });
   } catch (error) {
@@ -62,13 +70,9 @@ const addStudent = async (req, res, next) => {
 
 const deleteStudent = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const student = await Student.findById(id);
-    if (!student) {
-      throw new HttpError("Could not find a student with the provided ID", 404);
-    }
-    await student.remove();
-    res.status(200).send(`Student ${student.studentName} deleted successfully`);
+    const userId = req.body.userId;
+    await Student.findByIdAndDelete(userId);
+    res.status(200).send(`Student deleted successfully`);
   } catch (err) {
     console.error("Error deleting student", err);
     res.status(err.code || 500).send(err.message || "Error deleting student");

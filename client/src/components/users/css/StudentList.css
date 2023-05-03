@@ -1,0 +1,12 @@
+.student{
+    display: flex;
+}
+.file-div{
+    position:relative;
+    display: flex;
+    width: auto;
+    height: 100px;
+}
+.UserTables{
+    position:relative;
+}
