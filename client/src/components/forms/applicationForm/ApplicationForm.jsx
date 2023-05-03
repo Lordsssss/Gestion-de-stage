@@ -9,7 +9,7 @@ import "./css/ApplicationForm.css";
 
 function ApplicationForm() {
   const URL = "http://localhost:3001";
-  const { internship } = useContext(UserContext);
+  const { internship, userId } = useContext(UserContext);
   const [emailUser, setEmailUser] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
@@ -17,6 +17,8 @@ function ApplicationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const history = useHistory();
+  const token = localStorage.getItem("jwtToken");
+  axios.defaults.headers.common["x-access-token"] = token;
 
   useEffect(() => {
     console.log(internship.companyname);
@@ -71,6 +73,16 @@ function ApplicationForm() {
       });
       handleShowAlert(true);
       setIsSubmitting(false);
+      await axios.post(URL + "/api/internship/add-Applicant", {
+        internshipId: internship._id,
+        userId: userId,
+      })
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     } catch (error) {
       console.error("Error sending email:", error);
       setIsSubmitting(false);
@@ -148,6 +160,20 @@ function ApplicationForm() {
               </div>
             </div>
             <button className="formbold-btn-application">Ajouter</button>
+
+            <div className="div-loader">
+              <div class="loader">
+                <div class="square" id="sq1"></div>
+                <div class="square" id="sq2"></div>
+                <div class="square" id="sq3"></div>
+                <div class="square" id="sq4"></div>
+                <div class="square" id="sq5"></div>
+                <div class="square" id="sq6"></div>
+                <div class="square" id="sq7"></div>
+                <div class="square" id="sq8"></div>
+                <div class="square" id="sq9"></div>
+              </div>
+            </div>
           </form>
         </div>
       </div>
