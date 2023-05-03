@@ -14,6 +14,10 @@ function InternshipListStudent() {
   const [filter, setFilter] = useState(""); // Add a new state variable for the filter
   const [searchTerm, setSearchTerm] = useState("");
 
+  function escapeRegExp(string) {
+    return string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+  }
+
   const filterAndSearchInternships = (internships) => {
     let filteredInternships = internships;
 
@@ -23,23 +27,29 @@ function InternshipListStudent() {
         (internship) => internship.internshiptype === filter
       );
     }
-
+    
     // Filter internships based on the search term
     if (searchTerm !== "") {
-      const searchRegex = new RegExp(searchTerm, "i");
-      filteredInternships = filteredInternships.filter((internship) =>
-        [
-          internship.contactname,
-          internship.contactemail,
-          internship.contactphone,
-          internship.companyname,
-          internship.companyadresse,
-          internship.internshiptitle,
-          internship.internshiptype,
-          internship.internshipdescription,
-          internship.salary,
-        ].some((value) => searchRegex.test(value))
-      );
+      try {
+        const escapedSearchTerm = escapeRegExp(searchTerm);
+        const searchRegex = new RegExp(escapedSearchTerm, "i");
+        filteredInternships = filteredInternships.filter((internship) =>
+          [
+            internship.contactname,
+            internship.contactemail,
+            internship.contactphone,
+            internship.companyname,
+            internship.companyadresse,
+            internship.internshiptitle,
+            internship.internshiptype,
+            internship.internshipdescription,
+            internship.salary,
+          ].some((value) => searchRegex.test(value))
+        );
+      } catch (error) {
+        console.error("Invalid regex: ", error);
+        // Handle the error, e.g., show an error message or fallback to another search method
+      }
     }
 
     return filteredInternships;
