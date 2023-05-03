@@ -2,6 +2,7 @@ const fs = require("fs");
 const Student = require("../models/Student"); // assuming the schema is in a file called "student.js"
 const HttpError = require("../models/HttpErreur");
 const csvParser = require('csv-parser');
+const multer = require("multer");
 
 const processCsv = async (req, res) => {
   const csvParserOptions = {
@@ -15,7 +16,11 @@ const processCsv = async (req, res) => {
     }
 
     const students = [];
-    fs.createReadStream(req.file.path)
+    const bufferStream = new require('stream').Readable();
+    bufferStream.push(req.file.buffer);
+    bufferStream.push(null);
+
+    bufferStream
       .pipe(csvParser(csvParserOptions))
       .on('data', (row) => {
         students.push({
@@ -26,8 +31,6 @@ const processCsv = async (req, res) => {
         });
       })
       .on('end', async () => {
-        fs.unlinkSync(req.file.path); // Remove the uploaded file
-
         // Filter out students with existing IDs
         const uniqueStudents = [];
         for (const student of students) {
@@ -79,7 +82,18 @@ const deleteStudent = async (req, res, next) => {
   }
 };
 
+const deleteAllStudents = async (req, res, next) => {
+  try {
+    await Student.deleteMany();
+    res.status(200).send("All students deleted successfully");
+  } catch (err) {
+    console.error("Error deleting all students", err);
+    res.status(500).send("Error deleting all students");
+  }
+};
+
 exports.processCsv = processCsv;
 exports.getStudents = getStudents;
 exports.addStudent = addStudent;
 exports.deleteStudent = deleteStudent;
+exports.deleteAllStudents = deleteAllStudents;
