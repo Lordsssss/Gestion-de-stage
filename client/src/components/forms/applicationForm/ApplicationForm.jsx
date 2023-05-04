@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../../../UserContext";
 import CustomAlert from "../../shared/customalert/CustomAlert";
-
+import Loading from "../../shared/loading/loading";
 import "./css/ApplicationForm.css";
 
 function ApplicationForm() {
@@ -88,6 +88,10 @@ function ApplicationForm() {
       setIsSubmitting(false);
     }
   };
+  if (isSubmitting) {
+    return <Loading/>
+  }
+
   return (
     <div className="form-container-application">
       <CustomAlert
@@ -160,20 +164,6 @@ function ApplicationForm() {
               </div>
             </div>
             <button className="formbold-btn-application">Ajouter</button>
-
-            <div className="div-loader">
-              <div class="loader">
-                <div class="square" id="sq1"></div>
-                <div class="square" id="sq2"></div>
-                <div class="square" id="sq3"></div>
-                <div class="square" id="sq4"></div>
-                <div class="square" id="sq5"></div>
-                <div class="square" id="sq6"></div>
-                <div class="square" id="sq7"></div>
-                <div class="square" id="sq8"></div>
-                <div class="square" id="sq9"></div>
-              </div>
-            </div>
           </form>
         </div>
       </div>
