@@ -14,10 +14,6 @@ function SignUp() {
     setError("");
   }, [email, password]);
 
-  const handleShowAlert = () => {
-    setShowAlert(true);
-  };
-
   const handleCloseAlert = () => {
     setShowAlert(false);
   };

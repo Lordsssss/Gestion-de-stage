@@ -18,7 +18,7 @@ const internshipSchema = new Schema({
   salary: { type: String, required: true },
   ownerid: { type: mongoose.Types.ObjectId, required: true, ref: "OwnerId" },
   applicantlist: [
-    { type: mongoose.Types.ObjectId, required: true, ref: "StudentId" },
+    { type: mongoose.Types.ObjectId, ref: "StudentId" },
   ],
   creationdate: { type: Date, default: Date.now},
 });

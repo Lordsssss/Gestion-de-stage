@@ -1,12 +1,9 @@
-import React, { useState, useContext, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { getDaysSince } from "../../../utils/getDaySince";
 import SettingForm from "../../forms/settingForm/SettingForm";
-import UserContext from "../../../UserContext";
 import "./css/CardInternship.css";
 
 function CardInternship({ internship }) {
-  const { role, internshipsList, handleInternshipsList } =
-    useContext(UserContext);
   const [showForm, setShowForm] = useState(false);
   const settingsButtonRef = useRef(null);
 

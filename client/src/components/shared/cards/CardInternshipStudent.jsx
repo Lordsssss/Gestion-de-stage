@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { getDaysSince } from "../../../utils/getDaySince";
 import { NavLink } from "react-router-dom";
 import UserContext from "../../../UserContext";
@@ -26,7 +26,7 @@ function CardInternship({ internship }) {
       .catch((error) => {
         console.error(error);
       });
-  }, [])
+  })
 
   return (
     <div className="wrapper">

@@ -26,7 +26,7 @@ function UsersList() {
       }
     }
     fetchData();
-  }, []);
+  },[role]);
 
   if (isLoading) {
     return <div>Loading...</div>;

@@ -14,7 +14,7 @@ function ApplicationForm() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [files, setFiles] = useState([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [setIsSubmitting] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const history = useHistory();
   const token = localStorage.getItem("jwtToken");

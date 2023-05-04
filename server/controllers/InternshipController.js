@@ -161,9 +161,9 @@ const addApplicant = async (req, res, next) => {
 };
 
 const isApplicantInList = async (req, res, next) => {
-  const internshipId = req.query.internshipId;
-  const userId = req.query.userId;
-
+  const internshipId = req.body.internshipId;
+  const userId = req.body.userId;
+  console.log(userId)
   try {
     const internship = await Internship.findById(internshipId);
     if (!internship) {

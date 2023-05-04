@@ -10,7 +10,7 @@ function InternshipList({ isCoordinateur }) {
   axios.defaults.headers.common["x-access-token"] = token;
   const URL = "http://localhost:3001";
   const [isLoading, setIsLoading] = useState(false);
-  const [filter, setFilter] = useState(""); // Add a new state variable for the filter
+  const [filter] = useState(""); // Add a new state variable for the filter
   const [searchTerm, setSearchTerm] = useState("");
 
   const filterAndSearchInternships = (internships) => {

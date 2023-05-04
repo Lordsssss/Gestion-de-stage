@@ -4,7 +4,6 @@ import axios from "axios";
 import "../../users/css/UsersList.css";
 function CardUser({ user }) {
   const [selectedRole, setSelectedRole] = useState(user.usertype);
-
   const URL = "http://localhost:3001";
   const objectDate = new Date(user.creationdate);
   const date =
@@ -66,7 +65,7 @@ function CardUser({ user }) {
       <td className="UserList-td">{user._id}</td>
       <td className="UserList-td">{user.username}</td>
       <td className="UserList-td">{date}</td>
-      <td className="UserList-td">{user.usertype}</td>
+      <td className="UserList-td">{selectedRole}</td>
       <td className="UserList-td">{user.email}</td>
       <td className="UserList-td UserList-delete">
         <button onClick={handleDelete} className="UserList-delete-button">
