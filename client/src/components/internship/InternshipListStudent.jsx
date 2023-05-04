@@ -78,7 +78,7 @@ function InternshipListStudent() {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
+  
   // Render the filter buttons and only display filtered internships
   return (
     <div className="InternshipList">
