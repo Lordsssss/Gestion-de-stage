@@ -5,10 +5,10 @@ import CardUser from "../shared/cards/CardUser";
 
 import "./css/UsersList.css";
 function UsersList() {
+  const URL = process.env.REACT_APP_BASE_URL;
   const [userList, setUserList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { role } = useContext(UserContext);
-  const URL = "http://localhost:3001";
 
   const token = localStorage.getItem("jwtToken");
   axios.defaults.headers.common["x-access-token"] = token;
@@ -26,6 +26,7 @@ function UsersList() {
       }
     }
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[role]);
 
   if (isLoading) {

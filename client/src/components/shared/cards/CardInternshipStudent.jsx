@@ -6,7 +6,7 @@ import "./css/CardInternship.css";
 import axios from "axios";
 
 function CardInternship({ internship }) {
-  const URL = "http://localhost:3001";
+  const URL = process.env.REACT_APP_BASE_URL;
   const { handleInternship, userId } = useContext(UserContext);
   const [isInList, setIsInList] = useState(false);
 

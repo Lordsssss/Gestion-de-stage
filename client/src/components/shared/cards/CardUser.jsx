@@ -4,7 +4,7 @@ import axios from "axios";
 import "../../users/css/UsersList.css";
 function CardUser({ user }) {
   const [selectedRole, setSelectedRole] = useState(user.usertype);
-  const URL = "http://localhost:3001";
+  const URL = process.env.REACT_APP_BASE_URL;
   const objectDate = new Date(user.creationdate);
   const date =
     objectDate.getDate() +

@@ -102,7 +102,7 @@
     align-items: left;
   }
   
-  @media (min-width: 745px) {
+  @media (min-width: 1150px) {
     .nav-links {
       flex-direction: row;
     }

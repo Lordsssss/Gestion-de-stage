@@ -7,7 +7,7 @@ function InternshipUpdateForm() {
   const { internshipsList, handleInternshipsList, internship } =
     useContext(UserContext);
 
-  const URL = "http://localhost:3001";
+    const URL = process.env.REACT_APP_BASE_URL;
   const [companyAdresse, setCompanyAdresse] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [contactEmail, setContactEmail] = useState("");

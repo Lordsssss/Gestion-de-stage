@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 function SettingForm({ internshipId,internship }) {
   const { handleInternshipsList,handleInternship } = useContext(UserContext);
-  const URL = "http://localhost:3001";
+  const URL = process.env.REACT_APP_BASE_URL;
 
   const handleUpdateInternship = () => {
     handleInternship(internship)

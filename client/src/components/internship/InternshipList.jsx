@@ -8,7 +8,7 @@ function InternshipList({ isCoordinateur }) {
   const { userId, internshipsList, handleInternshipsList } = useContext(UserContext); 
   const token = localStorage.getItem("jwtToken");
   axios.defaults.headers.common["x-access-token"] = token;
-  const URL = "http://localhost:3001";
+  const URL = process.env.REACT_APP_BASE_URL;
   const [isLoading, setIsLoading] = useState(false);
   const [filter] = useState(""); // Add a new state variable for the filter
   const [searchTerm, setSearchTerm] = useState("");

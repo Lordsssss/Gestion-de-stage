@@ -5,7 +5,7 @@ import CardStudent from "../shared/cards/CardStudent";
 
 import "./css/StudentList.css";
 function StudentList() {
-  const URL = "http://localhost:3001";
+  const URL = process.env.REACT_APP_BASE_URL;
   const [students, setStudents] = useState([]);
   const [file, setFile] = useState(null); // Use a single file instead of an array
   const token = localStorage.getItem("jwtToken");
@@ -78,7 +78,7 @@ function StudentList() {
       .catch((error) => {
         console.error("Error getting students", error);
       });
-  }, []);
+  }, [URL]);
 
   return (
     <div className="Student">

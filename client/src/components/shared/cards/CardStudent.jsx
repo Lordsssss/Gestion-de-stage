@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 function CardStudent({student}){
-    const URL = "http://localhost:3001";
+  const URL = process.env.REACT_APP_BASE_URL;
     const handleDelete = async (event) => {
         window.location.reload();
         const userId = student._id;

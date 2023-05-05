@@ -5,12 +5,7 @@ function Loading() {
   return (
     <div className="custom-alertL">
       <div className="custom-alert-contentL">
-      <div class="loader">
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-  </div>
+        Envois en cours<div class="custom-loader"></div>
       </div>
     </div>
   );

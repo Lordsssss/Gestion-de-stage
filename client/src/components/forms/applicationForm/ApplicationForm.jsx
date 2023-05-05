@@ -8,7 +8,7 @@ import Loading from "../../shared/loading/loading";
 import "./css/ApplicationForm.css";
 
 function ApplicationForm() {
-  const URL = "http://localhost:3001";
+  const URL = process.env.REACT_APP_BASE_URL;
   const { internship, userId } = useContext(UserContext);
   const [emailUser, setEmailUser] = useState("");
   const [subject, setSubject] = useState("");
@@ -23,7 +23,6 @@ function ApplicationForm() {
   useEffect(() => {
     console.log(internship.companyname);
     if (internship.companyname === undefined) {
-      console.log("test");
       history.go(-1);
     }
   });
@@ -91,7 +90,6 @@ function ApplicationForm() {
   if (isSubmitting) {
     return <Loading/>
   }
-
   return (
     <div className="form-container-application">
       <CustomAlert
