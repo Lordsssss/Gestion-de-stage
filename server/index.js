@@ -5,8 +5,8 @@ const app = express();
 require("dotenv").config();
 
 const mongoose = require("mongoose");
-const PORT = 3001;
-const URL = "mongodb://" + process.env.HOSTCONNECTION + "/internships";
+const PORT = process.env.PORT || 3001;
+const URL = process.env.HOSTCONNECTION + "internships";
 const HttpErreur = require("./models/HttpErreur");
 const UserRoute = require("./routes/UserRoute");
 const InternshipRoute = require("./routes/InternshipRoute");
