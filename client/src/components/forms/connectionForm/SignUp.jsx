@@ -9,6 +9,7 @@ function SignUp() {
   const [usertype, setUserType] = useState("Etudiant");
   const [error, setError] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
+  const URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     setError("");
@@ -22,7 +23,7 @@ function SignUp() {
     e.preventDefault();
     try {
       await axios.post(
-        "http://localhost:3001/api/user/register",
+        URL + "/api/user/register",
         {
           email,
           username,

@@ -7,7 +7,7 @@ function Login() {
   const [email, setLoginEmail] = useState("");
   const [password, setLoginPassword] = useState("");
   const [error, setError] = useState(null);
-
+  const URL = process.env.REACT_APP_BASE_URL;
   useEffect(() => {
     setError("");
   }, [email, password]);
@@ -16,7 +16,7 @@ function Login() {
     setError("");
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/api/user/login", {
+      const response = await axios.post(URL + "/api/user/login", {
         email,
         password,
       });
