@@ -38,13 +38,13 @@ function Accueil() {
             grâce à la participation d'entreprises de la région qui les
             accueillent afin de finaliser leurs formations.
           </span>
-          <NavLink className="accueil-flex-item-links" to="/EspaceEtudiant">
-            Espace Étudiant{" "}
+          <NavLink className="accueil-flex-item-links" to="/EspaceEmployeur">
+            Espace Étudiant
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
-              fillRule="currentColor"
+              fill="currentColor"
               className="bi bi-arrow-right arrow-icon"
               viewBox="0 0 16 16"
             >
@@ -82,7 +82,7 @@ function Accueil() {
             expérience professionnelle formatrice.
           </span>
           <NavLink className="accueil-flex-item-links" to="/EspaceEmployeur">
-            Espace Employeur{" "}
+            Espace Employeur
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -124,13 +124,13 @@ function Accueil() {
             Réseaux et sécurité informatique Développement d'applications
             informatiques
           </span>
-          <NavLink className="accueil-flex-item-links" to="/ProfilStagiaires">
-            Profils stagiaires{" "}
+          <NavLink className="accueil-flex-item-links" to="/EspaceEmployeur">
+            Profils Stagiaires
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
-              fillRule="currentColor"
+              fill="currentColor"
               className="bi bi-arrow-right arrow-icon"
               viewBox="0 0 16 16"
             >

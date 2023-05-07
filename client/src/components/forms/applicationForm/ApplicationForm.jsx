@@ -113,7 +113,7 @@ function ApplicationForm() {
                   Votre email :
                   <input
                     type="email"
-                    placeholder="email"
+                    placeholder="Email"
                     className="formbold-form-input-application"
                     value={emailUser}
                     onChange={(e) => setEmailUser(e.target.value)}
@@ -137,7 +137,7 @@ function ApplicationForm() {
                   Message :
                   <textarea
                     type="text"
-                    placeholder="description"
+                    placeholder="Description"
                     className="formbold-form-textarea-application"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}

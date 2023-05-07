@@ -10,8 +10,12 @@
     color: white;
     display: flex;
 }
+.img{
+    margin-right: 10px;
+}
 .a-link{
     color: white;
+    margin: 2px;
     text-decoration: none;
     font-size: 60px;
 }
@@ -20,8 +24,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 20px;
 }
 .a-copyright{
     text-decoration: none;
     color: gray;
+    margin: 10px;
 }

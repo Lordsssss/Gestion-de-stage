@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "./css/NavLinks.css";
 
 function NavLinks({ role }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const myDivRef = useRef(null);
   useEffect(() => {
     setIsLoggedIn(
       role === "Employeur" || role === "Etudiant" || role === "Coordinateur"
@@ -18,53 +18,58 @@ function NavLinks({ role }) {
           Accueil
         </NavLink>
       </li>
-      <li className="dropdown-content">
-        <div className="nav-links__dropdown">Gestion des stages</div>
-        <ul className="dropdown-menu">
-          <li>
-            <NavLink className="nav-link" to="/EspaceEtudiant">
-              Espace Étudiant
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="nav-link" to="/EspaceEmployeur">
-              Espace Employeurs
-            </NavLink>
-          </li>
-          {role === "Etudiant" && (
-            <li>
-              <NavLink className="nav-link" to={`/${role}/stageDisponible`}>
-                Stages Disponibles
+      <li className="dropdown-content" ref={myDivRef}>
+        <div className="nav-links__dropdown">
+          Gestion des stages
+          <ul className="dropdown-menu">
+            <li className="nav-link-dropdown">
+              <NavLink className="nav-link" to="/EspaceEtudiant">
+                Espace Étudiant
               </NavLink>
             </li>
-          )}
-          {role === "Employeur" && (
-            <li>
-              <NavLink className="nav-link" to={`/${role}/publierstage`}>
-                Publier Stage
+            <li className="nav-link-dropdown">
+              <NavLink className="nav-link" to="/EspaceEmployeur">
+                Espace Employeurs
               </NavLink>
             </li>
-          )}
-          {role === "Coordinateur" && (
-            <>
-              <li>
-                <NavLink className="nav-link" to={`/${role}/listeStage`}>
-                  Liste de Stage
+            {role === "Etudiant" && (
+              <li className="nav-link-dropdown">
+                <NavLink className="nav-link" to={`/${role}/stageDisponible`}>
+                  Stages Disponibles
                 </NavLink>
               </li>
-              <li>
-                <NavLink className="nav-link" to={`/${role}/listeEtudiant`}>
-                  Liste d'Étudiant
+            )}
+            {role === "Employeur" && (
+              <li className="nav-link-dropdown">
+                <NavLink className="nav-link" to={`/${role}/publierstage`}>
+                  Publier Stage
                 </NavLink>
               </li>
-              <li>
-                <NavLink className="nav-link" to={`/${role}/listeUtilisateurs`}>
-                  Liste d'utilisateurs
-                </NavLink>
-              </li>
-            </>
-          )}
-        </ul>
+            )}
+            {role === "Coordinateur" && (
+              <>
+                <li className="nav-link-dropdown">
+                  <NavLink className="nav-link" to={`/${role}/listeStage`}>
+                    Liste de Stage
+                  </NavLink>
+                </li>
+                <li className="nav-link-dropdown">
+                  <NavLink className="nav-link" to={`/${role}/listeEtudiant`}>
+                    Liste d'Étudiant
+                  </NavLink>
+                </li>
+                <li className="nav-link-dropdown">
+                  <NavLink
+                    className="nav-link"
+                    to={`/${role}/listeUtilisateurs`}
+                  >
+                    Liste d'utilisateurs
+                  </NavLink>
+                </li>
+              </>
+            )}
+          </ul>
+        </div>
       </li>
       <li>
         <NavLink className="nav-link" to="/ProfilStagiaires">

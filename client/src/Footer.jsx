@@ -6,6 +6,7 @@ function Footer() {
     <div className="Footer">
       <div className="container">
         <img
+          className="img"
           src="https://www.cmontmorency.qc.ca/wp-content/themes/axial/images/logo-footer.png"
           alt="logo momo"
         ></img>

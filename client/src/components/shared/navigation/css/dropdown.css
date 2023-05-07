@@ -1,0 +1,34 @@
+.dropdown-menu {
+    width: auto;
+    position: absolute;
+    top: 80px;
+    list-style: none;
+    text-align: start;
+}
+
+.dropdown-menu li {
+    cursor: pointer;
+}
+
+
+
+.drop-menu {
+    display: none;
+}
+
+.menu-items {
+    display: grid;
+    text-decoration: none;
+    color: #fff;
+    padding: 105px;
+}
+
+@media screen and (max-width: 1000px) {
+    .dropdown-menu {
+        width: auto;
+        position: relative;
+        top: 20px;
+        list-style: none;
+        text-align: start;
+    }
+}
