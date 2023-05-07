@@ -65,6 +65,6 @@ SALT_KEY=10
 ```js
 REACT_APP_BASE_URL="The backend adress"
 ``` 
-- Démarrez le serveur backend en utilisant ```npm run start:server```
-- Démarrez le serveur frontend en utilisant ```npm run start```
+- Démarrez le serveur backend en utilisant ```npm start``` dans ./server
+- Démarrez le serveur frontend en utilisant ```npm start``` dans ./client
 - Ouvrez votre navigateur et accédez à ```http://localhost:3000```
