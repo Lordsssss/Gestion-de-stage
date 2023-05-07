@@ -16,7 +16,7 @@ function Login() {
     setError("");
     e.preventDefault();
     try {
-      const response = await axios.post("https://gestion-stage-api.vercel.app/api/user/login", {
+      const response = await axios.post(URL + "/api/user/login", {
         email,
         password,
       });

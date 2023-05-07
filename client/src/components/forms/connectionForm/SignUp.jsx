@@ -23,7 +23,7 @@ function SignUp() {
     e.preventDefault();
     try {
       await axios.post(
-        "https://gestion-stage-api.vercel.app/api/user/register",
+        URL + "https://gestion-stage-api.vercel.app/api/user/register",
         {
           email,
           username,
