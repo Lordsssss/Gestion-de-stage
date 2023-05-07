@@ -16,9 +16,7 @@ const StudentRoute = require("./routes/StudentRoute");
 
 
 
-app.use(express.urlencoded());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extemds: true}));
 app.use(express.json());
 app.use(cors());
 
