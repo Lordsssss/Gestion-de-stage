@@ -9,6 +9,7 @@ Ce fichier README présente les fonctionnalités principales de notre site Web, 
 5. Espace étudiant
 6. Liste des profils des stagiaires
 7. FAQ
+
 ## Détails des fonctionnalités
 ### 1. Inscription et connexion des utilisateurs
 Les utilisateurs peuvent s'inscrire en fournissant un email, un nom d'utilisateur, un mot de passe et un type d'utilisateur (étudiant ou employeur). Ils peuvent ensuite se connecter en utilisant leur email et leur mot de passe. Les informations d'authentification sont gérées par des tokens JWT.
@@ -31,17 +32,39 @@ Les employeurs peuvent consulter la liste des profils des étudiants inscrits su
 ### 7. FAQ
 Une section FAQ est disponible pour répondre aux questions fréquemment posées par les utilisateurs.
 
+## Routes de l'API
+### L'API a les routes suivantes :
+
+* ```/api/email``` : pour l'envoi de courriels.
+* ```/api/user``` : pour les opérations CRUD sur les utilisateurs enregistrés.
+* ```/api/internship``` : pour les opérations CRUD sur les offres de stage publiées.
+* ```/api/student``` : pour les opérations CRUD sur les étudiants.
+
 ## Technologies utilisées
-* React.js pour le développement frontend
-* Node.js et Express.js pour le développement backend
-* MongoDB pour la base de données
-* JWT pour la gestion de l'authentification
-* Multer pour le téléchargement de fichiers
-* Nodemailer pour l'envoi d'emails
+* React : pour la partie frontend de l'application.
+* Node.js : pour la partie backend de l'application.
+* Express : pour le serveur Node.js.
+* MongoDB : pour la base de données.
+* JWT : pour la gestion de l'authentification.
+* Axios : pour les requêtes HTTP.
+* React Router : pour la gestion des routes dans React.
 
 ## Comment démarrer
 - Clonez ce dépôt
 - Installez les dépendances en utilisant ```npm install```
+- Dans le dossier du serveur, créez un fichier ```.env``` en suivant ce modèle : 
+```js
+HOSTCONNECTION="DATABASE STRING"
+JWT_SECRET="random 256 bits string"
+EMAIL_PASS="password of the email"
+EMAIL_USER="email adress"
+PORT="The port"
+SALT_KEY=10
+```
+- Dans le dossier du client, créez un fichier ```.env``` en suivant ce modèle : 
+```js
+REACT_APP_BASE_URL="The backend adress"
+``` 
 - Démarrez le serveur backend en utilisant ```npm run start:server```
 - Démarrez le serveur frontend en utilisant ```npm run start```
 - Ouvrez votre navigateur et accédez à ```http://localhost:3000```
