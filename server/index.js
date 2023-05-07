@@ -14,7 +14,7 @@ const EmailSysController = require("./routes/EmailSysRoute");
 const StudentRoute = require("./routes/StudentRoute");
 
 const corsOptions = {
-  origin: "*",
+  origin: "https://gestion-stage.vercel.app",
   optionsSuccessStatus: 200,
 };
 
