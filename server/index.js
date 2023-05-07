@@ -27,7 +27,7 @@ app.use("/api/user", UserRoute);
 app.use("/api/internship", InternshipRoute);
 app.use("/api/student", StudentRoute);
 app.use((requete, reponse, next) => {
-  return next(new HttpErreur("Route non trouvée", 404));
+  return next(new HttpErreur("Route non trouvée", 404 ));
 });
 
 app.use((error, requete, reponse, next) => {
