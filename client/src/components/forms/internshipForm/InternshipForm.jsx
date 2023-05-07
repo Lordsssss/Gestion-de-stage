@@ -38,7 +38,6 @@ function InternshipForm() {
     axios
       .post(URL + "/api/internship/add-internship", data)
       .then((response) => {
-        console.log(response.data);
         setShowForm(false);
         handleInternshipsList([...internshipsList, response.data.internship]);
       })

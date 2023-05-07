@@ -13,9 +13,6 @@ const InternshipRoute = require("./routes/InternshipRoute");
 const EmailSysController = require("./routes/EmailSysRoute");
 const StudentRoute = require("./routes/StudentRoute");
 
-
-
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());

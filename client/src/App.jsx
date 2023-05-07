@@ -107,7 +107,6 @@ function App() {
     setInternshipList(newList)
   }
   const handleInternship = (newInternship) => {
-    console.log(newInternship)
     setInternship(newInternship);
   }
 

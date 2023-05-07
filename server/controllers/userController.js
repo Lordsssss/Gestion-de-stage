@@ -100,7 +100,6 @@ const updateUserRole = async (request, response, next) => {
 const deleteUser = async (request, response, next) => {
   try{
     const userId  = request.body.userId;
-    console.log(userId)
     await Internship.deleteMany({ ownerid: userId });
 
     await User.findByIdAndDelete(userId);

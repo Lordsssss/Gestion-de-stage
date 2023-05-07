@@ -23,8 +23,6 @@ function Login() {
       handleLogin(response.data.token);
       handleRole(response.data.userType);
       handleUserId(response.data.userid);
-      console.log(response.data.token);
-      console.log(response.data.userid);
     } catch (error) {
       setError("Invalid credentials.");
       console.log(error);

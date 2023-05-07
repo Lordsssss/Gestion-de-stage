@@ -62,7 +62,6 @@ function InternshipUpdateForm() {
         params: { internshipId: internshipId },
       })
       .then((response) => {
-        console.log(response.data);
         handleInternshipsList([
           ...internshipsList,
           response.data.updatedInternship,

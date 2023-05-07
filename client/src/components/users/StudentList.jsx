@@ -28,7 +28,6 @@ function StudentList() {
   };
   const handleDeleteAllStudent = () => {
     axios.post(URL + "/api/student/delete-all-student").then((response) => {
-      console.log(response.data);
       setFile(null);
       axios
           .get(`${URL}/api/student/student-list`)
@@ -52,7 +51,6 @@ function StudentList() {
     axios
       .post(`${URL}/api/student/upload-csv`, formData)
       .then((response) => {
-        console.log(response.data);
         setFile(null);
         // Retrieve updated student list
         axios

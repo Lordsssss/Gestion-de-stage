@@ -21,7 +21,6 @@ function ApplicationForm() {
   axios.defaults.headers.common["x-access-token"] = token;
 
   useEffect(() => {
-    console.log(internship.companyname);
     if (internship.companyname === undefined) {
       history.go(-1);
     }
@@ -76,9 +75,6 @@ function ApplicationForm() {
         internshipId: internship._id,
         userId: userId,
       })
-        .then((response) => {
-          console.log(response)
-        })
         .catch((error) => {
           console.error(error);
         });
