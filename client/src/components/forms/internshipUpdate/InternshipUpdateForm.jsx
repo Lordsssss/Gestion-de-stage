@@ -17,6 +17,13 @@ function InternshipUpdateForm() {
   const [internshipType, setInternshipType] = useState("");
   const [nbPositions, setNbPositions] = useState("");
   const [internshipSalary, setInternshipSalary] = useState("");
+
+  useEffect(() => {
+    if (internship.companyname === undefined) {
+      history.go(-1);
+    }
+  });
+
   useEffect(() => {
     try {
       setCompanyAdresse(internship.companyadresse);
