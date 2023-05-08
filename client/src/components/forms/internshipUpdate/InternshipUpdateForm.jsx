@@ -19,7 +19,7 @@ function InternshipUpdateForm() {
   const [nbPositions, setNbPositions] = useState("");
   const [internshipSalary, setInternshipSalary] = useState("");
   const history = useHistory();
-  
+
   useEffect(() => {
     if (internship.companyname === undefined) {
       history.go(-1);
@@ -49,7 +49,7 @@ function InternshipUpdateForm() {
     internship.internshipdescription,
     internship.internshiptype,
     internship.nbpositions,
-    internship.internshipsalary,
+    internship.salary,
   ]);
 
   const handleSubmit = async (e) => {

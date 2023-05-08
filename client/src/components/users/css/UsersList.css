@@ -9,6 +9,7 @@
     border-spacing: 0;
     table-layout: fixed;
     margin: 10px;
+    overflow: auto;
 }
 .UserList-header {
     border: 1px solid #ddd;
