@@ -99,9 +99,6 @@ function InternshipList({ isCoordinateur }) {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (isLoading) {
     return <Loading/>
   }
   return (
