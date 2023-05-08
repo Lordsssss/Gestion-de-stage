@@ -27,11 +27,6 @@ function NavLinks({ role }) {
                 Espace Étudiant
               </NavLink>
             </li>
-            <li className="nav-link-dropdown">
-              <NavLink className="nav-link" to="/EspaceEmployeur">
-                Espace Employeurs
-              </NavLink>
-            </li>
             {role === "Etudiant" && (
               <li className="nav-link-dropdown">
                 <NavLink className="nav-link" to={`/${role}/stageDisponible`}>

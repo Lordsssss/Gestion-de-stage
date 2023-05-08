@@ -45,6 +45,7 @@ function InternshipForm() {
         console.log(error);
       });
   };
+  
   const handleButtonClick = () => {
     setShowForm(!showForm);
   };
@@ -57,7 +58,7 @@ function InternshipForm() {
       {showForm && (
         <div className="formbold-main-wrapper">
           <div className="formbold-form-wrapper">
-            <form >
+            <form onSubmit={handleSubmit}>
               <div class="formbold-form-title">
                 <h2 class="">Formulaire d'inscription de milieu de stage</h2>
                 <p>

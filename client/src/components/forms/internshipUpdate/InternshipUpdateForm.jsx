@@ -66,7 +66,7 @@ function InternshipUpdateForm() {
           ...internshipsList,
           response.data.updatedInternship,
         ]);
-        alert("Registration successful!");
+        alert("Modification réussi !");
       })
       .catch((error) => {
         console.log(error);
