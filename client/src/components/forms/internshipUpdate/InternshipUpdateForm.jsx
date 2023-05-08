@@ -77,20 +77,20 @@ function InternshipUpdateForm() {
     <div className="form-container-update">
       <div className="formbold-main-wrapper-update">
         <div className="formbold-form-wrapper-update">
-          <form className="form-update" onSubmit={handleSubmit}>
-            <div className="formbold-form-title-update">
+          <form className="form" onSubmit={handleSubmit}>
+            <div className="formbold-form-title">
               <h2 className="">
                 Modifier le stage : {internship.internshiptype}
               </h2>
             </div>
-            <div className="formbold-input-flex-update">
+            <div className="formbold-input-flex">
               <div>
-                <label className="inputText-update">
+                <label className="inputText">
                   Nom de l'Entreprise :
                   <input
                     type="text"
                     placeholder="Microsoft"
-                    className="formbold-form-input-update"
+                    className="formbold-form-input"
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
                     required
@@ -98,12 +98,12 @@ function InternshipUpdateForm() {
                 </label>
               </div>
               <div>
-                <label className="inputText-update">
+                <label className="inputText">
                   Adresse de l'Entreprise :
                   <input
                     type="text"
                     placeholder="1234 rue Boby, Montreal"
-                    className="formbold-form-input-update"
+                    className="formbold-form-input"
                     value={companyAdresse}
                     onChange={(e) => setCompanyAdresse(e.target.value)}
                     required
@@ -112,14 +112,14 @@ function InternshipUpdateForm() {
               </div>
             </div>
 
-            <div className="formbold-input-flex-update">
+            <div className="formbold-input-flex">
               <div>
-                <label className="inputText-update">
+                <label className="inputText">
                   Nom du recruteur :
                   <input
                     type="text"
                     placeholder="Bob smith"
-                    className="formbold-form-input-update"
+                    className="formbold-form-input"
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value)}
                     required
@@ -127,12 +127,12 @@ function InternshipUpdateForm() {
                 </label>
               </div>
               <div>
-                <label className="inputText-update">
+                <label className="inputText">
                   Telephone du recruteur :
                   <input
                     type="text"
                     placeholder="123-123-1234"
-                    className="formbold-form-input-update"
+                    className="formbold-form-input"
                     value={contactPhone}
                     onChange={(e) => setContactPhone(e.target.value)}
                     required
@@ -141,13 +141,13 @@ function InternshipUpdateForm() {
               </div>
             </div>
 
-            <div className="formbold-mb-3-update">
-              <label className="inputText-update">
+            <div className="formbold-mb-3">
+              <label className="inputText">
                 Email du recruteur :
                 <input
                   type="email"
                   placeholder="johnsmith@gmail.com"
-                  className="formbold-form-input-update"
+                  className="formbold-form-input"
                   value={contactEmail}
                   onChange={(e) => setContactEmail(e.target.value)}
                   required
@@ -155,11 +155,11 @@ function InternshipUpdateForm() {
               </label>
             </div>
 
-            <div className="formbold-mb-3-update">
-              <label className="inputText-update">
+            <div className="formbold-mb-3">
+              <label className="inputText">
                 Type du Stage :
                 <select
-                  className="formbold-form-input-update"
+                  className="formbold-form-input"
                   value={internshipType}
                   placeholder="Choisissez une option"
                   onChange={(e) => setInternshipType(e.target.value)}
@@ -175,14 +175,14 @@ function InternshipUpdateForm() {
               </label>
             </div>
 
-            <div className="formbold-input-flex-update">
+            <div className="formbold-input-flex">
               <div>
-                <label className="inputText-update">
+                <label className="inputText">
                   Salaire :
                   <input
                     type="text"
                     placeholder="De 68 393 $ à 139 707 $"
-                    className="formbold-form-input-update"
+                    className="formbold-form-input"
                     value={internshipSalary}
                     onChange={(e) => setInternshipSalary(e.target.value)}
                     required
@@ -190,12 +190,12 @@ function InternshipUpdateForm() {
                 </label>
               </div>
               <div>
-                <label className="inputText-update">
+                <label className="inputText">
                   Nombre de poste :
                   <input
                     type="number"
                     placeholder="3"
-                    className="formbold-form-input-update"
+                    className="formbold-form-input"
                     value={nbPositions}
                     onChange={(e) => setNbPositions(e.target.value)}
                     required
@@ -206,12 +206,12 @@ function InternshipUpdateForm() {
 
             <div>
               <div>
-                <label className="inputText-update">
+                <label className="inputText">
                   Description du Stage :
                   <textarea
                     type="text"
                     placeholder="description"
-                    className="formbold-form-textarea-update"
+                    className="formbold-form-textarea"
                     value={internshipDescription}
                     onChange={(e) => setInternshipDescription(e.target.value)}
                     required
@@ -219,7 +219,7 @@ function InternshipUpdateForm() {
                 </label>
               </div>
             </div>
-            <button className="formbold-btn-update">Ajouter</button>
+            <button className="formbold-btn">Ajouter</button>
           </form>
         </div>
       </div>

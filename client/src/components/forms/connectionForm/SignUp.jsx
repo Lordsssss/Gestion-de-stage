@@ -65,6 +65,7 @@ function SignUp() {
           required=""
           value={username}
           onChange={(e) => setSignUpUserName(e.target.value)}
+          className="inputlog"
         />
         <input
           type="email"
@@ -74,6 +75,7 @@ function SignUp() {
           value={email}
           onChange={(e) => setSignUpEmail(e.target.value)}
           autoComplete="new-email"
+          className="inputlog"
         />
         <input
           type="password"
@@ -83,6 +85,7 @@ function SignUp() {
           value={password}
           onChange={(e) => setSignUpPassword(e.target.value)}
           autoComplete="new-password"
+          className="inputlog"
         />
         <div className="SignUp__wrapper">
           <label className="radio-label">
@@ -93,6 +96,7 @@ function SignUp() {
               value="Etudiant"
               checked={usertype === "Etudiant"}
               onChange={(e) => setUserType(e.target.value)}
+              className="inputlab"
             />
             <span>Étudiant</span>
             <div className="check"></div>

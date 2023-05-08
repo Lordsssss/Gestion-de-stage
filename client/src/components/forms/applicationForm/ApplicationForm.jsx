@@ -103,45 +103,45 @@ function ApplicationForm() {
               </h2>
               <h3>{internship.contactemail}</h3>
             </div>
-            <div className="formbold-mb-3-application">
-              <div className="formbold-mb-3-application">
-                <label className="inputText-application">
+            <div className="formbold-mb-3">
+              <div className="formbold-mb-3">
+                <label className="inputText">
                   Votre email :
                   <input
                     type="email"
                     placeholder="Email"
-                    className="formbold-form-input-application"
+                    className="formbold-form-input"
                     value={emailUser}
                     onChange={(e) => setEmailUser(e.target.value)}
                     required
                   />
                 </label>
-                <label className="inputText-application">
+                <label className="inputText">
                   Sujet de l'Email
                   <input
                     type="text"
                     placeholder="Sujet"
-                    className="formbold-form-input-application"
+                    className="formbold-form-input"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
                     required
                   />
                 </label>
               </div>
-              <div className="formbold-mb-3-application">
-                <label className="inputText-application">
+              <div className="formbold-mb-3">
+                <label className="inputText">
                   Message :
                   <textarea
                     type="text"
                     placeholder="Description"
-                    className="formbold-form-textarea-application"
+                    className="formbold-form-textarea"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     required
                   />
                 </label>
               </div>
-              <label className="inputText-application">
+              <label className="inputText">
                 CV ou/et lettre de motivation :
               </label>
               <div
@@ -157,7 +157,7 @@ function ApplicationForm() {
                 )}
               </div>
             </div>
-            <button className="formbold-btn-application">Ajouter</button>
+            <button className="formbold-btn">Ajouter</button>
           </form>
         </div>
       </div>

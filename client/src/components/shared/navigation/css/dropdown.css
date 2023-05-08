@@ -23,7 +23,7 @@
     padding: 105px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
     .dropdown-menu {
         width: auto;
         position: relative;

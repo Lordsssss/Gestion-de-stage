@@ -57,26 +57,32 @@ function InternshipForm() {
       {showForm && (
         <div className="formbold-main-wrapper">
           <div className="formbold-form-wrapper">
-            <form className="form" onSubmit={handleSubmit}>
-              <div className="formbold-form-title">
-                <h2 className="">Ajouter un Stage</h2>
+            <form >
+              <div class="formbold-form-title">
+                <h2 class="">Formulaire d'inscription de milieu de stage</h2>
+                <p>
+                  Stages réguliers ayant lieu à la session hiver
+                  Les stages sont du 21 janvier au 3 mai 2019
+                  (il est toutefois possible après entente avec le coordonnateur de débuter le stage un peu plus tôt)
+                  Sur réception de ce formulaire, le coordonnateur des stages
+                  entrera en contact avec le responsable en entreprise pour discuter du stage.
+                  Veuillez vous référez à la page Profil de sortie pour connaître le profil de sortie et les compétences des étudiants.
+                </p>
               </div>
-              <div className="formbold-mb-3">
-                <div>
-                  <label className="inputText">
-                    Titre du stage :
-                    <input
-                      type="text"
-                      placeholder="2023 Recherche en Apprentissage Automatique"
-                      className="formbold-form-input"
-                      value={internshipTitle}
-                      onChange={(e) => setInternshipTitle(e.target.value)}
-                      required
-                    />
-                  </label>
-                </div>
+              <div class="formbold-mb-3">
+                <label className="inputText">
+                  Titre du stage :
+                  <input
+                    type="text"
+                    placeholder="2023 Recherche en Apprentissage Automatique"
+                    className="formbold-form-input"
+                    value={internshipTitle}
+                    onChange={(e) => setInternshipTitle(e.target.value)}
+                    required
+                  />
+                </label>
               </div>
-              <div className="formbold-input-flex">
+              <div class="formbold-input-flex">
                 <div>
                   <label className="inputText">
                     Nom de l'Entreprise :
@@ -91,6 +97,22 @@ function InternshipForm() {
                   </label>
                 </div>
                 <div>
+                <label className="inputText">
+                  Telephone du recruteur :
+                  <input
+                    type="text"
+                    placeholder="123-123-1234"
+                    className="formbold-form-input"
+                    value={contactPhone}
+                    onChange={(e) => setContactPhone(e.target.value)}
+                    required
+                  />
+                </label>
+                </div>
+              </div>
+
+              <div class="formbold-input-flex">
+                <div>
                   <label className="inputText">
                     Adresse de l'Entreprise :
                     <input
@@ -103,9 +125,6 @@ function InternshipForm() {
                     />
                   </label>
                 </div>
-              </div>
-
-              <div className="formbold-input-flex">
                 <div>
                   <label className="inputText">
                     Nom du recruteur :
@@ -119,22 +138,8 @@ function InternshipForm() {
                     />
                   </label>
                 </div>
-                <div>
-                  <label className="inputText">
-                    Telephone du recruteur :
-                    <input
-                      type="text"
-                      placeholder="123-123-1234"
-                      className="formbold-form-input"
-                      value={contactPhone}
-                      onChange={(e) => setContactPhone(e.target.value)}
-                      required
-                    />
-                  </label>
-                </div>
               </div>
-
-              <div className="formbold-mb-3">
+              <div class="formbold-mb-3">
                 <label className="inputText">
                   Email du recruteur :
                   <input
@@ -148,11 +153,11 @@ function InternshipForm() {
                 </label>
               </div>
 
-              <div className="formbold-mb-3">
-                <label className="inputText-update">
+              <div class="formbold-mb-3">
+                <label className="inputText">
                   Type du Stage :
                   <select
-                    className="formbold-form-input-update"
+                    className="formbold-form-input"
                     value={internshipType}
                     placeholder="Choisissez une option"
                     onChange={(e) => setInternshipType(e.target.value)}
@@ -171,7 +176,7 @@ function InternshipForm() {
                 </label>
               </div>
 
-              <div className="formbold-input-flex">
+              <div class="formbold-input-flex">
                 <div>
                   <label className="inputText">
                     Salaire :
@@ -186,12 +191,12 @@ function InternshipForm() {
                   </label>
                 </div>
                 <div>
-                  <label className="inputText-update">
+                  <label className="inputText">
                     Nombre de poste :
                     <input
                       type="number"
                       placeholder="3"
-                      className="formbold-form-input-update"
+                      className="formbold-form-input"
                       value={nbPositions}
                       onChange={(e) => setNbPositions(e.target.value)}
                       required
@@ -200,20 +205,18 @@ function InternshipForm() {
                 </div>
               </div>
 
-              <div>
-                <div>
-                  <label className="inputText">
-                    Description du Stage :
-                    <textarea
-                      type="text"
-                      placeholder="description"
-                      className="formbold-form-textarea"
-                      value={internshipDescription}
-                      onChange={(e) => setInternshipDescription(e.target.value)}
-                      required
-                    />
-                  </label>
-                </div>
+              <div class="formbold-mb-3">
+                <label className="inputText">
+                  Description du Stage :
+                  <textarea
+                    type="text"
+                    placeholder="description"
+                    className="formbold-form-textarea"
+                    value={internshipDescription}
+                    onChange={(e) => setInternshipDescription(e.target.value)}
+                    required
+                  />
+                </label>
               </div>
               <button className="formbold-btn">Ajouter</button>
             </form>

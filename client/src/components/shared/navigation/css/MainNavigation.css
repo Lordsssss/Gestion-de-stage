@@ -24,7 +24,7 @@
     height: 100%;
   }
   
-  @media (min-width: 1150px) {
+  @media (min-width: 800px) {
     .main-navigation__menu-btn {
       display: none;
     }

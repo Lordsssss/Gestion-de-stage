@@ -12,3 +12,8 @@ body {
 code {
   font-family: 'Open Sans Condensed', sans-serif;
 }
+@media (min-width: 1150px) {
+  .main-header {
+    justify-content: space-between;
+  }
+}

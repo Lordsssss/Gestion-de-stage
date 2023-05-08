@@ -32,7 +32,7 @@ function Login() {
   return (
     <div className="login">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="chk" aria-hidden="true">
+        <label className="labellog" htmlFor="chk" aria-hidden="true">
           Login
         </label>
         {error && <p className="error">{error}</p>}
@@ -43,6 +43,7 @@ function Login() {
           required=""
           value={email}
           onChange={(e) => setLoginEmail(e.target.value)}
+          className="inputlog"
         />
         <input
           type="password"
@@ -51,6 +52,7 @@ function Login() {
           required=""
           value={password}
           onChange={(e) => setLoginPassword(e.target.value)}
+          className="inputlog"
         />
         <button>Login</button>
       </form>
