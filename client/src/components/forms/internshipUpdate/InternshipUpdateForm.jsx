@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import "./css/InternshipUpdateForm.css";
 import UserContext from "../../../UserContext";
+import { useHistory } from "react-router-dom";
 
 function InternshipUpdateForm() {
   const { internshipsList, handleInternshipsList, internship } =
@@ -17,7 +18,8 @@ function InternshipUpdateForm() {
   const [internshipType, setInternshipType] = useState("");
   const [nbPositions, setNbPositions] = useState("");
   const [internshipSalary, setInternshipSalary] = useState("");
-
+  const history = useHistory();
+  
   useEffect(() => {
     if (internship.companyname === undefined) {
       history.go(-1);
