@@ -42,7 +42,6 @@ function CardUser({ user }) {
       password: password,
       usertype: newRole,
     };
-
     try {
       const response = await axios.patch(
         URL + "/api/user/update-role",
@@ -52,7 +51,6 @@ function CardUser({ user }) {
       if (!response.data) {
         throw new Error(response.statusText);
       }
-
       setSelectedRole(newRole);
     } catch (error) {
       console.error(error);
