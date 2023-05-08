@@ -3,6 +3,7 @@ import axios from "axios";
 import CardInternshipStudent from "../shared/cards/CardInternshipStudent";
 import UserContext from "../../UserContext";
 import "./css/InternshipListStudent.css";
+import Loading from "../shared/loading/loading";
 
 function InternshipListStudent() {
   const { userId, internshipsList, handleInternshipsList } =
@@ -76,7 +77,7 @@ function InternshipListStudent() {
   }, [userId]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading/>
   }
   
   // Render the filter buttons and only display filtered internships

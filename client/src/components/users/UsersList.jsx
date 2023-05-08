@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import UserContext from "../../UserContext";
 import CardUser from "../shared/cards/CardUser";
+import Loading from "../shared/loading/loading";
 
 import "./css/UsersList.css";
 function UsersList() {
@@ -30,7 +31,7 @@ function UsersList() {
   },[role]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading/>
   }
   return (
     <div className="UserList">

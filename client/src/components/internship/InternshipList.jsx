@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import CardInternship from "../shared/cards/CardInternship";
 import UserContext from "../../UserContext";
+import Loading from "../shared/loading/loading"
 
 import './InternshipListStudent'
 function InternshipList({ isCoordinateur }) {
@@ -53,7 +54,6 @@ function InternshipList({ isCoordinateur }) {
 
     return filteredInternships;
   };
-
   useEffect(() => {
     if(!isCoordinateur){
       async function fetchData() {
@@ -100,6 +100,9 @@ function InternshipList({ isCoordinateur }) {
 
   if (isLoading) {
     return <div>Loading...</div>;
+  }
+  if (isLoading) {
+    return <Loading/>
   }
   return (
     
