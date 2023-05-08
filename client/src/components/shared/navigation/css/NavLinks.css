@@ -2,7 +2,6 @@
     list-style: none;
     margin: 9px;
     padding: 9px;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -51,7 +50,6 @@
     top: 43px;
     left: 0;
     background-color: white;
-    
     border: 1px solid #ddd;
     z-index: 1;
     justify-content: left;
