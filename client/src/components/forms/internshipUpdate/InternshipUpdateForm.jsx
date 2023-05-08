@@ -27,7 +27,7 @@ function InternshipUpdateForm() {
       setInternshipDescription(internship.internshipdescription);
       setInternshipType(internship.internshiptype);
       setNbPositions(internship.nbpositions);
-      setInternshipSalary(internship.internshipsalary);
+      setInternshipSalary(internship.salary);
     } catch (er) {
       console.log(er);
     }
