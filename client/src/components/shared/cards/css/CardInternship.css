@@ -8,6 +8,7 @@
     box-shadow: 0 30px 30px -25px #a7a7a7;
     border-radius: 3px;
     max-width: 900px;
+    max-height: 1300px;
     min-height: 300px;
     height: auto;
     margin: 10px;
@@ -20,6 +21,8 @@
 .description-text{
     color: #595959;
     text-align: justify;
+    max-width: 900px;
+    width: auto;
     overflow-wrap: break-word;
 }
 .card-text{
@@ -27,8 +30,10 @@
 }
 .card-info{
     display: flex;
+    flex-wrap: wrap;
 }
 .card-info-element{
+    overflow: hidden;
     margin: 3px;
     display: flex;
     align-items: center;

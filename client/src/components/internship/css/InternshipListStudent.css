@@ -54,6 +54,7 @@
   justify-content: center;
   align-items: center;
   height: auto;
+  padding-top: 10%;
 }
 
 .search-input {
@@ -85,4 +86,11 @@
   background-position: 100% center;
   border:solid #1f2f53 1px;
   border-radius: 5px;
+}
+
+@media(min-width: 1150px) {
+.list {
+  position: relative;
+  justify-content: center;
+}
 }
