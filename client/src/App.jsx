@@ -10,7 +10,6 @@ import Accueil from "./components/staticPages/Accueil";
 import FAQ from "./components/staticPages/FAQ";
 import EspaceEtudiant from "./components/staticPages/EspaceEtudiant";
 import ProfilStagiaires from "./components/staticPages/ProfilStagiaires";
-import PrivateRoute from "./components/shared/privateRoute/PrivateRoute";
 import Connection from "./components/forms/connectionForm/Connection";
 import Boss from "./components/internship/Boss";
 import jwt_decode from 'jwt-decode';
@@ -21,6 +20,7 @@ import Student from "./components/internship/Student";
 import ApplicationForm from "./components/forms/applicationForm/ApplicationForm";
 import UsersList from "./components/users/UsersList";
 import StudentList from "./components/users/StudentList";
+import NavbarApp from "./components/shared/navigation/NavBarApp";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -126,7 +126,7 @@ function App() {
       }}
     >
       <Router>
-        <PrivateRoute role={role} />
+      <NavbarApp role={role}/>
         <main className="app">
           <Switch>
             <Route path="/FAQ" exact>
