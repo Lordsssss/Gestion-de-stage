@@ -45,7 +45,7 @@ function InternshipForm() {
         console.log(error);
       });
   };
-  
+
   const handleButtonClick = () => {
     setShowForm(!showForm);
   };
@@ -57,17 +57,23 @@ function InternshipForm() {
       </button>
       {showForm && (
         <div className="formbold-main-wrapper">
+          <>
+            {/* Author: FormBold Team */}
+            {/* Learn More: https://formbold.com */}
+          </>
           <div className="formbold-form-wrapper">
             <form onSubmit={handleSubmit}>
               <div class="formbold-form-title">
                 <h2 class="">Formulaire d'inscription de milieu de stage</h2>
                 <p>
-                  Stages réguliers ayant lieu à la session hiver
-                  Les stages sont du 21 janvier au 3 mai 2019
-                  (il est toutefois possible après entente avec le coordonnateur de débuter le stage un peu plus tôt)
-                  Sur réception de ce formulaire, le coordonnateur des stages
-                  entrera en contact avec le responsable en entreprise pour discuter du stage.
-                  Veuillez vous référez à la page Profil de sortie pour connaître le profil de sortie et les compétences des étudiants.
+                  Stages réguliers ayant lieu à la session hiver Les stages sont
+                  du 21 janvier au 3 mai 2019 (il est toutefois possible après
+                  entente avec le coordonnateur de débuter le stage un peu plus
+                  tôt) Sur réception de ce formulaire, le coordonnateur des
+                  stages entrera en contact avec le responsable en entreprise
+                  pour discuter du stage. Veuillez vous référez à la page Profil
+                  de sortie pour connaître le profil de sortie et les
+                  compétences des étudiants.
                 </p>
               </div>
               <div class="formbold-mb-3">
@@ -98,17 +104,17 @@ function InternshipForm() {
                   </label>
                 </div>
                 <div>
-                <label className="inputText">
-                  Telephone du recruteur :
-                  <input
-                    type="text"
-                    placeholder="123-123-1234"
-                    className="formbold-form-input"
-                    value={contactPhone}
-                    onChange={(e) => setContactPhone(e.target.value)}
-                    required
-                  />
-                </label>
+                  <label className="inputText">
+                    Telephone du recruteur :
+                    <input
+                      type="text"
+                      placeholder="123-123-1234"
+                      className="formbold-form-input"
+                      value={contactPhone}
+                      onChange={(e) => setContactPhone(e.target.value)}
+                      required
+                    />
+                  </label>
                 </div>
               </div>
 
