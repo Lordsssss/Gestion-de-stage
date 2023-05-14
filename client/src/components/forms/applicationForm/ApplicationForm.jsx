@@ -56,6 +56,7 @@ function ApplicationForm() {
 
     const formData = new FormData();
     formData.append("email", internship.contactemail);
+    formData.append("titleInternship",internship.internshiptitle)
     formData.append("emailuser", emailUser);
     formData.append("subject", subject);
     formData.append("message", message);
