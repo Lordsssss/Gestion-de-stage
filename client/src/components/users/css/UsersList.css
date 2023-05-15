@@ -2,14 +2,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: auto;
 }
 .UserTable{
     padding: 10px;
-    border-collapse: collapse;
     border-spacing: 0;
-    table-layout: fixed;
     margin: 10px;
-    overflow: auto;
 }
 .UserList-header {
     border: 1px solid #ddd;
@@ -74,4 +72,9 @@
 }
 .select:focus{
     cursor: pointer;
+}
+@media (max-width: 990px) {
+    .div-userTable{
+        margin-top: 300px;
+    }
 }
