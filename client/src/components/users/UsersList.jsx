@@ -27,11 +27,11 @@ function UsersList() {
       }
     }
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[role]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [role]);
 
   if (isLoading) {
-    return <Loading/>
+    return <Loading />
   }
   return (
     <div className="UserList">
@@ -57,8 +57,8 @@ function UsersList() {
               Supprimer
             </th>
             <th className="UserList-th" scope="col">
-            Changer role
-          </th>
+              Changer role
+            </th>
           </tr>
         </thead>
         <tbody>

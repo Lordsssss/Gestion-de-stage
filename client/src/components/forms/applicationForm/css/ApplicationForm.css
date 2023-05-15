@@ -3,7 +3,7 @@
 .form-container-application {
   position: relative;
   justify-content: center;
-  margin: 60px;
+  margin: 30px;
 }
 .formbold-form-wrapper-application {
   position: flex;
@@ -11,7 +11,7 @@
   z-index: 1;
   padding: 10px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  width: 600px;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: center;

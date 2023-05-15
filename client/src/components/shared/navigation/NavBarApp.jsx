@@ -24,7 +24,7 @@ function NavBarApp({ role }) {
             <img
               src="https://www.cmontmorency.qc.ca/wp-content/uploads/2018/03/Logomo_1400.png"
               alt="Logo"
-              width="250px"
+              className="img"
             />
           </Link>
         </div>
