@@ -65,8 +65,8 @@ const allUsers = async (requete, reponse, next) => {
 };
 
 const updateUserRole = async (request, response, next) => {
+  console.log("test")
   const { userId, password, usertype } = request.body;
-
   let user;
   try {
     user = await User.findById(userId);
