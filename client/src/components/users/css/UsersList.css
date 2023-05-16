@@ -2,18 +2,18 @@
     display: flex;
     position: relative;
     overflow: auto;
+    justify-content: center;
 }
 .UserTable{
-    padding: 10px;
-    border-spacing: 0;
+    border-collapse: separate;
+    border-spacing: 0 2px;
     margin: 10px;
 }
 .UserList-header {
     border: 1px solid #ddd;
-}
-
-.UserList-header:nth-child(even) {
-    background: #cdcdcd;
+    background-color: white;
+    padding: .625em;
+    border-radius: 10px !important;
 }
 
 .UserList-td {
@@ -23,6 +23,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    border: solid,#e5e7eb,0.1rem;
 }
 
 .UserList-th {
@@ -75,5 +76,11 @@
 @media (max-width: 990px) {
     .div-userTable{
         margin-top: 300px;
+    }
+    .UserList {
+        display: flex;
+        position: relative;
+        overflow: auto;
+        justify-content:initial;
     }
 }

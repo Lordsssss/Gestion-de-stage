@@ -38,7 +38,7 @@ function Accueil() {
             grâce à la participation d'entreprises de la région qui les
             accueillent afin de finaliser leurs formations.
           </span>
-          <NavLink className="accueil-flex-item-links" to="/EspaceEmployeur">
+          <NavLink className="accueil-flex-item-links" to="/EspaceEtudiant">
             Espace Étudiant
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +124,7 @@ function Accueil() {
             Réseaux et sécurité informatique Développement d'applications
             informatiques
           </span>
-          <NavLink className="accueil-flex-item-links" to="/EspaceEmployeur">
+          <NavLink className="accueil-flex-item-links" to="/ProfilStagiaires">
             Profils Stagiaires
             <svg
               xmlns="http://www.w3.org/2000/svg"
