@@ -49,7 +49,7 @@ const login = async (req, res) => {
     const token = jwt.sign({ _id: user._id,usertype:user.usertype }, process.env.JWT_SECRET);
     const userid = user._id;
     if(!user.verified){
-      return res.status(403).send("Compte n'est vérifier")
+      return res.status(403).send("Compte n'est pas vérifier")
     }
     res.send({ token,userType,userid });
   } catch (error) {

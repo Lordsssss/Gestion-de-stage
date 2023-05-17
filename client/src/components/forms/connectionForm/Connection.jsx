@@ -39,7 +39,7 @@ function Connection() {
       handleRole(response.data.userType);
       handleUserId(response.data.userid);
     } catch (error) {
-      setError("Invalid credentials.");
+      setError(error.response.data);
       console.log(error);
     }
   };
