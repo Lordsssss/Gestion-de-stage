@@ -21,6 +21,7 @@ import ApplicationForm from "./components/forms/applicationForm/ApplicationForm"
 import UsersList from "./components/users/UsersList";
 import StudentList from "./components/users/StudentList";
 import NavbarApp from "./components/shared/navigation/NavBarApp";
+import ConnectionTempo from "./components/forms/connectionForm/ConnectionTempo";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -138,7 +139,7 @@ function App() {
               <ProfilStagiaires />
             </Route>
             <Route path="/Login">
-              {token ? <Redirect to="/" /> : <Connection />}
+              {token ? <Redirect to="/" /> : <><ConnectionTempo/></>}
             </Route>
             <Route path="/Employeur/publierstage">
               <Boss isCoordinateur={false} />
