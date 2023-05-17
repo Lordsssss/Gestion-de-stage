@@ -10,7 +10,6 @@ import Accueil from "./components/staticPages/Accueil";
 import FAQ from "./components/staticPages/FAQ";
 import EspaceEtudiant from "./components/staticPages/EspaceEtudiant";
 import ProfilStagiaires from "./components/staticPages/ProfilStagiaires";
-import Connection from "./components/forms/connectionForm/Connection";
 import Boss from "./components/internship/Boss";
 import jwt_decode from "jwt-decode";
 import Footer from "./Footer";
@@ -21,7 +20,7 @@ import ApplicationForm from "./components/forms/applicationForm/ApplicationForm"
 import UsersList from "./components/users/UsersList";
 import StudentList from "./components/users/StudentList";
 import NavbarApp from "./components/shared/navigation/NavBarApp";
-import ConnectionTempo from "./components/forms/connectionForm/ConnectionTempo";
+import Connection from "./components/forms/connectionForm/Connection";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -139,7 +138,7 @@ function App() {
               <ProfilStagiaires />
             </Route>
             <Route path="/Login">
-              {token ? <Redirect to="/" /> : <><ConnectionTempo/></>}
+              {token ? <Redirect to="/" /> : <Connection/>}
             </Route>
             <Route path="/Employeur/publierstage">
               <Boss isCoordinateur={false} />
