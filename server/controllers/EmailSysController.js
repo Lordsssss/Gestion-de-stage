@@ -2,7 +2,6 @@ const HttpError = require("../models/HttpErreur");
 require("dotenv").config();
 const multer = require("multer");
 const nodemailer = require("nodemailer");
-
 const upload = multer({ storage: multer.memoryStorage() });
 
 const EMAIL_USER = process.env.EMAIL_USER;

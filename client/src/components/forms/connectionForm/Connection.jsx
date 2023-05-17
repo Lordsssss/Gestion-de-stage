@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useContext, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import "./css/Connection.css";
@@ -11,7 +12,7 @@ function Connection() {
   const [emailRegister, setEmailRegister] = useState("");
   const [usernameRegister, setUserNameRegister] = useState("");
   const [passwordRegister, setPasswordRegister] = useState("");
-  const [usertypeRegister, setUserTypeRegister] = useState("Etudiant");
+  const [usertypeRegister] = useState("Etudiant");
   const [emailLogin, setEmailLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
   const [error, setError] = useState(null);
@@ -76,7 +77,7 @@ function Connection() {
         onClose={handleCloseAlert}
         htmlFor="chk"
         title="Message"
-        message="Le compte a bien été créer"
+        message="Un email vous a été envoyé pour vérifier votre compte !"
       />
       <div className="login-page">
         <div className="form">
@@ -104,7 +105,7 @@ function Connection() {
                 <input
                   type="password"
                   name="pswd"
-                  placeholder="Password"
+                  placeholder="Mot de passe"
                   required=""
                   value={passwordLogin}
                   onChange={(e) => setPasswordLogin(e.target.value)}
@@ -156,7 +157,7 @@ function Connection() {
                 <input
                   type="password"
                   name="pswd"
-                  placeholder="Password"
+                  placeholder="Mot de passe"
                   required=""
                   value={passwordRegister}
                   onChange={(e) => setPasswordRegister(e.target.value)}

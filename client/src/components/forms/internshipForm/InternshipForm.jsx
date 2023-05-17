@@ -189,7 +189,7 @@ function InternshipForm() {
                     Salaire :
                     <input
                       type="text"
-                      placeholder="De 68 393 $ à 139 707 $"
+                      placeholder="X$ de l'heure"
                       className="formbold-form-input"
                       value={internshipSalary}
                       onChange={(e) => setInternshipSalary(e.target.value)}
