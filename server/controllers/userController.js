@@ -6,35 +6,34 @@ require("dotenv").config();
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 
-
 const register = async (req, res) => {
-    console.log("1")
-    const { email, username, password, usertype } = req.body;
-    const existingUser = await User.findOne({ email: email });
-    if (existingUser != null) {
-      return res.status(400).send("L'utilisateur existe déjà.");
-    }
-    console.log("2")
-    const user = new User({
-      email: email,
-      username: username,
-      password: password,
-      usertype: usertype,
-    });
-    console.log("3")
-    await user.save();
-    console.log("4")
-    const token = await new Token({
-			userId: user._id,
-			token: crypto.randomBytes(32).toString("hex"),
-		}).save();
+  console.log("1");
+  const { email, username, password, usertype } = req.body;
+  const existingUser = await User.findOne({ email: email });
+  if (existingUser != null) {
+    return res.status(400).send("L'utilisateur existe déjà.");
+  }
+  console.log("2");
+  const user = new User({
+    email: email,
+    username: username,
+    password: password,
+    usertype: usertype,
+  });
+  console.log("3");
+  await user.save();
+  console.log("4");
+  const token = await new Token({
+    userId: user._id,
+    token: crypto.randomBytes(32).toString("hex"),
+  }).save();
 
-    const jwT = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-    console.log("5")
-    const url = `${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
-		await sendEmail(user.email, "Verify Email", url);
-    console.log("6")
-    res.status(201).send({ jwT });
+  const jwT = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+  console.log("5");
+  const url = `${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
+  await sendEmail(user.email, "Verify Email", url);
+  console.log("6");
+  res.status(201).send({ jwT });
 };
 
 const login = async (req, res) => {
@@ -46,12 +45,15 @@ const login = async (req, res) => {
       return res.status(401).send("Identifiants invalides.");
     }
     const userType = await user.usertype;
-    const token = jwt.sign({ _id: user._id,usertype:user.usertype }, process.env.JWT_SECRET);
+    const token = jwt.sign(
+      { _id: user._id, usertype: user.usertype },
+      process.env.JWT_SECRET
+    );
     const userid = user._id;
-    if(!user.verified){
-      return res.status(403).send("Compte n'est pas vérifier")
+    if (!user.verified) {
+      return res.status(403).send("Compte n'est pas vérifier");
     }
-    res.send({ token,userType,userid });
+    res.send({ token, userType, userid });
   } catch (error) {
     res.status(500).send("Internal server error.");
   }
@@ -107,41 +109,44 @@ const updateUserRole = async (request, response, next) => {
     );
   }
 
-  response.status(200).json({ message: "Rôle utilisateur mis à jour avec succès" });
+  response
+    .status(200)
+    .json({ message: "Rôle utilisateur mis à jour avec succès" });
 };
 
 const deleteUser = async (request, response, next) => {
-  try{
-    const userId  = request.body.userId;
+  try {
+    const userId = request.body.userId;
     await Internship.deleteMany({ ownerid: userId });
 
     await User.findByIdAndDelete(userId);
 
     response.status(204).end();
-  }catch (error) {
+  } catch (error) {
     console.error(error);
-    response.status(500).json({ error: 'Internal server error' });
+    response.status(500).json({ error: "Internal server error" });
   }
-}
+};
 
 const verifyUser = async (req, res) => {
-	try {
-		const user = await User.findOne({ _id: req.params.id });
-		if (!user) return res.status(400).send({ message: "Invalid link" });
+  try {
+    const user = await User.findById(req.params.id);
 
-		const token = await Token.findOne({
-			userId: user._id,
-			token: req.params.token,
-		});
-		if (!token) return res.status(400).send({ message: "Invalid link" });
+    if (!user) return res.status(400).send({ message: "Invalid link" });
 
-		await User.updateOne({ _id: user._id, verified: true });
-		await token.remove();
+    const token = await Token.findOne({ userId: user._id });
+    console.log(token);
+    if (!token) return res.status(400).send({ message: "Invalid link" });
 
-		res.status(200).send({ message: "Email verified successfully" });
-	} catch (error) {
-		res.status(500).send({ message: "Internal Server Error" });
-	}
+    user.verified = true;
+    await user.save();
+    await Token.findByIdAndDelete(token._id);
+
+    res.status(200).send({ message: "Email verified successfully" });
+  } catch (error) {
+    console.error(error);
+    response.status(500).json({ error: "Internal server error" });
+  }
 };
 
 exports.register = register;

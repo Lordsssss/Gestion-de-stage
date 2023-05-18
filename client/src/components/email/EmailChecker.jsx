@@ -4,13 +4,14 @@ import axios from "axios";
 
 function EmailChecker() {
   const [validUrl, setValidUrl] = useState(true);
-  const param = useParams();
+  const { id, token } = useParams();
   const URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
+    console.log("test")
     const verifyEmailUrl = async () => {
       try {
-        const url = URL + `/api/user/${param.id}/verify/${param.token}`;
+        const url = URL + `/api/user/${id}/verify/${token}`;
         const { data } = await axios.get(url);
         console.log(data);
         setValidUrl(true);
@@ -20,7 +21,7 @@ function EmailChecker() {
       }
     };
     verifyEmailUrl();
-  }, [URL, param]);
+  }, [id, token]);
 
   return (
     <Fragment>
