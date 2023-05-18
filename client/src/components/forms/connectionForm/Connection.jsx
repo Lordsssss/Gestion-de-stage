@@ -115,7 +115,7 @@ function Connection() {
               </div>
               <button className="form-connection-submit">login</button>
               <p className="message">
-                Pas de compte ?{"  "} 
+                Pas de compte ?{"  "}
                 <a href="#" onClick={() => setLoginActive(false)}>
                  Créer un compte !
                 </a>

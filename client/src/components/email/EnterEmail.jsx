@@ -16,11 +16,12 @@ function EnterEmail() {
     };
 
     const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
             const data = {
                 email: userEmail
             }
-            await axios.post(URL + "/api/user/endPswEmail", data).catch((error) => {
+            await axios.post(URL + "/api/user/sendPswEmail", data).catch((error) => {
                 console.error(error);
             });
             handleShowAlert(true);
