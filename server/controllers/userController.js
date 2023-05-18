@@ -8,7 +8,6 @@ const crypto = require("crypto");
 
 
 const register = async (req, res) => {
-  try {
     console.log("1")
     const { email, username, password, usertype } = req.body;
     const existingUser = await User.findOne({ email: email });
@@ -30,15 +29,12 @@ const register = async (req, res) => {
 			token: crypto.randomBytes(32).toString("hex"),
 		}).save();
 
-    const jwt = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+    const jwT = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
     console.log("5")
     const url = `${process.env.BASE_URL}users/${user.id}/verify/${token.token}`;
 		await sendEmail(user.email, "Verify Email", url);
     console.log("6")
-    res.status(201).send({ jwt });
-  } catch (error) {
-    res.status(500).send("Internal server error.");
-  }
+    res.status(201).send({ jwT });
 };
 
 const login = async (req, res) => {
