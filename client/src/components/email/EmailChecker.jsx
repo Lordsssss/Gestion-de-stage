@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { Fragment } from "react/cjs/react.production.min";
 
 function EmailChecker() {
   const [validUrl, setValidUrl] = useState(true);

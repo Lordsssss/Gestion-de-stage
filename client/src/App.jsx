@@ -21,6 +21,7 @@ import UsersList from "./components/users/UsersList";
 import StudentList from "./components/users/StudentList";
 import NavbarApp from "./components/shared/navigation/NavBarApp";
 import Connection from "./components/forms/connectionForm/Connection";
+import EmailChecker from "./components/email/emailChecker";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -172,6 +173,9 @@ function App() {
               ) : (
                 <StudentList />
               )}
+            </Route>
+            <Route path="/users/:id/verify/:token">
+                <EmailChecker/>
             </Route>
             <Route
               path="/logout"
