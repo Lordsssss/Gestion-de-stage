@@ -129,7 +129,8 @@ const deleteUser = async (request, response, next) => {
 };
 const sendEmailPassword = async (req, res) => {
   try {
-    const user = await User.findOne({email: req.body.email});
+    const {email} = req.body;
+    const user = await User.findOne({email: email});
 
     const token = await new Token({
       userId: user._id,

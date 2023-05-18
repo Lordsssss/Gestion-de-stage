@@ -18,10 +18,9 @@ function EnterEmail() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const data = {
+            await axios.post(URL + "/api/user/sendPswEmail", {
                 email: userEmail
-            }
-            await axios.post(URL + "/api/user/sendPswEmail", data).catch((error) => {
+            }).catch((error) => {
                 console.error(error);
             });
             handleShowAlert(true);
