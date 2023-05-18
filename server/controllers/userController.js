@@ -131,15 +131,13 @@ const sendEmailPassword = async (req, res) => {
   try {
     const {email} = req.body;
     const user = await User.findOne({email: email});
-
     const token = await new Token({
       userId: user._id,
       token: crypto.randomBytes(32).toString("hex"),
     }).save();
-
+    
     const url = `${process.env.BASE_URL}/users/${user._id}/changepassword/${token.token}`;
     await sendEmail(user.email, "Change password", url);
-
   } catch (err) {
     console.error("send email error", err);
     response.status(500).json({ error: "Internal server error" });
