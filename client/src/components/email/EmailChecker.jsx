@@ -1,7 +1,9 @@
 import { useEffect, useState, Fragment } from "react";
 import { useParams, Link } from "react-router-dom";
+
 import axios from "axios";
 
+import './css/EmailChecker.css'
 function EmailChecker() {
   const [validUrl, setValidUrl] = useState(true);
   const { id, token } = useParams();
@@ -21,20 +23,26 @@ function EmailChecker() {
       }
     };
     verifyEmailUrl();
-  }, [id, token]);
+  }, [id, token, URL]);
 
   return (
     <Fragment>
-      {validUrl ? (
-        <div>
-          <h1>Email verified successfully</h1>
-          <Link to="/login">
-            <button>Login</button>
-          </Link>
-        </div>
-      ) : (
-        <h1>404 Not Found</h1>
-      )}
+      <div className="verify-email">
+        {validUrl ? (
+          <div className="verify-bloc">
+            <h1 className="verify-element">Email verified successfully</h1>
+            <div className="verify-element">
+              <Link className="nop" to="/login">
+                <button className="verify-button">Login</button>
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div className="verify-bloc">
+            <h1 className="verify-element">404 Not Found</h1>
+          </div>
+        )}
+      </div>
     </Fragment>
   );
 }

@@ -80,7 +80,7 @@ const allUsers = async (requete, reponse, next) => {
 };
 
 const updateUserRole = async (request, response, next) => {
-  console.log("test")
+  console.log("test");
   const { userId, password, usertype } = request.body;
   let user;
   try {
@@ -127,6 +127,42 @@ const deleteUser = async (request, response, next) => {
     response.status(500).json({ error: "Internal server error" });
   }
 };
+const sendEmailPassword = async (req, res) => {
+  try {
+    const user = await User.findOne({email: req.body.email});
+
+    const token = await new Token({
+      userId: user._id,
+      token: crypto.randomBytes(32).toString("hex"),
+    }).save();
+
+    const url = `${process.env.BASE_URL}/users/${user._id}/changepassword/${token.token}`;
+    await sendEmail(user.email, "Change password", url);
+
+  } catch (err) {
+    console.error("send email error", err);
+    response.status(500).json({ error: "Internal server error" });
+  }
+};
+
+const updatePassword = async (req, res) => {
+  try{
+    const { userId , validationToken, newPassword } = req.body;
+    const user = await User.findById(userId);
+    if (!user) return res.status(400).send({ message: "Invalid link" });
+
+    const token = await Token.findById(validationToken);
+    if (!token) return res.status(400).send({ message: "Invalid Token" });
+
+    user.password = newPassword;
+
+    await user.save();
+    res.status(200).send({ message: "Password change !" });
+  } catch (err) {
+    console.error("change password error", err);
+    response.status(500).json({ error: "Internal server error" });
+  }
+};
 
 const verifyUser = async (req, res) => {
   try {
@@ -155,3 +191,5 @@ exports.allUsers = allUsers;
 exports.updateUserRole = updateUserRole;
 exports.deleteUser = deleteUser;
 exports.verifyUser = verifyUser;
+exports.sendEmailPassword = sendEmailPassword;
+exports.updatePassword = updatePassword;

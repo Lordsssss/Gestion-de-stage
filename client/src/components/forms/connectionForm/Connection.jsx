@@ -5,6 +5,7 @@ import "./css/Connection.css";
 import UserContext from "../../../UserContext";
 import axios from "axios";
 import CustomAlert from "../../shared/customalert/CustomAlert";
+import { Link } from "react-router-dom";
 
 function Connection() {
   const [isLoginActive, setLoginActive] = useState(true);
@@ -118,6 +119,12 @@ function Connection() {
                 <a href="#" onClick={() => setLoginActive(false)}>
                  Créer un compte !
                 </a>
+              </p>
+              <p className="message">
+                Oublier votre mot de passe ?{"  "} 
+                <Link to="/users/EnterEmail">
+                 Changer mot de passe
+                </Link>
               </p>
             </form>
           </CSSTransition>
