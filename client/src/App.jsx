@@ -21,7 +21,7 @@ import UsersList from "./components/users/UsersList";
 import StudentList from "./components/users/StudentList";
 import NavbarApp from "./components/shared/navigation/NavBarApp";
 import Connection from "./components/forms/connectionForm/Connection";
-import EmailChecker from "./components/email/emailChecker";
+import EmailChecker from "./components/email/EmailChecker.jsx";
 
 function App() {
   const [token, setToken] = useState(null);
