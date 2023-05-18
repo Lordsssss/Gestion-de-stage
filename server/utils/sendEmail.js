@@ -6,8 +6,8 @@ module.exports = async (email, subject, text) => {
             service: "outlook",
             port: 465,
             auth: {
-              user: EMAIL_USER,
-              pass: EMAIL_PASS,
+              user: process.env.EMAIL_USER,
+              pass: process.env.EMAIL_PASS,
             },
             tls: {
               rejectUnauthorized: false,
@@ -15,7 +15,7 @@ module.exports = async (email, subject, text) => {
           });
 
 		await transporter.sendMail({
-			from: process.env.USER,
+			from: process.env.EMAIL_USER,
 			to: email,
 			subject: subject,
 			text: text,
