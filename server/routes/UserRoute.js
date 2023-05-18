@@ -8,5 +8,6 @@ router.post("/login",userController.login);
 router.get("/all-users",verifyToken,userController.allUsers);
 router.patch("/update-role",verifyToken,userController.updateUserRole);
 router.delete("/delete-user",verifyToken,userController.deleteUser);
+router.get("/:id/verify/:token",userController.verifyUser);
 
 module.exports = router;

@@ -10,9 +10,8 @@ import Accueil from "./components/staticPages/Accueil";
 import FAQ from "./components/staticPages/FAQ";
 import EspaceEtudiant from "./components/staticPages/EspaceEtudiant";
 import ProfilStagiaires from "./components/staticPages/ProfilStagiaires";
-import Connection from "./components/forms/connectionForm/Connection";
 import Boss from "./components/internship/Boss";
-import jwt_decode from 'jwt-decode';
+import jwt_decode from "jwt-decode";
 import Footer from "./Footer";
 import UserContext from "./UserContext";
 import InternshipUpdate from "./components/internship/InternshipUpdate";
@@ -21,6 +20,8 @@ import ApplicationForm from "./components/forms/applicationForm/ApplicationForm"
 import UsersList from "./components/users/UsersList";
 import StudentList from "./components/users/StudentList";
 import NavbarApp from "./components/shared/navigation/NavBarApp";
+import Connection from "./components/forms/connectionForm/Connection";
+import EmailChecker from "./components/email/EmailChecker.jsx";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -47,7 +48,6 @@ function App() {
     }
   }
 
-
   useEffect(() => {
     let token = localStorage.getItem("jwtToken");
     if (token !== null && token !== "" && !isTokenExpired(token)) {
@@ -72,8 +72,8 @@ function App() {
   });
 
   const handleUserId = (newUserId) => {
-    setUserId(newUserId)
-  }
+    setUserId(newUserId);
+  };
   const handleRole = (newRole) => {
     setRole(newRole);
   };
@@ -89,25 +89,25 @@ function App() {
         const decoded = jwt_decode(token);
         const userType = decoded.usertype;
         if (userType === role) {
-          return true
+          return true;
         }
-        return false
+        return false;
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   const handleLogout = () => {
-    localStorage.removeItem('jwtToken');
+    localStorage.removeItem("jwtToken");
     handleRole("");
   };
   const handleInternshipsList = (newList) => {
-    setInternshipList(newList)
-  }
+    setInternshipList(newList);
+  };
   const handleInternship = (newInternship) => {
     setInternship(newInternship);
-  }
+  };
 
   return (
     <UserContext.Provider
@@ -126,7 +126,7 @@ function App() {
       }}
     >
       <Router>
-      <NavbarApp role={role}/>
+        <NavbarApp role={role} />
         <main className="app">
           <Switch>
             <Route path="/FAQ" exact>
@@ -139,11 +139,7 @@ function App() {
               <ProfilStagiaires />
             </Route>
             <Route path="/Login">
-              {token ? (
-                <Redirect to="/" />
-              ) : (
-                <Connection />
-              )}
+              {token ? <Redirect to="/" /> : <Connection/>}
             </Route>
             <Route path="/Employeur/publierstage">
               <Boss isCoordinateur={false} />
@@ -158,7 +154,6 @@ function App() {
               <ApplicationForm />
             </Route>
             <Route path="/Coordinateur/listeUtilisateurs">
-
               {!checkToken("Coordinateur") ? (
                 <Redirect to="/" />
               ) : (
@@ -178,6 +173,9 @@ function App() {
               ) : (
                 <StudentList />
               )}
+            </Route>
+            <Route path="/users/:id/verify/:token">
+                <EmailChecker/>
             </Route>
             <Route
               path="/logout"
