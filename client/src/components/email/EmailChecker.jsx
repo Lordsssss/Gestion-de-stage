@@ -16,7 +16,7 @@ function EmailChecker() {
         const url = URL + `/api/user/${id}/verify/${token}`;
         const { data } = await axios.get(url);
         console.log(data);
-        setValidUrl(true);
+        setValidUrl(true);  
       } catch (error) {
         console.log(error);
         setValidUrl(false);

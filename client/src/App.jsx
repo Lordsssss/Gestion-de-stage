@@ -23,6 +23,7 @@ import NavbarApp from "./components/shared/navigation/NavBarApp";
 import Connection from "./components/forms/connectionForm/Connection";
 import EmailChecker from "./components/email/EmailChecker.jsx";
 import EnterEmail from "./components/email/EnterEmail";
+import ChangePassword from "./components/email/ChangePassword";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -177,6 +178,9 @@ function App() {
             </Route>
             <Route path="/users/:id/verify/:token">
                 <EmailChecker/>
+            </Route>
+            <Route path="/users/:id/changepassword/:token">
+                <ChangePassword/>
             </Route>
             <Route path="/users/EnterEmail">
                 <EnterEmail/>

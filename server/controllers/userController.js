@@ -7,32 +7,29 @@ const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 
 const register = async (req, res) => {
-  console.log("1");
   const { email, username, password, usertype } = req.body;
   const existingUser = await User.findOne({ email: email });
   if (existingUser != null) {
     return res.status(400).send("L'utilisateur existe déjà.");
   }
-  console.log("2");
   const user = new User({
     email: email,
     username: username,
     password: password,
     usertype: usertype,
   });
-  console.log("3");
   await user.save();
-  console.log("4");
+
   const token = await new Token({
     userId: user._id,
     token: crypto.randomBytes(32).toString("hex"),
   }).save();
 
   const jwT = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-  console.log("5");
+
   const url = `${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
   await sendEmail(user.email, "Verify Email", url);
-  console.log("6");
+
   res.status(201).send({ jwT });
 };
 
@@ -135,7 +132,7 @@ const sendEmailPassword = async (req, res) => {
       userId: user._id,
       token: crypto.randomBytes(32).toString("hex"),
     }).save();
-    
+
     const url = `${process.env.BASE_URL}/users/${user._id}/changepassword/${token.token}`;
     await sendEmail(user.email, "Change password", url);
   } catch (err) {
@@ -150,7 +147,8 @@ const updatePassword = async (req, res) => {
     const user = await User.findById(userId);
     if (!user) return res.status(400).send({ message: "Invalid link" });
 
-    const token = await Token.findById(validationToken);
+    const token = await Token.findOne({ token: validationToken });
+    console.log(validationToken)
     if (!token) return res.status(400).send({ message: "Invalid Token" });
 
     user.password = newPassword;
