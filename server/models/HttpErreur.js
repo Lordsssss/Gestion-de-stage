@@ -1,4 +1,4 @@
-class HttpErreur extends Error {
+className HttpErreur extends Error {
     constructor(message, codeErreur){
         super(message);
         this.code = codeErreur;

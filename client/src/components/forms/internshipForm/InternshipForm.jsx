@@ -63,8 +63,8 @@ function InternshipForm() {
           </>
           <div className="formbold-form-wrapper">
             <form onSubmit={handleSubmit}>
-              <div class="formbold-form-title">
-                <h2 class="">Formulaire d'inscription de milieu de stage</h2>
+              <div className="formbold-form-title">
+                <h2 className="">Formulaire d'inscription de milieu de stage</h2>
                 <p>
                   Stages réguliers ayant lieu à la session hiver Les stages sont
                   du 21 janvier au 3 mai 2019 (il est toutefois possible après
@@ -76,7 +76,7 @@ function InternshipForm() {
                   compétences des étudiants.
                 </p>
               </div>
-              <div class="formbold-mb-3">
+              <div className="formbold-mb-3">
                 <label className="inputText">
                   Titre du stage :
                   <input
@@ -89,7 +89,7 @@ function InternshipForm() {
                   />
                 </label>
               </div>
-              <div class="formbold-input-flex">
+              <div className="formbold-input-flex">
                 <div>
                   <label className="inputText">
                     Nom de l'Entreprise :
@@ -118,7 +118,7 @@ function InternshipForm() {
                 </div>
               </div>
 
-              <div class="formbold-input-flex">
+              <div className="formbold-input-flex">
                 <div>
                   <label className="inputText">
                     Adresse de l'Entreprise :
@@ -146,7 +146,7 @@ function InternshipForm() {
                   </label>
                 </div>
               </div>
-              <div class="formbold-mb-3">
+              <div className="formbold-mb-3">
                 <label className="inputText">
                   Email du recruteur :
                   <input
@@ -160,7 +160,7 @@ function InternshipForm() {
                 </label>
               </div>
 
-              <div class="formbold-mb-3">
+              <div className="formbold-mb-3">
                 <label className="inputText">
                   Type du Stage :
                   <select
@@ -183,7 +183,7 @@ function InternshipForm() {
                 </label>
               </div>
 
-              <div class="formbold-input-flex">
+              <div className="formbold-input-flex">
                 <div>
                   <label className="inputText">
                     Salaire :
@@ -212,7 +212,7 @@ function InternshipForm() {
                 </div>
               </div>
 
-              <div class="formbold-mb-3">
+              <div className="formbold-mb-3">
                 <label className="inputText">
                   Description du Stage :
                   <textarea

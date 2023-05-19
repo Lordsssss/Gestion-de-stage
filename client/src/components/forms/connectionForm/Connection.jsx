@@ -62,7 +62,9 @@ function Connection() {
           },
         }
       );
-      //setError(null);
+      setEmailRegister("");
+      setPasswordRegister("");
+      setUserNameRegister("");
       setShowAlert(true);
     } catch (error) {
       console.log(error);
@@ -116,9 +118,9 @@ function Connection() {
               <button className="form-connection-submit">login</button>
               <p className="message">
                 Pas de compte ?{"  "}
-                <a href="#" onClick={() => setLoginActive(false)}>
+                <Link to="#" onClick={() => setLoginActive(false)}>
                  Créer un compte !
-                </a>
+                </Link>
               </p>
               <p className="message">
                 Oublier votre mot de passe ?{"  "} 
@@ -175,9 +177,9 @@ function Connection() {
               <button className="form-connection-submit">Valider</button>
               <p className="message">
                 Déjà un compte ?{"  "}
-                <a href="#" onClick={() => setLoginActive(true)}>
+                <Link to="#" onClick={() => setLoginActive(true)}>
                   Connecter vous !
-                </a>
+                </Link>
               </p>
             </form>
           </CSSTransition>

@@ -122,7 +122,7 @@ function Accueil() {
             Les étudiants terminent la portion académique de leurs études en
             informatique selon une des deux voies de sortie du programme:
             Réseaux et sécurité informatique Développement d'applications
-            informatiques
+            informatiques.
           </span>
           <NavLink className="accueil-flex-item-links" to="/ProfilStagiaires">
             Profils Stagiaires

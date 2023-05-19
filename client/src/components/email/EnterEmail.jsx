@@ -1,55 +1,84 @@
 import React, { useState } from "react";
 import axios from "axios";
 import CustomAlert from "../shared/customalert/CustomAlert";
+import Loading from "../shared/loading/loading";
 
 function EnterEmail() {
-    const [userEmail, setUserEmail] = useState("");
-    const URL = process.env.REACT_APP_BASE_URL;
-    const [showAlert, setShowAlert] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
+  const URL = process.env.REACT_APP_BASE_URL;
+  const [showAlert, setShowAlert] = useState(false);
+  const [isSubmitting,setIsSubmitting] = useState(false);
 
-    const handleShowAlert = () => {
-        setShowAlert(true);
-    };
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
 
-    const handleCloseAlert = () => {
-        setShowAlert(false);
-    };
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await axios.post(URL + "/api/user/sendPswEmail", {
-                email: userEmail
-            }).catch((error) => {
-                console.error(error);
-            });
-            handleShowAlert(true);
-        } catch (err) {
-            console.error("send error", err)
-        }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+        setIsSubmitting(true)
+      await axios
+        .post(URL + "/api/user/sendPswEmail", {
+          email: userEmail,
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+        setIsSubmitting(false)
+      handleShowAlert(true);
+      setUserEmail("")
+    } catch (err) {
+      console.error("send error", err);
     }
-    return (
-        <div className="EnterEmail">
-            <CustomAlert
-                show={showAlert}
-                onClose={handleCloseAlert}
-                title="Message"
-                message="L'email à bien été envoyé"
+  };
+  if (isSubmitting) {
+    return <Loading/>
+  }
+
+  return (
+    <div className="mainDiv">
+      <CustomAlert
+        show={showAlert}
+        onClose={handleCloseAlert}
+        title="Message"
+        message="L'email à bien été envoyé"
+      />
+      <div className="cardStyle">
+        <form onSubmit={handleSubmit}>
+          <div className="imgDiv">
+            <img
+              src="https://www.cmontmorency.qc.ca/wp-content/uploads/2018/03/Logomo_1400.png"
+              alt="Logo"
+              className="imgChange"
             />
-            <form onSubmit={handleSubmit}>
-                <label>Entrer votre email:
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        className="formbold-form-input"
-                        value={userEmail}
-                        onChange={(e) => setUserEmail(e.target.value)}
-                        required
-                    />
-                </label>
-                <button type="submit">Changer !</button>
-            </form>
-        </div>);
+          </div>
+          <h2 className="formTitle">Entrer votre email:</h2>
+          <div className="inputDiv">
+            <input
+              type="email"
+              placeholder="Email"
+              className="formbold-form-input"
+              value={userEmail}
+              onChange={(e) => setUserEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="buttonWrapper">
+            <button
+              className="submitButton pure-button pure-button-primary"
+              type="submit"
+            >
+              Changer !
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default EnterEmail;
