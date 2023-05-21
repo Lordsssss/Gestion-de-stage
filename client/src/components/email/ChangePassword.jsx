@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./css/ChangePassword.css";
 import axios from "axios";
+import CustomAlert from "../shared/customalert/CustomAlert"
 
 function ChangePassword() {
   const [password, setPassword] = useState("");
@@ -9,6 +10,17 @@ function ChangePassword() {
   const [error, setError] = useState(null);
   const { id, token } = useParams();
   const URL = process.env.REACT_APP_BASE_URL;
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,9 +37,16 @@ function ChangePassword() {
     await axios.post(URL + "/api/user/changepassword", data).catch((error) => {
       console.error(error);
     });
+    handleShowAlert(true);
   };
   return (
     <div className="mainDiv">
+      <CustomAlert
+        show={showAlert}
+        onClose={handleCloseAlert}
+        title="Message"
+        message="Le mot de passe à été changer"
+      />
       <div className="cardStyle">
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>

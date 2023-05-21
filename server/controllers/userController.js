@@ -77,7 +77,6 @@ const allUsers = async (requete, reponse, next) => {
 };
 
 const updateUserRole = async (request, response, next) => {
-  console.log("test");
   const { userId, password, usertype } = request.body;
   let user;
   try {
@@ -137,7 +136,7 @@ const sendEmailPassword = async (req, res) => {
     await sendEmail(user.email, "Change password", url);
   } catch (err) {
     console.error("send email error", err);
-    response.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -157,7 +156,7 @@ const updatePassword = async (req, res) => {
     res.status(200).send({ message: "Password change !" });
   } catch (err) {
     console.error("change password error", err);
-    response.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -168,7 +167,6 @@ const verifyUser = async (req, res) => {
     if (!user) return res.status(400).send({ message: "Invalid link" });
 
     const token = await Token.findOne({ userId: user._id });
-    console.log(token);
     if (!token) return res.status(400).send({ message: "Invalid link" });
 
     user.verified = true;
@@ -178,7 +176,7 @@ const verifyUser = async (req, res) => {
     res.status(200).send({ message: "Email verified successfully" });
   } catch (error) {
     console.error(error);
-    response.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 

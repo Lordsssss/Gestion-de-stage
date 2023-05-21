@@ -34,9 +34,9 @@ function Accueil() {
           <h2>Étudiants</h2>
           <span>
             À la fin de leurs études, les étudiants sont appelés à mettre en
-            pratique les compétences acquises durant le programme. Cela se fait
-            grâce à la participation d'entreprises de la région qui les
-            accueillent afin de finaliser leurs formations.
+            pratique les compétences acquises durant le programme. Ceci est
+            possible grâce à la participation des entreprises de la région, qui
+            les accueillent pour finaliser leur formation.
           </span>
           <NavLink className="accueil-flex-item-links" to="/EspaceEtudiant">
             Espace Étudiant
@@ -78,8 +78,8 @@ function Accueil() {
             Le Collège Montmorency offre ainsi aux employeurs l'occasion
             d'obtenir une main-d'œuvre compétente, tout en leur permettant de
             participer à la formation finale des étudiants. Le stage de fin
-            d'études est une expérience concrète permettant d'acquérir une
-            expérience professionnelle formatrice.
+            d'études est une occasion concrète d'acquérir une expérience
+            professionnelle formatrice.
           </span>
           <NavLink className="accueil-flex-item-links" to="/EspaceEmployeur">
             Espace Employeur
