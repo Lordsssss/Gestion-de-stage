@@ -13,19 +13,23 @@ function CustomAlertInput(props) {
         {props.error && <p className="error">{props.error}</p>}
         <p className="custom-alert-message">{props.message}</p>
         <label className="custom-alert-message">
-          Entrer l'ID du Stage
-          <input
-            type="text"
-            placeholder="64593083e5df8d53e7d9ceb8"
+          Choisir le stage
+          <select
             className="formbold-form-input"
             value={props.input}
             onChange={(e) => props.setter(e.target.value)}
             required
-          />
+          >
+            {props.internshipList.map((internship) => (
+              <option key={internship._id} value={internship._id}>
+                {internship.title}
+              </option>
+            ))}
+          </select>
         </label>
         <div>
           <button className="custom-alert-button" onClick={props.handleSubmit}>
-            Ajouter
+            Valider
           </button>
           <button className="custom-alert-button red" onClick={handleClick}>
             Fermer

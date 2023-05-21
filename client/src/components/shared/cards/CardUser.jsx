@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CustomAlertInput from "../customalert/CustomAlertInput";
-
+import CustomAlert from "../customalert/CustomAlert";
 import "../../users/css/UsersList.css";
 function CardUser({ user }) {
   const [selectedRole, setSelectedRole] = useState(user.usertype);
   const [internshipId, setInternshipId] = useState("");
   const [error, setError] = useState("");
   const [showAlert, setShowAlert] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [internshipList, setInternshipList] = useState([]);
 
   const URL = process.env.REACT_APP_BASE_URL;
 
@@ -18,6 +20,21 @@ function CardUser({ user }) {
     objectDate.getMonth() +
     "/" +
     objectDate.getFullYear();
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(
+          URL + "/api/internship/all-internship"
+        );
+        setInternshipList(response.data.internships);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showAlert]);
 
   const handleDelete = async (event) => {
     window.location.reload();
@@ -37,7 +54,7 @@ function CardUser({ user }) {
     console.log(internshipId);
     try {
       await axios
-        .post(URL + "/api/internship/add-Applicant", {
+        .post(URL + "/api/internship/add-student", {
           internshipId: internshipId,
           userId: user._id,
         })
@@ -45,6 +62,7 @@ function CardUser({ user }) {
           setError(error.response.data);
           console.error(error);
         });
+        handleConfirm(true)
     } catch (err) {
       console.error("Error handle applicant", err);
     }
@@ -55,6 +73,15 @@ function CardUser({ user }) {
   };
 
   const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
+
+  const handleConfirm = () => {
+    setShowConfirm(true);
+    setShowAlert(false);
+  };
+
+  const handleCloseConfirm = () => {
     setShowAlert(false);
   };
 
@@ -101,8 +128,15 @@ function CardUser({ user }) {
         error={error.message} // Pass error.message instead of error
         setter={setInternshipId}
         input={internshipId}
+        internshipList={internshipList}
         handleSubmit={handleAddApplicant}
       />
+      <CustomAlert
+      show={showConfirm}
+      onClose={handleCloseConfirm}
+      title="Message"
+      message="L'Étudiant à bien été ajouter"
+    />
       <td className="UserList-td">{user._id}</td>
       <td className="UserList-td">{user.username}</td>
       <td className="UserList-td">{date}</td>

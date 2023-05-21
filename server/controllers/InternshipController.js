@@ -214,6 +214,36 @@ const isApplicantInList = async (req, res, next) => {
   }
 };
 
+const addStudent = async (req, res, next) => {
+  const internshipId = req.body.internshipId;
+  const userId = req.body.userId;
+
+  if (!mongoose.Types.ObjectId.isValid(internshipId)) {
+    return next(new HttpError("Invalid internship ID", 400));
+  }
+
+  try {
+    const internship = await Internship.findById(internshipId);
+    if (!internship) {
+      return next(new HttpError("Internship not found", 404));
+    }
+
+    if (!internship.studentList.includes(userId)) {
+      internship.studentList.push(userId);
+      await internship.save();
+      res
+        .status(200)
+        .json({ message: "User added to the application list successfully" });
+    } else {
+      return next(new HttpError("User already in application list", 400));
+    }
+  } catch (error) {
+    console.error(error);
+    return next(new HttpError("Internal server error", 500));
+  }
+};
+
+
 exports.addInternship = addInternship;
 exports.allInternship = allInternship;
 exports.getInternshipsByOwnerId = getInternshipsByOwnerId;
@@ -221,3 +251,4 @@ exports.deleteInternship = deleteInternship;
 exports.updateInternship = updateInternship;
 exports.addApplicant = addApplicant;
 exports.isApplicantInList = isApplicantInList;
+exports.addStudent = addStudent;
