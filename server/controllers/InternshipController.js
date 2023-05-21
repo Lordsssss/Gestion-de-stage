@@ -1,6 +1,7 @@
 const Internship = require("../models/Internship");
 const HttpError = require("../models/HttpErreur");
 const sendEmail = require("../utils/sendEmail");
+const mongoose = require("mongoose");
 require("dotenv").config();
 
 const addInternship = async (req, res) => {
@@ -43,7 +44,7 @@ Merci de bien vouloir vérifier et approuver ce stage si nécessaire.
 Cordialement,
 ${process.env.COORDINATEUR_EMAIL}
 `;
-    sendEmail(process.env.COORDINATEUR_EMAIL, emailSubject, emailContent);
+    await sendEmail(process.env.COORDINATEUR_EMAIL, emailSubject, emailContent);
     res
       .status(201)
       .json({ message: "Internship added successfully", internship });
@@ -170,6 +171,10 @@ const updateInternship = async (req, res, next) => {
 const addApplicant = async (req, res, next) => {
   const internshipId = req.body.internshipId;
   const userId = req.body.userId;
+
+  if (!mongoose.Types.ObjectId.isValid(internshipId)) {
+    return next(new HttpError("Invalid internship ID", 400));
+  }
 
   try {
     const internship = await Internship.findById(internshipId);

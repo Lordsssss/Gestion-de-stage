@@ -97,8 +97,11 @@ function UsersList() {
               Supprimer
             </th>
             <th className="UserList-th" scope="col">
-              Changer role
+              Changer rôle
             </th>
+            <th className="UserList-th" scope="col">
+            Ajouter Étudiant
+          </th>
           </tr>
         </thead>
         <tbody className="center">
