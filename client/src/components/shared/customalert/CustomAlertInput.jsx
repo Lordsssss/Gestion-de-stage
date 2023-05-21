@@ -22,7 +22,7 @@ function CustomAlertInput(props) {
           >
             {props.internshipList.map((internship) => (
               <option key={internship._id} value={internship._id}>
-                {internship.title}
+                {internship.internshiptitle}
               </option>
             ))}
           </select>

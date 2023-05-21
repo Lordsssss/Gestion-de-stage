@@ -51,6 +51,12 @@ function CardUser({ user }) {
   const handleAddApplicant = async (event) => {
     event.preventDefault();
     setError("");
+
+    if (!internshipId) {
+      setError("No internship selected");
+      return;
+    }
+
     console.log(internshipId);
     try {
       await axios
@@ -62,7 +68,7 @@ function CardUser({ user }) {
           setError(error.response.data);
           console.error(error);
         });
-        handleConfirm(true)
+      handleConfirm(true);
     } catch (err) {
       console.error("Error handle applicant", err);
     }
@@ -82,7 +88,7 @@ function CardUser({ user }) {
   };
 
   const handleCloseConfirm = () => {
-    setShowAlert(false);
+    setShowConfirm(false);
   };
 
   const handleRoleChange = async (event) => {
@@ -132,11 +138,11 @@ function CardUser({ user }) {
         handleSubmit={handleAddApplicant}
       />
       <CustomAlert
-      show={showConfirm}
-      onClose={handleCloseConfirm}
-      title="Message"
-      message="L'Étudiant à bien été ajouter"
-    />
+        show={showConfirm}
+        onClose={handleCloseConfirm}
+        title="Message"
+        message="L'Étudiant à bien été ajouter"
+      />
       <td className="UserList-td">{user._id}</td>
       <td className="UserList-td">{user.username}</td>
       <td className="UserList-td">{date}</td>

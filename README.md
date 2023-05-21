@@ -9,6 +9,11 @@ Ce fichier README présente les fonctionnalités principales de notre site Web, 
 5. Espace étudiant
 6. Liste des profils des stagiaires
 7. FAQ
+8. Vérification de l'email
+9. Changement de mot de passe
+10. Liste des utilisateurs
+11. Mise à jour des stages
+12. Formulaire de candidature
 
 ## Détails des fonctionnalités
 ### 1. Inscription et connexion des utilisateurs
@@ -32,14 +37,51 @@ Les employeurs peuvent consulter la liste des profils des étudiants inscrits su
 ### 7. FAQ
 Une section FAQ est disponible pour répondre aux questions fréquemment posées par les utilisateurs.
 
+### 8. Vérification de l'email
+Les utilisateurs peuvent vérifier leur adresse e-mail après l'inscription en suivant un lien envoyé à leur adresse e-mail.
+
+### 9. Changement de mot de passe
+Les utilisateurs ont la possibilité de modifier leur mot de passe en cas d'oubli. Un lien pour réinitialiser le mot de passe est envoyé à l'adresse e-mail de l'utilisateur.
+
+### 10. Liste des utilisateurs
+Le coordinateur peut accéder à une liste complète de tous les utilisateurs inscrits sur la plateforme.
+
+### 11. Mise à jour des stages
+Les employeurs ont la possibilité de mettre à jour les informations sur les offres de stage existantes.
+
+### 12. Formulaire de candidature
+Les étudiants peuvent remplir un formulaire de candidature détaillé lors de la postulation à une offre de stage.
+
 ## Routes de l'API
 ### L'API a les routes suivantes :
 
-* ```/api/email``` : pour l'envoi de courriels.
-* ```/api/user``` : pour les opérations CRUD sur les utilisateurs enregistrés.
-* ```/api/internship``` : pour les opérations CRUD sur les offres de stage publiées.
-* ```/api/student``` : pour les opérations CRUD sur les étudiants.
-
+1. ```/api/email``` : pour l'envoi de courriels.
+    *  ```POST /send-message``` : Envoie un email. L'utilisateur doit être authentifié pour envoyer un email. Les fichiers attachés à l'email peuvent être téléchargés en utilisant cette route.
+2. ```/api/user``` : pour les opérations CRUD sur les utilisateurs enregistrés.
+    * ```POST /register``` : Inscription d'un nouvel utilisateur.
+    * ```POST /login``` : Connexion de l'utilisateur.
+    * ```GET /all-users``` : Récupère tous les utilisateurs. Nécessite une authentification.
+    * ```PATCH /update-role``` : Met à jour le rôle d'un utilisateur. Nécessite une authentification.
+    * ```DELETE /delete-user``` : Supprime un utilisateur. Nécessite une authentification.
+    * ```GET /:id/verify/:token``` : Vérifie l'utilisateur lors de l'inscription.
+    * ```POST /sendPswEmail``` : Envoie un email pour réinitialiser le mot de passe.
+    * ```POST /changepassword``` : Met à jour le mot de passe de l'utilisateur.
+3. ```/api/internship``` : pour les opérations CRUD sur les offres de stage publiées.
+    * ```POST /add-internship``` : Ajoute une nouvelle offre de stage. Nécessite une authentification.
+    * ```GET /all-internship``` : Récupère toutes les offres de stage. Nécessite une authentification.
+    * ```GET /get-Internships-By-Owner-Id``` : Récupère les offres de stage par l'ID du propriétaire. Nécessite une authentification.
+    * ```DELETE /delete-internship``` : Supprime une offre de stage. Nécessite une authentification.
+    * ```POST /update-internship``` : Met à jour une offre de stage. Nécessite une authentification.
+    * ```POST /add-Applicant``` : Ajoute un candidat à une offre de stage. Nécessite une authentification.
+    * ```POST /is-Applicant-In-List``` : Vérifie si un candidat est dans la liste. Nécessite une authentification.
+    * ```POST /add-student``` : Ajoute un étudiant. Nécessite une authentification.
+4. ```/api/student``` : pour les opérations CRUD sur les étudiants.
+    * ```GET /student-list``` : Récupère la liste des étudiants. Nécessite une authentification.
+    * ```POST /add-student``` : Ajoute un nouvel étudiant. Nécessite une authentification.
+    * ```POST /delete-all-student``` : Supprime tous les étudiants. Nécessite une authentification.
+    * ```DELETE /delete-student``` : Supprime un étudiant. Nécessite une authentification.
+    * ```POST /upload-csv``` : Télécharge un fichier CSV contenant une liste d'étudiants. Nécessite une authentification.
+    
 ## Technologies utilisées
 * React : pour la partie frontend de l'application.
 * Node.js : pour la partie backend de l'application.
@@ -55,11 +97,13 @@ Une section FAQ est disponible pour répondre aux questions fréquemment posées
 - Dans le dossier du serveur, créez un fichier ```.env``` en suivant ce modèle : 
 ```js
 HOSTCONNECTION="DATABASE STRING"
-JWT_SECRET="random 256 bits string"
-EMAIL_PASS="password of the email"
-EMAIL_USER="email adress"
-PORT="The port"
+JWT_SECRET="255 bits secret"
+EMAIL_PASS="Email transporter password"
+EMAIL_USER="Email of the transporter"
+BASE_URL="Frontend Url"
+PORT="The backend port for testing"
 SALT_KEY=10
+COORDINATEUR_EMAIL="Admin Email"
 ```
 - Dans le dossier du client, créez un fichier ```.env``` en suivant ce modèle : 
 ```js
