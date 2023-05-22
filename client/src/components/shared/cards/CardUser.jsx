@@ -125,7 +125,7 @@ function CardUser({ user }) {
   };
 
   return (
-    <tr className="UserList-header">
+    <>
       <CustomAlertInput
         show={showAlert}
         onClose={handleCloseAlert}
@@ -143,55 +143,57 @@ function CardUser({ user }) {
         title="Message"
         message="L'Étudiant à bien été ajouter"
       />
-      <td className="UserList-td">{user._id}</td>
-      <td className="UserList-td">{user.username}</td>
-      <td className="UserList-td">{date}</td>
-      <td className="UserList-td">{selectedRole}</td>
-      <td className="UserList-td">{user.email}</td>
-      <td className="UserList-td UserList-delete">
-        <button onClick={handleDelete} className="UserList-delete-button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fillRule="currentColor"
-            className="bi bi-trash-fill"
-            viewBox="0 0 16 16"
+      <tr className="UserList-header">
+        <td className="UserList-td">{user._id}</td>
+        <td className="UserList-td">{user.username}</td>
+        <td className="UserList-td">{date}</td>
+        <td className="UserList-td">{selectedRole}</td>
+        <td className="UserList-td">{user.email}</td>
+        <td className="UserList-td UserList-delete">
+          <button onClick={handleDelete} className="UserList-delete-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fillRule="currentColor"
+              className="bi bi-trash-fill"
+              viewBox="0 0 16 16"
+            >
+              <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+            </svg>
+          </button>
+        </td>
+        <td className="UserList-td">
+          <select
+            className="select"
+            value={selectedRole}
+            onChange={handleRoleChange}
           >
-            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-          </svg>
-        </button>
-      </td>
-      <td className="UserList-td">
-        <select
-          className="select"
-          value={selectedRole}
-          onChange={handleRoleChange}
-        >
-          <option value="Employeur">Employeur</option>
-          <option value="Etudiant">Etudiant</option>
-          <option value="Coordinateur">Coordinateur</option>
-        </select>
-      </td>
-      <td className="UserList-td centerButton">
-        <button
-          onClick={() => handleShowAlert(true)}
-          className="UserList-delete-button addButton"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-person-add"
-            viewBox="0 0 16 16"
+            <option value="Employeur">Employeur</option>
+            <option value="Etudiant">Etudiant</option>
+            <option value="Coordinateur">Coordinateur</option>
+          </select>
+        </td>
+        <td className="UserList-td centerButton">
+          <button
+            onClick={() => handleShowAlert(true)}
+            className="UserList-delete-button addButton"
           >
-            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
-            <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z" />
-          </svg>
-        </button>
-      </td>
-    </tr>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-person-add"
+              viewBox="0 0 16 16"
+            >
+              <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+              <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z" />
+            </svg>
+          </button>
+        </td>
+      </tr>
+    </>
   );
 }
 

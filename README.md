@@ -5,15 +5,13 @@ Ce fichier README présente les fonctionnalités principales de notre site Web, 
 1. Inscription et connexion des utilisateurs
 2. Gestion des offres de stage
 3. Gestion des candidatures
-4. Espace employeur
-5. Espace étudiant
-6. Liste des profils des stagiaires
-7. FAQ
-8. Vérification de l'email
-9. Changement de mot de passe
-10. Liste des utilisateurs
-11. Mise à jour des stages
-12. Formulaire de candidature
+4. Espace étudiant
+5. FAQ
+6. Vérification de l'email
+7. Changement de mot de passe
+8. Liste des utilisateurs
+9. Mise à jour des stages
+10. Formulaire de candidature
 
 ## Détails des fonctionnalités
 ### 1. Inscription et connexion des utilisateurs
@@ -25,31 +23,25 @@ Les employeurs peuvent créer, mettre à jour et supprimer des offres de stage. 
 ### 3. Gestion des candidatures
 Les étudiants peuvent postuler aux offres de stage en envoyant un email à l'employeur avec leur CV et lettre de motivation en pièces jointes. Les employeurs peuvent consulter la liste des candidatures pour chaque offre de stage et gérer les candidats.
 
-### 4. Espace employeur
-Les employeurs ont accès à un espace dédié où ils peuvent gérer leurs offres de stage et consulter la liste des candidatures pour chaque offre de stage.
-
-### 5. Espace étudiant
+### 4. Espace étudiant
 Les étudiants ont accès à un espace dédié où ils peuvent consulter la liste des offres de stage disponibles et postuler en envoyant un email à l'employeur avec leur CV et lettre de motivation en pièces jointes.
 
-### 6. Liste des profils des stagiaires
-Les employeurs peuvent consulter la liste des profils des étudiants inscrits sur la plateforme pour les aider à sélectionner les candidats les plus adaptés à leurs offres de stage.
-
-### 7. FAQ
+### 5. FAQ
 Une section FAQ est disponible pour répondre aux questions fréquemment posées par les utilisateurs.
 
-### 8. Vérification de l'email
+### 6. Vérification de l'email
 Les utilisateurs peuvent vérifier leur adresse e-mail après l'inscription en suivant un lien envoyé à leur adresse e-mail.
 
-### 9. Changement de mot de passe
+### 7. Changement de mot de passe
 Les utilisateurs ont la possibilité de modifier leur mot de passe en cas d'oubli. Un lien pour réinitialiser le mot de passe est envoyé à l'adresse e-mail de l'utilisateur.
 
-### 10. Liste des utilisateurs
+### 8. Liste des utilisateurs
 Le coordinateur peut accéder à une liste complète de tous les utilisateurs inscrits sur la plateforme.
 
-### 11. Mise à jour des stages
+### 9. Mise à jour des stages
 Les employeurs ont la possibilité de mettre à jour les informations sur les offres de stage existantes.
 
-### 12. Formulaire de candidature
+### 10. Formulaire de candidature
 Les étudiants peuvent remplir un formulaire de candidature détaillé lors de la postulation à une offre de stage.
 
 ## Routes de l'API
