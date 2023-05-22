@@ -78,10 +78,11 @@ const allUsers = async (requete, reponse, next) => {
 };
 
 const updateUserRole = async (request, response, next) => {
-  const { userId, password, usertype } = request.body;
+  const { userId, password, usertype, userIdtoChange } = request.body;
   let user;
   try {
     user = await User.findById(userId);
+    userToChange = await User.findById(userIdtoChange);
   } catch (err) {
     return next(
       new HttpError("Erreur lors de la récupération de l'utilisateur", 500)
@@ -91,13 +92,14 @@ const updateUserRole = async (request, response, next) => {
   if (!user) {
     return next(new HttpError("Utilisateur non trouvé", 404));
   }
-
-  const isValidPassword = await user.comparePassword(password, user.password);
+  console.log(await user.comparePassword(password))
+  console.log(user)
+  const isValidPassword = await user.comparePassword(password);
   if (!isValidPassword) {
     return next(new HttpError("Mot de passe invalide", 401));
   }
 
-  user.usertype = usertype;
+  userToChange.usertype = usertype;
   try {
     await user.save();
   } catch (err) {

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import UserContext from "../../../UserContext";
 import CustomAlertInput from "../customalert/CustomAlertInput";
 import CustomAlert from "../customalert/CustomAlert";
 import "../../users/css/UsersList.css";
@@ -10,7 +11,7 @@ function CardUser({ user }) {
   const [showAlert, setShowAlert] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [internshipList, setInternshipList] = useState([]);
-
+  const { userId } = useContext(UserContext);
   const URL = process.env.REACT_APP_BASE_URL;
 
   const objectDate = new Date(user.creationdate);
@@ -104,9 +105,10 @@ function CardUser({ user }) {
     }
 
     const updatedUser = {
-      userId: user._id,
+      userId: userId,
       password: password,
       usertype: newRole,
+      userIdtoChange: user._id,
     };
     try {
       const response = await axios.patch(
