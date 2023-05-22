@@ -42,7 +42,7 @@ function InternshipForm() {
         handleInternshipsList([...internshipsList, response.data.internship]);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 

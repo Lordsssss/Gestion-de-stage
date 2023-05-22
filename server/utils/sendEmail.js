@@ -20,10 +20,10 @@ module.exports = async (email, subject, text) => {
 			subject: subject,
 			text: text,
 		});
-		console.log("email sent successfully");
+		console.error("email sent successfully");
 	} catch (error) {
-		console.log("email not sent!");
-		console.log(error);
+		console.error("email not sent!");
+		console.error(error);
 		return error;
 	}
 };

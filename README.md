@@ -107,7 +107,9 @@ COORDINATEUR_EMAIL="Admin Email"
 ```
 - Dans le dossier du client, créez un fichier ```.env``` en suivant ce modèle : 
 ```js
-REACT_APP_BASE_URL="The backend adress"
+REACT_APP_BASE_URL="The backend adress"\
+COORDINATEUR_EMAIL="L'email du coordinateur"
+COORDINATEUR_NAME="Nom prenom du coordinateur"
 ``` 
 - Démarrez le serveur backend en utilisant ```npm start``` dans ./server
 - Démarrez le serveur frontend en utilisant ```npm start``` dans ./client

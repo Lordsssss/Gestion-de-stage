@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CustomAlert from "../shared/customalert/CustomAlert";
 import Loading from "../shared/loading/loading";
@@ -18,17 +18,19 @@ function EnterEmail() {
   };
 
   const handleSubmit = async (e) => {
+    setIsSubmitting(true)
     e.preventDefault();
     try {
-        setIsSubmitting(true)
       await axios
         .post(URL + "/api/user/sendPswEmail", {
           email: userEmail,
+        }).then((res) =>{
+          setIsSubmitting(false)
         })
         .catch((error) => {
           console.error(error);
         });
-        setIsSubmitting(false)
+      
       handleShowAlert(true);
       setUserEmail("")
     } catch (err) {

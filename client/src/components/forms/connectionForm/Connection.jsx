@@ -41,7 +41,7 @@ function Connection() {
       handleUserId(response.data.userid);
     } catch (error) {
       setError(error.response.data);
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -67,7 +67,7 @@ function Connection() {
       setUserNameRegister("");
       setShowAlert(true);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setError(error.response.data);
     }
   };

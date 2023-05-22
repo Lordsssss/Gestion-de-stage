@@ -10,15 +10,14 @@ function EmailChecker() {
   const URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
-    console.log("test")
     const verifyEmailUrl = async () => {
       try {
         const url = URL + `/api/user/${id}/verify/${token}`;
         const { data } = await axios.get(url);
-        console.log(data);
+        console.error(data);
         setValidUrl(true);  
       } catch (error) {
-        console.log(error);
+        console.error(error);
         setValidUrl(false);
       }
     };

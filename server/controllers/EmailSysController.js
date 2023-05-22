@@ -1,4 +1,4 @@
-const HttpError = require("../models/HttpErreur");
+const HttpError = require("../models/HttpError");
 require("dotenv").config();
 const multer = require("multer");
 const nodemailer = require("nodemailer");

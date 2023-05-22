@@ -69,7 +69,7 @@ function Footer() {
         </div>
       </div>
       <div className="copyright">
-        <span>Conçu et développé par Hugo Montreuil. </span>
+      <span> {process.env.COORDINATEUR_NAME} | {process.env.COORDINATEUR_EMAIL} <br/> Conçu et développé par Hugo Montreuil.</span>
         <a className="a-copyright" href="https://github.com/Lordsssss">
           <svg
             xmlns="http://www.w3.org/2000/svg"

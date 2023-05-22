@@ -29,7 +29,7 @@ function CardUser({ user }) {
         );
         setInternshipList(response.data.internships);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
     fetchData();
@@ -44,7 +44,7 @@ function CardUser({ user }) {
         data: { userId: userId },
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 
@@ -57,7 +57,7 @@ function CardUser({ user }) {
       return;
     }
 
-    console.log(internshipId);
+    console.error(internshipId);
     try {
       await axios
         .post(URL + "/api/internship/add-student", {

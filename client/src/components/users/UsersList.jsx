@@ -22,7 +22,7 @@ function UsersList() {
           setUserList(response.data.users);
           setIsLoading(false);
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       }
     }

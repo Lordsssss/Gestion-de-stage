@@ -5,6 +5,7 @@ const Internship = require("../models/Internship");
 require("dotenv").config();
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
+const HttpError = require("../models/HttpError");
 
 const register = async (req, res) => {
   const { email, username, password, usertype } = req.body;
@@ -62,14 +63,14 @@ const allUsers = async (requete, reponse, next) => {
     users = await User.find();
   } catch (err) {
     return next(
-      new HttpErreur(
+      new HttpError(
         "Erreur lors de la récupération de la liste des profs",
         500
       )
     );
   }
   if (!users) {
-    return next(new HttpErreur("Aucun prof trouvé", 404));
+    return next(new HttpError("Aucun prof trouvé", 404));
   }
   reponse.json({
     users: users.map((user) => user.toObject({ getters: true })),
@@ -83,17 +84,17 @@ const updateUserRole = async (request, response, next) => {
     user = await User.findById(userId);
   } catch (err) {
     return next(
-      new HttpErreur("Erreur lors de la récupération de l'utilisateur", 500)
+      new HttpError("Erreur lors de la récupération de l'utilisateur", 500)
     );
   }
 
   if (!user) {
-    return next(new HttpErreur("Utilisateur non trouvé", 404));
+    return next(new HttpError("Utilisateur non trouvé", 404));
   }
 
   const isValidPassword = await user.comparePassword(password, user.password);
   if (!isValidPassword) {
-    return next(new HttpErreur("Mot de passe invalide", 401));
+    return next(new HttpError("Mot de passe invalide", 401));
   }
 
   user.usertype = usertype;
@@ -101,7 +102,7 @@ const updateUserRole = async (request, response, next) => {
     await user.save();
   } catch (err) {
     return next(
-      new HttpErreur("Erreur lors de la mise à jour de l'utilisateur", 500)
+      new HttpError("Erreur lors de la mise à jour de l'utilisateur", 500)
     );
   }
 
@@ -134,6 +135,7 @@ const sendEmailPassword = async (req, res) => {
 
     const url = `${process.env.BASE_URL}/users/${user._id}/changepassword/${token.token}`;
     await sendEmail(user.email, "Change password", url);
+    res.status(204).end();
   } catch (err) {
     console.error("send email error", err);
     res.status(500).json({ error: "Internal server error" });
@@ -147,7 +149,7 @@ const updatePassword = async (req, res) => {
     if (!user) return res.status(400).send({ message: "Invalid link" });
 
     const token = await Token.findOne({ token: validationToken });
-    console.log(validationToken)
+    console.error(validationToken)
     if (!token) return res.status(400).send({ message: "Invalid Token" });
 
     user.password = newPassword;

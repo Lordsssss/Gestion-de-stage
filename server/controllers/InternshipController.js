@@ -1,5 +1,5 @@
 const Internship = require("../models/Internship");
-const HttpError = require("../models/HttpErreur");
+const HttpError = require("../models/HttpError");
 const sendEmail = require("../utils/sendEmail");
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -60,14 +60,14 @@ const allInternship = async (requete, reponse, next) => {
     internships = await Internship.find();
   } catch (err) {
     return next(
-      new HttpErreur(
+      new HttpError(
         "Erreur lors de la récupération de la liste des profs",
         500
       )
     );
   }
   if (!internships) {
-    return next(new HttpErreur("Aucun prof trouvé", 404));
+    return next(new HttpError("Aucun prof trouvé", 404));
   }
   reponse.json({
     internships: internships.map((internship) =>
