@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import "./css/InternshipForm.css";
 import UserContext from "../../../UserContext";
+import CustomAlert from "../../shared/customalert/CustomAlert"
 
 function InternshipForm() {
   const { userId, internshipsList, handleInternshipsList } =
@@ -18,6 +19,15 @@ function InternshipForm() {
   const [nbPositions, setNbPositions] = useState("");
   const [internshipSalary, setInternshipSalary] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,6 +52,7 @@ function InternshipForm() {
         handleInternshipsList([...internshipsList, response.data.internship]);
       })
       .catch((error) => {
+        handleShowAlert(true)
         console.error(error);
       });
   };
@@ -52,6 +63,12 @@ function InternshipForm() {
 
   return (
     <div className="form-container">
+    <CustomAlert
+    show={showAlert}
+    onClose={handleCloseAlert}
+    title="Error"
+    message="Il y a eu une erreur, contacter sylvain.labranche@cmontmorency.qc.ca"
+  />
       <button className="button" onClick={handleButtonClick}>
         {showForm ? "X" : "Ajouter Stage"}
       </button>
