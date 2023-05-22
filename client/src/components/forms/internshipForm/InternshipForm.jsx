@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import "./css/InternshipForm.css";
 import UserContext from "../../../UserContext";
-import CustomAlert from "../../shared/customalert/CustomAlert"
+import CustomAlert from "../../shared/customalert/CustomAlert";
 
 function InternshipForm() {
   const { userId, internshipsList, handleInternshipsList } =
@@ -52,7 +52,7 @@ function InternshipForm() {
         handleInternshipsList([...internshipsList, response.data.internship]);
       })
       .catch((error) => {
-        handleShowAlert(true)
+        handleShowAlert(true);
         console.error(error);
       });
   };
@@ -63,12 +63,12 @@ function InternshipForm() {
 
   return (
     <div className="form-container">
-    <CustomAlert
-    show={showAlert}
-    onClose={handleCloseAlert}
-    title="Error"
-    message="Il y a eu une erreur, contacter sylvain.labranche@cmontmorency.qc.ca"
-  />
+      <CustomAlert
+        show={showAlert}
+        onClose={handleCloseAlert}
+        title="Error"
+        message="Il y a eu une erreur, contacter sylvain.labranche@cmontmorency.qc.ca"
+      />
       <button className="button" onClick={handleButtonClick}>
         {showForm ? "X" : "Ajouter Stage"}
       </button>
@@ -81,7 +81,9 @@ function InternshipForm() {
           <div className="formbold-form-wrapper">
             <form onSubmit={handleSubmit}>
               <div className="formbold-form-title">
-                <h2 className="">Formulaire d'inscription de milieu de stage</h2>
+                <h2 className="">
+                  Formulaire d'inscription de milieu de stage
+                </h2>
                 <p>
                   Stages réguliers ayant lieu à la session hiver Les stages sont
                   du 21 janvier au 3 mai 2019 (il est toutefois possible après
